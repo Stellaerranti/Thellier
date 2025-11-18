@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Thellier
 {
@@ -71,6 +72,25 @@ namespace Thellier
             ZiChart.Series["YmZ"].Points.AddXY(Y, (-1)*Z);
             ZiChart.Series["YmX"].Points.AddXY(Y, (-1) * X);
             ZiChart.Series["ZX"].Points.AddXY(Z,  X);
+        }
+
+        private void plotNRM()
+        {
+            foreach (DataGridViewRow row in MainTable.Rows)
+            {
+                double c0 = Convert.ToDouble(row.Cells[0].Value);
+                double c1 = Convert.ToDouble(row.Cells[1].Value);
+                double c2 = Convert.ToDouble(row.Cells[2].Value);
+                double c3 = Convert.ToDouble(row.Cells[3].Value);
+                double c4 = Convert.ToDouble(row.Cells[4].Value);
+
+                demagChart.Series["Demag"].Points.AddXY(c0, c4);
+
+                ZiChart.Series["YX"].Points.AddXY(c2, c1);
+                ZiChart.Series["YmZ"].Points.AddXY(c2, -c3);
+                ZiChart.Series["YmX"].Points.AddXY(c2, -c1);
+                ZiChart.Series["ZX"].Points.AddXY(c2, c1);
+            }
         }
 
         private void plotRMG()
@@ -403,6 +423,139 @@ namespace Thellier
             ZiChart.ChartAreas[1].Visible = ! ZiChart.ChartAreas[1].Visible;
         }
 
+        private void plotTable()
+        {
+            demagChart.Series["Demag"].Points.Clear();
+            ZiChart.Series["YX"].Points.Clear();
+            ZiChart.Series["YmZ"].Points.Clear();
+            ZiChart.Series["YmX"].Points.Clear();
+            ZiChart.Series["ZX"].Points.Clear();
 
+            ARMChart.Series[0].Points.Clear();
+            ARMChart.Series[1].Points.Clear();
+
+            plotRMG();
+            plotNRM();
+        }
+
+        private void RemoveResidue()
+        {
+            if (LineNumber_radioButton.Checked)
+            {
+                try
+                {
+                    int line_number = int.Parse(res_input_textBox.Text, NumberStyles.Integer)-1;
+
+                    if (line_number < 0 || line_number >= MainTable.Rows.Count)
+                    {
+                        MessageBox.Show("The number is outside the valid range.");
+                        return;
+                    }
+
+                    double ValueToExtract = 0;
+
+                    try
+                    {
+                        if (NRM_radioButton.Checked)
+                        {
+                            ValueToExtract = Convert.ToDouble(MainTable.Rows[line_number].Cells[4].Value);
+                        }
+                        else if(ARMgained_radioButton.Checked)
+                        {
+                            ValueToExtract = Convert.ToDouble(MainTable.Rows[line_number].Cells[5].Value);
+                        }
+                        else if(ARMleft_radioButton.Checked)
+                        {
+                            ValueToExtract = Convert.ToDouble(MainTable.Rows[line_number].Cells[6].Value);
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Cell does not contain a valid number.");
+                        return;
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        MessageBox.Show("Cell is empty.");
+                        return;
+                    }
+                    catch (InvalidCastException)
+                    {
+                        MessageBox.Show("Cell contains a non-numeric value.");
+                        return;
+                    }
+
+                    try 
+                    {
+                        foreach (DataGridViewRow row in MainTable.Rows)
+                        {
+                            try
+                            {
+                                if (NRM_checkBox.Checked)
+                                {
+                                    double current = Convert.ToDouble(row.Cells[4].Value);
+                                    row.Cells[4].Value = current - ValueToExtract;
+                                }
+                                if (ARMgained_checkBox.Checked)
+                                {
+                                    double current = Convert.ToDouble(row.Cells[5].Value);
+                                    row.Cells[5].Value = current - ValueToExtract;
+                                }
+                                if (ARMleft_checkBox.Checked)
+                                {
+                                    double current = Convert.ToDouble(row.Cells[6].Value);
+                                    row.Cells[6].Value = current - ValueToExtract;
+                                }
+                            }
+
+                            catch (FormatException)
+                            {
+                                MessageBox.Show("Invalid format in line  " + row.Index);
+                            }
+                            catch (ArgumentNullException)
+                            {
+                                MessageBox.Show("The cell in line " + row.Index + " is empty");
+                            }
+                            catch (InvalidCastException)
+                            {
+                                MessageBox.Show("Unable to convert number in line  " + row.Index);
+                            }
+                            catch (OverflowException)
+                            {
+                                MessageBox.Show("The number is too large or too small in line " + row.Index);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error: " + ex.Message);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("The input is not a valid integer.");
+                }
+                catch (OverflowException)
+                {
+                    MessageBox.Show("The number is too large or too small for an Int32.");
+                }
+            }
+            else if (Value_radioButton.Checked)
+            {
+
+            }
+            else { MessageBox.Show("Please, select initial value type"); }
+        }
+
+        private void Remove_residue_button_Click(object sender, EventArgs e)
+        {
+            RemoveResidue();
+            plotTable();
+        }
     }
 }

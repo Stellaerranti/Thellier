@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series28 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_openPMD = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_openRMG = new System.Windows.Forms.ToolStripButton();
@@ -67,18 +67,19 @@
             this.button_plot = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.res_input_textBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.NRM_radioButton = new System.Windows.Forms.RadioButton();
+            this.ARMgained_radioButton = new System.Windows.Forms.RadioButton();
+            this.ARMleft_radioButton = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.NRM_checkBox = new System.Windows.Forms.CheckBox();
+            this.ARMgained_checkBox = new System.Windows.Forms.CheckBox();
+            this.ARMleft_checkBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.LineNumber_radioButton = new System.Windows.Forms.RadioButton();
+            this.Value_radioButton = new System.Windows.Forms.RadioButton();
+            this.Remove_residue_button = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZiChart)).BeginInit();
@@ -151,30 +152,30 @@
             // 
             // ZiChart
             // 
-            chartArea13.Name = "proj1";
-            chartArea14.Name = "proj2";
-            this.ZiChart.ChartAreas.Add(chartArea13);
-            this.ZiChart.ChartAreas.Add(chartArea14);
+            chartArea5.Name = "proj1";
+            chartArea6.Name = "proj2";
+            this.ZiChart.ChartAreas.Add(chartArea5);
+            this.ZiChart.ChartAreas.Add(chartArea6);
             this.ZiChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ZiChart.Location = new System.Drawing.Point(6, 6);
             this.ZiChart.Margin = new System.Windows.Forms.Padding(6);
             this.ZiChart.Name = "ZiChart";
-            series22.ChartArea = "proj1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series22.Name = "YX";
-            series23.ChartArea = "proj1";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series23.Name = "YmZ";
-            series24.ChartArea = "proj2";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series24.Name = "YmX";
-            series25.ChartArea = "proj2";
-            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series25.Name = "ZX";
-            this.ZiChart.Series.Add(series22);
-            this.ZiChart.Series.Add(series23);
-            this.ZiChart.Series.Add(series24);
-            this.ZiChart.Series.Add(series25);
+            series8.ChartArea = "proj1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series8.Name = "YX";
+            series9.ChartArea = "proj1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series9.Name = "YmZ";
+            series10.ChartArea = "proj2";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series10.Name = "YmX";
+            series11.ChartArea = "proj2";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series11.Name = "ZX";
+            this.ZiChart.Series.Add(series8);
+            this.ZiChart.Series.Add(series9);
+            this.ZiChart.Series.Add(series10);
+            this.ZiChart.Series.Add(series11);
             this.ZiChart.Size = new System.Drawing.Size(790, 531);
             this.ZiChart.TabIndex = 0;
             this.ZiChart.Text = "chart1";
@@ -182,40 +183,40 @@
             // 
             // demagChart
             // 
-            chartArea15.Name = "ChartArea1";
-            this.demagChart.ChartAreas.Add(chartArea15);
+            chartArea7.Name = "ChartArea1";
+            this.demagChart.ChartAreas.Add(chartArea7);
             this.demagChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.demagChart.Location = new System.Drawing.Point(808, 6);
             this.demagChart.Margin = new System.Windows.Forms.Padding(6);
             this.demagChart.Name = "demagChart";
-            series26.ChartArea = "ChartArea1";
-            series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series26.Name = "Demag";
-            this.demagChart.Series.Add(series26);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series12.Name = "Demag";
+            this.demagChart.Series.Add(series12);
             this.demagChart.Size = new System.Drawing.Size(790, 531);
             this.demagChart.TabIndex = 1;
             this.demagChart.Text = "chart1";
             // 
             // ARMChart
             // 
-            chartArea16.Name = "ChartArea1";
-            this.ARMChart.ChartAreas.Add(chartArea16);
+            chartArea8.Name = "ChartArea1";
+            this.ARMChart.ChartAreas.Add(chartArea8);
             this.ARMChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.ARMChart.Legends.Add(legend4);
+            legend2.Name = "Legend1";
+            this.ARMChart.Legends.Add(legend2);
             this.ARMChart.Location = new System.Drawing.Point(1610, 6);
             this.ARMChart.Margin = new System.Windows.Forms.Padding(6);
             this.ARMChart.Name = "ARMChart";
-            series27.ChartArea = "ChartArea1";
-            series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series27.Legend = "Legend1";
-            series27.Name = "ARM gained";
-            series28.ChartArea = "ChartArea1";
-            series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series28.Legend = "Legend1";
-            series28.Name = "ARM left";
-            this.ARMChart.Series.Add(series27);
-            this.ARMChart.Series.Add(series28);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series13.Legend = "Legend1";
+            series13.Name = "ARM gained";
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series14.Legend = "Legend1";
+            series14.Name = "ARM left";
+            this.ARMChart.Series.Add(series13);
+            this.ARMChart.Series.Add(series14);
             this.ARMChart.Size = new System.Drawing.Size(790, 531);
             this.ARMChart.TabIndex = 2;
             this.ARMChart.Text = "chart1";
@@ -411,10 +412,11 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.Controls.Add(this.textBox1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.res_input_textBox, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel6, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.Remove_residue_button, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 27);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -426,6 +428,14 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(790, 277);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
+            // res_input_textBox
+            // 
+            this.res_input_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.res_input_textBox.Location = new System.Drawing.Point(3, 19);
+            this.res_input_textBox.Name = "res_input_textBox";
+            this.res_input_textBox.Size = new System.Drawing.Size(580, 31);
+            this.res_input_textBox.TabIndex = 3;
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
@@ -434,9 +444,9 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.Controls.Add(this.radioButton3, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.radioButton4, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.radioButton5, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.NRM_radioButton, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.ARMgained_radioButton, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.ARMleft_radioButton, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 141);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -444,6 +454,42 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(784, 63);
             this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // NRM_radioButton
+            // 
+            this.NRM_radioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.NRM_radioButton.AutoSize = true;
+            this.NRM_radioButton.Location = new System.Drawing.Point(85, 5);
+            this.NRM_radioButton.Name = "NRM_radioButton";
+            this.NRM_radioButton.Size = new System.Drawing.Size(91, 53);
+            this.NRM_radioButton.TabIndex = 0;
+            this.NRM_radioButton.Text = "NRM";
+            this.NRM_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // ARMgained_radioButton
+            // 
+            this.ARMgained_radioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.ARMgained_radioButton.AutoSize = true;
+            this.ARMgained_radioButton.Checked = true;
+            this.ARMgained_radioButton.Location = new System.Drawing.Point(310, 5);
+            this.ARMgained_radioButton.Name = "ARMgained_radioButton";
+            this.ARMgained_radioButton.Size = new System.Drawing.Size(161, 53);
+            this.ARMgained_radioButton.TabIndex = 1;
+            this.ARMgained_radioButton.TabStop = true;
+            this.ARMgained_radioButton.Text = "ARM gained";
+            this.ARMgained_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // ARMleft_radioButton
+            // 
+            this.ARMleft_radioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.ARMleft_radioButton.AutoSize = true;
+            this.ARMleft_radioButton.Location = new System.Drawing.Point(589, 5);
+            this.ARMleft_radioButton.Name = "ARMleft_radioButton";
+            this.ARMleft_radioButton.Size = new System.Drawing.Size(125, 53);
+            this.ARMleft_radioButton.TabIndex = 2;
+            this.ARMleft_radioButton.TabStop = true;
+            this.ARMleft_radioButton.Text = "ARM left";
+            this.ARMleft_radioButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
@@ -453,9 +499,9 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.Controls.Add(this.checkBox1, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.checkBox2, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.checkBox3, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.NRM_checkBox, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.ARMgained_checkBox, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.ARMleft_checkBox, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 210);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -464,14 +510,53 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(784, 64);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
+            // NRM_checkBox
+            // 
+            this.NRM_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.NRM_checkBox.AutoSize = true;
+            this.NRM_checkBox.Checked = true;
+            this.NRM_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.NRM_checkBox.Location = new System.Drawing.Point(85, 5);
+            this.NRM_checkBox.Name = "NRM_checkBox";
+            this.NRM_checkBox.Size = new System.Drawing.Size(92, 54);
+            this.NRM_checkBox.TabIndex = 0;
+            this.NRM_checkBox.Text = "NRM";
+            this.NRM_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // ARMgained_checkBox
+            // 
+            this.ARMgained_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.ARMgained_checkBox.AutoSize = true;
+            this.ARMgained_checkBox.Checked = true;
+            this.ARMgained_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ARMgained_checkBox.Location = new System.Drawing.Point(310, 5);
+            this.ARMgained_checkBox.Name = "ARMgained_checkBox";
+            this.ARMgained_checkBox.Size = new System.Drawing.Size(162, 54);
+            this.ARMgained_checkBox.TabIndex = 1;
+            this.ARMgained_checkBox.Text = "ARM gained";
+            this.ARMgained_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // ARMleft_checkBox
+            // 
+            this.ARMleft_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.ARMleft_checkBox.AutoSize = true;
+            this.ARMleft_checkBox.Checked = true;
+            this.ARMleft_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ARMleft_checkBox.Location = new System.Drawing.Point(589, 5);
+            this.ARMleft_checkBox.Name = "ARMleft_checkBox";
+            this.ARMleft_checkBox.Size = new System.Drawing.Size(126, 54);
+            this.ARMleft_checkBox.TabIndex = 2;
+            this.ARMleft_checkBox.Text = "ARM left";
+            this.ARMleft_checkBox.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.radioButton1, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.radioButton2, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.LineNumber_radioButton, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.Value_radioButton, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 72);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -480,111 +565,41 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(586, 63);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
-            // textBox1
+            // LineNumber_radioButton
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1.Location = new System.Drawing.Point(3, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(580, 31);
-            this.textBox1.TabIndex = 3;
+            this.LineNumber_radioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.LineNumber_radioButton.AutoSize = true;
+            this.LineNumber_radioButton.Checked = true;
+            this.LineNumber_radioButton.Location = new System.Drawing.Point(66, 5);
+            this.LineNumber_radioButton.Name = "LineNumber_radioButton";
+            this.LineNumber_radioButton.Size = new System.Drawing.Size(162, 53);
+            this.LineNumber_radioButton.TabIndex = 0;
+            this.LineNumber_radioButton.TabStop = true;
+            this.LineNumber_radioButton.Text = "Line number";
+            this.LineNumber_radioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // Value_radioButton
             // 
-            this.radioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(64, 5);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(165, 53);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.Value_radioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.Value_radioButton.AutoSize = true;
+            this.Value_radioButton.Location = new System.Drawing.Point(390, 5);
+            this.Value_radioButton.Name = "Value_radioButton";
+            this.Value_radioButton.Size = new System.Drawing.Size(98, 53);
+            this.Value_radioButton.TabIndex = 1;
+            this.Value_radioButton.TabStop = true;
+            this.Value_radioButton.Text = "Value";
+            this.Value_radioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // Remove_residue_button
             // 
-            this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(356, 5);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(165, 53);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(48, 5);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(165, 53);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(308, 5);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(165, 53);
-            this.radioButton4.TabIndex = 1;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "radioButton4";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(569, 5);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(165, 53);
-            this.radioButton5.TabIndex = 2;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "radioButton5";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(5, 5);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(150, 29);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(265, 5);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(150, 29);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(525, 5);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(150, 29);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.Remove_residue_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Remove_residue_button.Location = new System.Drawing.Point(595, 72);
+            this.Remove_residue_button.Name = "Remove_residue_button";
+            this.Remove_residue_button.Size = new System.Drawing.Size(192, 63);
+            this.Remove_residue_button.TabIndex = 4;
+            this.Remove_residue_button.Text = "Remove residue";
+            this.Remove_residue_button.UseVisualStyleBackColor = true;
+            this.Remove_residue_button.Click += new System.EventHandler(this.Remove_residue_button_Click);
             // 
             // Form1
             // 
@@ -653,15 +668,16 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.TextBox res_input_textBox;
+        private System.Windows.Forms.RadioButton NRM_radioButton;
+        private System.Windows.Forms.RadioButton ARMgained_radioButton;
+        private System.Windows.Forms.RadioButton ARMleft_radioButton;
+        private System.Windows.Forms.CheckBox NRM_checkBox;
+        private System.Windows.Forms.CheckBox ARMgained_checkBox;
+        private System.Windows.Forms.CheckBox ARMleft_checkBox;
+        private System.Windows.Forms.RadioButton LineNumber_radioButton;
+        private System.Windows.Forms.RadioButton Value_radioButton;
+        private System.Windows.Forms.Button Remove_residue_button;
     }
 }
 
