@@ -238,7 +238,6 @@
             this.MainTable.Location = new System.Drawing.Point(6, 549);
             this.MainTable.Margin = new System.Windows.Forms.Padding(6);
             this.MainTable.Name = "MainTable";
-            this.MainTable.RowHeadersVisible = false;
             this.MainTable.RowHeadersWidth = 82;
             this.MainTable.Size = new System.Drawing.Size(1592, 532);
             this.MainTable.TabIndex = 3;
@@ -396,6 +395,7 @@
             this.button_plot.TabIndex = 7;
             this.button_plot.Text = "Plot";
             this.button_plot.UseVisualStyleBackColor = true;
+            this.button_plot.Click += new System.EventHandler(this.button_plot_Click);
             // 
             // groupBox1
             // 

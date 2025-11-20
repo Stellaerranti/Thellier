@@ -9,3 +9,4 @@ C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.exe
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.pdb
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.exe.config
+C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Form2.resources

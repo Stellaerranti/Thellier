@@ -16,9 +16,44 @@ namespace Thellier
 {
     public partial class Form1 : Form
     {
+        private Form2 _form2;
         public Form1()
         {
             InitializeComponent();
+            MainTable.RowPostPaint += MainTable_RowPostPaint;
+        }
+
+        private void MainTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            string rowNumber = (e.RowIndex + 1).ToString();
+
+            // Draw the number in the row header
+            var grid = (DataGridView)sender;
+            using (SolidBrush brush = new SolidBrush(grid.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString(
+                    rowNumber,
+                    grid.RowHeadersDefaultCellStyle.Font,
+                    brush,
+                    e.RowBounds.Left + 10,   
+                    e.RowBounds.Top + 4      
+                );
+            }
+        }
+
+        private void ArrowPos(Chart chart)
+        {
+            foreach (Series s in chart.Series)
+            {
+                s.IsValueShownAsLabel = true;
+
+                s.SmartLabelStyle.Enabled = false;
+                s.SmartLabelStyle.IsOverlappedHidden = false;
+                s.SmartLabelStyle.MovingDirection =
+                    System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.Center;
+                s.SmartLabelStyle.CalloutStyle =
+                    System.Windows.Forms.DataVisualization.Charting.LabelCalloutStyle.None;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -33,6 +68,96 @@ namespace Thellier
             ARMChart.Series[1].Points.Clear();
 
             ZiChart.ChartAreas["proj1"].Visible = false;
+
+            ArrowPos(demagChart);
+            ArrowPos(ZiChart);
+            ArrowPos(ARMChart);
+
+            //Making charts look better
+
+            demagChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            demagChart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            demagChart.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
+            demagChart.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+
+            demagChart.ChartAreas[0].AxisX.Crossing = 0; 
+            demagChart.ChartAreas[0].AxisY.Crossing = 0;
+
+            ARMChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            ARMChart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            ARMChart.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
+            ARMChart.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+
+            ARMChart.ChartAreas[0].AxisX.Crossing = 0;
+            ARMChart.ChartAreas[0].AxisY.Crossing = 0;
+
+            ZiChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            ZiChart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            ZiChart.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
+            ZiChart.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+
+            ZiChart.ChartAreas[0].AxisX.Crossing = 0;
+            ZiChart.ChartAreas[0].AxisY.Crossing = 0;
+
+            ZiChart.ChartAreas[1].AxisX.MajorGrid.Enabled = false;
+            ZiChart.ChartAreas[1].AxisY.MajorGrid.Enabled = false;
+            ZiChart.ChartAreas[1].AxisX.MinorGrid.Enabled = false;
+            ZiChart.ChartAreas[1].AxisY.MinorGrid.Enabled = false;
+
+            ZiChart.ChartAreas[1].AxisX.Crossing = 0;
+            ZiChart.ChartAreas[1].AxisY.Crossing = 0;
+        }
+
+        public static void GetNiceAxis(double dataMin, double dataMax,
+                               out double niceMin, out double niceMax, out double step)
+        {
+            // Swap if reversed
+            if (dataMax < dataMin)
+            {
+                double tmp = dataMin;
+                dataMin = dataMax;
+                dataMax = tmp;
+            }
+
+            // If all values equal, create a small range around them
+            if (dataMax == dataMin)
+            {
+                double center = dataMin;
+                double delta = Math.Abs(center);
+                if (delta == 0) delta = 1.0; // avoid log10(0)
+
+                dataMin = center - delta * 0.5;
+                dataMax = center + delta * 0.5;
+            }
+
+            double range = dataMax - dataMin;
+
+            // Add padding (5% on each side)
+            double padding = range * 0.05;
+            double min = dataMin - padding;
+            double max = dataMax + padding;
+            range = max - min;
+
+            // Target ~5 major ticks
+            double roughStep = range / 5.0;
+
+            // "Nice" step: 1, 2, or 5 times 10^n
+            double pow10 = Math.Pow(10, Math.Floor(Math.Log10(roughStep)));
+            double[] niceSteps = { 1, 2, 5 };
+            double bestStep = niceSteps[0] * pow10;
+
+            for (int i = 1; i < niceSteps.Length; i++)
+            {
+                double candidate = niceSteps[i] * pow10;
+                if (Math.Abs(candidate - roughStep) < Math.Abs(bestStep - roughStep))
+                    bestStep = candidate;
+            }
+
+            step = bestStep;
+
+            // Round bounds to multiples of step
+            niceMin = Math.Floor(min / step) * step;
+            niceMax = Math.Ceiling(max / step) * step;
         }
 
         private (int,int) countDM(string[] lines)
@@ -65,13 +190,68 @@ namespace Thellier
             return (Lcount,Lbegin);
         }
 
-        private void plotPMD(double H, double X, double Y, double Z, double NRM)
+        public static void AutoAxis(Chart chart, string areaName)
         {
-            demagChart.Series["Demag"].Points.AddXY(H, NRM);
-            ZiChart.Series["YX"].Points.AddXY(Y, X);
-            ZiChart.Series["YmZ"].Points.AddXY(Y, (-1)*Z);
-            ZiChart.Series["YmX"].Points.AddXY(Y, (-1) * X);
-            ZiChart.Series["ZX"].Points.AddXY(Z,  X);
+            if (!chart.ChartAreas.IsUniqueName(areaName) &&
+                chart.ChartAreas.IndexOf(areaName) < 0)
+                return;
+
+            var ca = chart.ChartAreas[areaName];
+
+            double dataMinX = double.PositiveInfinity;
+            double dataMaxX = double.NegativeInfinity;
+            double dataMinY = double.PositiveInfinity;
+            double dataMaxY = double.NegativeInfinity;
+
+            bool hasPoints = false;
+
+            foreach (Series s in chart.Series)
+            {
+                // Use only series that belong to this ChartArea
+                if (s.ChartArea != areaName)
+                    continue;
+
+                if (s.Points.Count == 0)
+                    continue;
+
+                hasPoints = true;
+
+                double sMinX = s.Points.Min(p => p.XValue);
+                double sMaxX = s.Points.Max(p => p.XValue);
+                double sMinY = s.Points.Min(p => p.YValues[0]);
+                double sMaxY = s.Points.Max(p => p.YValues[0]);
+
+                if (sMinX < dataMinX) dataMinX = sMinX;
+                if (sMaxX > dataMaxX) dataMaxX = sMaxX;
+                if (sMinY < dataMinY) dataMinY = sMinY;
+                if (sMaxY > dataMaxY) dataMaxY = sMaxY;
+            }
+
+            if (!hasPoints)
+                return; // nothing to do
+
+            double niceMinX, niceMaxX, stepX;
+            double niceMinY, niceMaxY, stepY;
+
+            GetNiceAxis(dataMinX, dataMaxX, out niceMinX, out niceMaxX, out stepX);
+            GetNiceAxis(dataMinY, dataMaxY, out niceMinY, out niceMaxY, out stepY);
+
+            ca.AxisX.Minimum = niceMinX;
+            ca.AxisX.Maximum = niceMaxX;
+            ca.AxisX.Interval = stepX;
+
+            ca.AxisY.Minimum = niceMinY;
+            ca.AxisY.Maximum = niceMaxY;
+            ca.AxisY.Interval = stepY;
+        }
+
+        public static void AutoAxis(Chart chart, int areaIndex)
+        {
+            if (areaIndex < 0 || areaIndex >= chart.ChartAreas.Count)
+                return;
+
+            string areaName = chart.ChartAreas[areaIndex].Name;
+            AutoAxis(chart, areaName);
         }
 
         private void plotNRM()
@@ -83,24 +263,57 @@ namespace Thellier
                 double c2 = Convert.ToDouble(row.Cells[2].Value);
                 double c3 = Convert.ToDouble(row.Cells[3].Value);
                 double c4 = Convert.ToDouble(row.Cells[4].Value);
+    
+                string label = (row.Index + 1).ToString();
 
-                demagChart.Series["Demag"].Points.AddXY(c0, c4);
+                int p1 = demagChart.Series["Demag"].Points.AddXY(c0, c4);
+                demagChart.Series["Demag"].Points[p1].Label = label;
 
-                ZiChart.Series["YX"].Points.AddXY(c2, c1);
-                ZiChart.Series["YmZ"].Points.AddXY(c2, -c3);
-                ZiChart.Series["YmX"].Points.AddXY(c2, -c1);
-                ZiChart.Series["ZX"].Points.AddXY(c2, c1);
+                int p2 = ZiChart.Series["YX"].Points.AddXY(c2, c1);
+                ZiChart.Series["YX"].Points[p2].Label = label;
+
+                int p3 = ZiChart.Series["YmZ"].Points.AddXY(-c3, c1);
+                ZiChart.Series["YmZ"].Points[p3].Label = label;
+
+                int p4 = ZiChart.Series["YmX"].Points.AddXY(c2, c1);
+                ZiChart.Series["YmX"].Points[p4].Label = label;
+
+                int p5 = ZiChart.Series["ZX"].Points.AddXY(c2, -c3);
+                ZiChart.Series["ZX"].Points[p5].Label = label;
             }
+
+            AutoAxis(demagChart, 0);
+
+
+
+            if (demagChart.ChartAreas[0].AxisX.Minimum < 0) { demagChart.ChartAreas[0].AxisX.Minimum = 0; }
+            if(demagChart.ChartAreas[0].AxisY.Minimum < 0) { demagChart.ChartAreas[0].AxisY.Minimum = 0; }
+
+            AutoAxis(ZiChart, 0);
+            AutoAxis(ZiChart, 1);
         }
+        
 
         private void plotRMG()
         {
 
             foreach (DataGridViewRow row in MainTable.Rows)
             {
-                ARMChart.Series[0].Points.AddXY(row.Cells[0].Value, row.Cells[5].Value);
-                ARMChart.Series[1].Points.AddXY(row.Cells[0].Value, row.Cells[6].Value);
+                if (row.IsNewRow) continue;
+
+                double x = Convert.ToDouble(row.Cells[0].Value);
+                double y1 = Convert.ToDouble(row.Cells[5].Value);
+                double y2 = Convert.ToDouble(row.Cells[6].Value);
+
+                int p0 = ARMChart.Series[0].Points.AddXY(x, y1);
+                ARMChart.Series[0].Points[p0].Label = (row.Index + 1).ToString();
+
+                int p1 = ARMChart.Series[1].Points.AddXY(x, y2);
+                ARMChart.Series[1].Points[p1].Label = (row.Index + 1).ToString();
             }
+            AutoAxis(ARMChart, 0);
+
+            if (ARMChart.ChartAreas[0].AxisX.Minimum < 0) { ARMChart.ChartAreas[0].AxisX.Minimum = 0; }
         }
 
         private void loadPMD(string path)
@@ -142,7 +355,9 @@ namespace Thellier
                         X = double.Parse(line[1], System.Globalization.NumberStyles.Float, provider);
                         Y = double.Parse(line[2], System.Globalization.NumberStyles.Float, provider);
                         Z = double.Parse(line[3], System.Globalization.NumberStyles.Float, provider);
-                        NRM = double.Parse(line[4], System.Globalization.NumberStyles.Float, provider);
+                        //NRM = double.Parse(line[4], System.Globalization.NumberStyles.Float, provider);
+
+                        NRM = Math.Sqrt(X*X+Y*Y+Z*Z)*1000;
 
                         MainTable.Rows[i].Cells[0].Value = H;
                         MainTable.Rows[i].Cells[1].Value = X;
@@ -150,11 +365,12 @@ namespace Thellier
                         MainTable.Rows[i].Cells[3].Value = Z;
                         MainTable.Rows[i].Cells[4].Value = NRM;
 
-                        plotPMD(H, X, Y, Z, NRM);
+                        //plotPMD(H, X, Y, Z, NRM);
 
                     }
 
                     plotRMG();
+                    plotNRM();
                 }
                 else
                 {
@@ -176,12 +392,15 @@ namespace Thellier
                         X = double.Parse(line[1], System.Globalization.NumberStyles.Float, provider);
                         Y = double.Parse(line[2], System.Globalization.NumberStyles.Float, provider);
                         Z = double.Parse(line[3], System.Globalization.NumberStyles.Float, provider);
-                        NRM = double.Parse(line[4], System.Globalization.NumberStyles.Float, provider);
+                        //NRM = double.Parse(line[4], System.Globalization.NumberStyles.Float, provider);
+
+                        NRM = Math.Sqrt(X * X + Y * Y + Z * Z)*1000;
 
                         MainTable.Rows.Add(H,X,Y,Z,NRM,0,0);
-                        plotPMD(H, X, Y, Z, NRM);
+                        //plotPMD(H, X, Y, Z, NRM);
 
                     }
+                    plotNRM();
                 }
 
             }
@@ -547,7 +766,71 @@ namespace Thellier
             }
             else if (Value_radioButton.Checked)
             {
+                try
+                {
 
+
+                    double ValueToExtract = Double.Parse(res_input_textBox.Text, NumberStyles.Float, CultureInfo.InvariantCulture);
+
+                    try
+                    {
+                        foreach (DataGridViewRow row in MainTable.Rows)
+                        {
+                            try
+                            {
+                                if (NRM_checkBox.Checked)
+                                {
+                                    double current = Convert.ToDouble(row.Cells[4].Value);
+                                    row.Cells[4].Value = current - ValueToExtract;
+                                }
+                                if (ARMgained_checkBox.Checked)
+                                {
+                                    double current = Convert.ToDouble(row.Cells[5].Value);
+                                    row.Cells[5].Value = current - ValueToExtract;
+                                }
+                                if (ARMleft_checkBox.Checked)
+                                {
+                                    double current = Convert.ToDouble(row.Cells[6].Value);
+                                    row.Cells[6].Value = current - ValueToExtract;
+                                }
+                            }
+
+                            catch (FormatException)
+                            {
+                                MessageBox.Show("Invalid format in line  " + row.Index);
+                            }
+                            catch (ArgumentNullException)
+                            {
+                                MessageBox.Show("The cell in line " + row.Index + " is empty");
+                            }
+                            catch (InvalidCastException)
+                            {
+                                MessageBox.Show("Unable to convert number in line  " + row.Index);
+                            }
+                            catch (OverflowException)
+                            {
+                                MessageBox.Show("The number is too large or too small in line " + row.Index);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error: " + ex.Message);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("The input is not a valid number.");
+                }
+                catch (OverflowException)
+                {
+                    MessageBox.Show("The number is too large or too small for an Float32.");
+                }
             }
             else { MessageBox.Show("Please, select initial value type"); }
         }
@@ -556,6 +839,28 @@ namespace Thellier
         {
             RemoveResidue();
             plotTable();
+        }
+
+        private void button_plot_Click(object sender, EventArgs e)
+        {
+            if (_form2 == null || _form2.IsDisposed)
+            {
+                _form2 = new Form2(MainTable);
+                _form2.FormClosing += (s, args) =>
+                {
+                    args.Cancel = true;
+                    _form2.Hide();
+                };
+            }
+
+            _form2.RefreshFromMain(); 
+
+            if (_form2.WindowState == FormWindowState.Minimized)
+                _form2.WindowState = FormWindowState.Normal;
+
+            _form2.Show();         
+            _form2.BringToFront(); 
+            _form2.Activate();
         }
     }
 }
