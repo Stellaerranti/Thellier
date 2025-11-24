@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,14 +26,24 @@ namespace Thellier
         double fresid_DEMAG = 0, fresid_AraiNagata =0, fresid_ARM = 0;
         //double bAA_DEMAG = 0, bAA_AraiNagata = 0, bAA_ARM = 0;
 
+        private readonly FileContext _fileContext;
+
         double intercept_DEMAG = 0, intercept_AraiNagata = 0, intercept_ARM = 0;
-        public Form2(DataGridView mainTable)
+        public Form2(DataGridView mainTable, FileContext fileContext)
         {
             InitializeComponent();
             _mainTable = mainTable;
 
             RefreshFromMain();
             AddPlaceholder(points_textBox, "1 - 4");
+            AddPlaceholder(Comment_textBox, "Comment");
+            _fileContext = fileContext;
+            RefreshFromContext();
+        }
+
+        public void RefreshFromContext()
+        {
+            outputfile_label.Text = Path.GetFileNameWithoutExtension(_fileContext.FilePath);
         }
 
         private void AddPlaceholder(System.Windows.Forms.TextBox tb, string text)
@@ -58,6 +69,7 @@ namespace Thellier
                 }
             };
         }
+
 
         public static void GetNiceAxis(double dataMin, double dataMax,
                                out double niceMin, out double niceMax, out double step)
@@ -351,6 +363,18 @@ namespace Thellier
             ARMARMchart.Series[1].Points.AddXY(maxX_ARMA, intercept_ARM + b_ARM * maxX_ARMA);
         }
 
+        private void LabelColor(Label label, double value, double threshold )
+        {
+            if (value <= threshold)
+            {
+                label.ForeColor = Color.Green;
+            }
+            else
+            {
+                label.ForeColor = Color.Red;
+            }
+        }
+
         private (double,double,double) Rcorr(int start, int end)
         {
             double xDemag = 0, xArai = 0, xARM = 0;
@@ -510,13 +534,16 @@ namespace Thellier
 
             //beta_DEMAG_label.Text = beta_DEMAG.ToString();
 
-            n_DEMAG_label.Text = n.ToString("F4");
+            n_DEMAG_label.Text = ((int)Math.Round(n)).ToString();
+            LabelColor(n_DEMAG_label, 6, n);
 
-            fresid_DEMAG = intercept_DEMAG/(yMax_DEMAG - yMin_DEMAG);
+            fresid_DEMAG = Math.Abs(intercept_DEMAG/(yMax_DEMAG - yMin_DEMAG));
            
             fresid_DEMAG_label.Text = fresid_DEMAG.ToString("F4");
+            LabelColor(fresid_DEMAG_label, fresid_DEMAG, 0.15);
 
             R_DEMAG_label.Text = R_DEMAG.ToString("F4");
+            LabelColor(R_DEMAG_label, 0.995, R_DEMAG);
 
             // ---------- ARAI-NAGATA ----------
             double Sxx_AN = xsqSum_AraiNagata - (xSum_AraiNagata * xSum_AraiNagata) / n;
@@ -547,12 +574,16 @@ namespace Thellier
             sigmab_AraiNagata_label.Text = sigma_b_AraiNagata.ToString("F4");
 
             beta_AraiNagata_label.Text = beta_AraiNagata.ToString("F4");
+            LabelColor(beta_AraiNagata_label, beta_AraiNagata, 0.1);
 
-            n_AraiNagata_label.Text = n.ToString("F4");
+            n_AraiNagata_label.Text = ((int)Math.Round(n)).ToString();
+            LabelColor(n_AraiNagata_label, 6, n);
 
             f_AraiNagata_label.Text = f_AraiNagata.ToString("F4");
+            LabelColor(f_AraiNagata_label, 0.45, f_AraiNagata);
 
             R_AraiNagata_label.Text = R_Arai.ToString("F4");
+            LabelColor(R_AraiNagata_label, 0.995, R_Arai);
 
             // ---------- ARM ----------
             double Sxx_ARM = xsqSum_ARM - (xSum_ARM * xSum_ARM) / n;
@@ -577,11 +608,21 @@ namespace Thellier
             b_ARM_label.Text = b_ARM.ToString("F4");
             sigmab_ARM_label.Text = sigma_b_ARM.ToString("F4");
 
-            n_ARM_label.Text = n.ToString("F4");
+            n_ARM_label.Text = ((int)Math.Round(n)).ToString();
+            LabelColor(n_ARM_label, 6, n);
 
             bAA_ARM_label.Text = Math.Abs(b_ARM).ToString("F4");
+            if (Math.Abs(b_ARM) >= 0.85 && Math.Abs(b_ARM) <= 1.15)
+            {
+                bAA_ARM_label.ForeColor = Color.Green;
+            }
+            else
+            {
+                bAA_ARM_label.ForeColor = Color.Red;
+            }
 
             R_ARM_label.Text = R_ARM.ToString("F4");
+            LabelColor(R_ARM_label, 0.995, R_ARM);
         }
 
         private void button1_Click(object sender, EventArgs e)

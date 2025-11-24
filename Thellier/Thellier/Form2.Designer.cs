@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -92,11 +93,16 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.points_textBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.Comment_textBox = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.outputfile_label = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DemagDemagChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AraiNagatachart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ARMARMchart)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -242,6 +248,7 @@
             this.tableLayoutPanel14.ColumnCount = 2;
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Controls.Add(this.outputfile_label, 1, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 805);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
@@ -256,6 +263,7 @@
             this.tableLayoutPanel13.ColumnCount = 1;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel13.Controls.Add(this.Comment_textBox, 0, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 746);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
@@ -793,6 +801,29 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Comment_textBox
+            // 
+            this.Comment_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Comment_textBox.Location = new System.Drawing.Point(5, 5);
+            this.Comment_textBox.Name = "Comment_textBox";
+            this.Comment_textBox.Size = new System.Drawing.Size(512, 31);
+            this.Comment_textBox.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // outputfile_label
+            // 
+            this.outputfile_label.AutoSize = true;
+            this.outputfile_label.Location = new System.Drawing.Point(265, 2);
+            this.outputfile_label.Name = "outputfile_label";
+            this.outputfile_label.Size = new System.Drawing.Size(19, 25);
+            this.outputfile_label.TabIndex = 0;
+            this.outputfile_label.Text = "-";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -810,6 +841,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.AraiNagatachart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ARMARMchart)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel13.PerformLayout();
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
             this.tableLayoutPanel11.ResumeLayout(false);
@@ -891,5 +926,8 @@
         private System.Windows.Forms.Label b_DEMAG_label;
         private System.Windows.Forms.Label b_AraiNagata_label;
         private System.Windows.Forms.Label b_ARM_label;
+        private System.Windows.Forms.TextBox Comment_textBox;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label outputfile_label;
     }
 }

@@ -17,6 +17,7 @@ namespace Thellier
     public partial class Form1 : Form
     {
         private Form2 _form2;
+        private readonly FileContext _fileContext = new FileContext();
         public Form1()
         {
             InitializeComponent();
@@ -845,7 +846,7 @@ namespace Thellier
         {
             if (_form2 == null || _form2.IsDisposed)
             {
-                _form2 = new Form2(MainTable);
+                _form2 = new Form2(MainTable, _fileContext);
                 _form2.FormClosing += (s, args) =>
                 {
                     args.Cancel = true;
@@ -862,5 +863,36 @@ namespace Thellier
             _form2.BringToFront(); 
             _form2.Activate();
         }
+
+        private void button_output_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Title = "Create output file";
+                sfd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                sfd.InitialDirectory = Application.StartupPath; 
+                sfd.FileName = "output.txt";                   
+
+                if (sfd.ShowDialog() != DialogResult.OK)
+                    return; 
+
+                string filePath = sfd.FileName;
+
+                File.WriteAllText(filePath, "initial content");
+
+                _fileContext.FilePath = filePath;
+
+                output_label.Text = Path.GetFileNameWithoutExtension(filePath);
+
+                if (_form2 != null && !_form2.IsDisposed)
+                {
+                    _form2.RefreshFromContext();
+                }
+            }
+        }
+    }
+    public class FileContext
+    { 
+        public string FilePath { get; set; }
     }
 }

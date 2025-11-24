@@ -2,7 +2,6 @@ C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\bin\
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\bin\Debug\Thellier.exe
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\bin\Debug\Thellier.pdb
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.csproj.AssemblyReference.cache
-C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Form1.resources
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Properties.Resources.resources
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.csproj.GenerateResource.cache
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.csproj.CoreCompileInputs.cache
@@ -10,3 +9,4 @@ C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.pdb
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.exe.config
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Form2.resources
+C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Form1.resources
