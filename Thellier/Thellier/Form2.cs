@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Globalization;
 
 namespace Thellier
 {
@@ -24,6 +25,8 @@ namespace Thellier
         double f_DEMAG = 0, f_AraiNagata = 0, f_ARM = 0;
         double R_DEMAG = 0, R_AraiNagata = 0, R_ARM = 0;
         double fresid_DEMAG = 0, fresid_AraiNagata =0, fresid_ARM = 0;
+
+        int n_all = 0;
         //double bAA_DEMAG = 0, bAA_AraiNagata = 0, bAA_ARM = 0;
 
         private readonly FileContext _fileContext;
@@ -41,19 +44,83 @@ namespace Thellier
             RefreshFromContext();
         }
 
+        private bool IsPlaceholder(System.Windows.Forms.TextBox tb)
+        {
+            return tb.Text == (string)tb.Tag;
+        }
+
+        private void AppendMixedLine(string filePath, params object[] values)
+        {
+            var tokens = values.Select(v =>
+            {
+                switch (v)
+                {
+                    case double d:
+                        return d.ToString(CultureInfo.InvariantCulture);
+
+                    case float f:
+                        return f.ToString(CultureInfo.InvariantCulture);
+
+                    case int i:
+                        return i.ToString();
+
+                    case string s:
+                        return (Comment_textBox.Text == (string)Comment_textBox.Tag) ? "" : s;
+
+                    default:
+                        return v?.ToString() ?? "";
+                }
+            });
+
+            string line = string.Join("\t", tokens);
+            File.AppendAllText(filePath, line + Environment.NewLine);
+        }
+
+        private void writecomment_button_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(_fileContext.FilePath))
+            {
+                AppendMixedLine(_fileContext.FilePath,
+                    b_DEMAG,
+                    b_AraiNagata,
+                    b_ARM,
+                    sigma_b_DEMAG,
+                    sigma_b_AraiNagata,
+                    sigma_b_ARM,
+                    beta_AraiNagata,
+                    n_all,
+                    f_AraiNagata,
+                    R_DEMAG,
+                    R_AraiNagata,
+                    R_ARM,
+                    fresid_DEMAG,
+                    Math.Abs(b_ARM),
+                    IsPlaceholder(Comment_textBox) ? "" : Comment_textBox.Text
+                    );
+            }
+            else 
+            {
+                MessageBox.Show("No output file");
+            }
+        }
+
         public void RefreshFromContext()
         {
-            outputfile_label.Text = Path.GetFileNameWithoutExtension(_fileContext.FilePath);
+            if (!string.IsNullOrWhiteSpace(_fileContext.FilePath))
+            {
+                outputfile_label.Text = Path.GetFileNameWithoutExtension(_fileContext.FilePath);
+            }
         }
 
         private void AddPlaceholder(System.Windows.Forms.TextBox tb, string text)
         {
+            tb.Tag = text;  
             tb.ForeColor = Color.Gray;
             tb.Text = text;
 
             tb.GotFocus += (s, e) =>
             {
-                if (tb.Text == text)
+                if (tb.Text == (string)tb.Tag)
                 {
                     tb.Text = "";
                     tb.ForeColor = Color.Black;
@@ -65,11 +132,10 @@ namespace Thellier
                 if (string.IsNullOrWhiteSpace(tb.Text))
                 {
                     tb.ForeColor = Color.Gray;
-                    tb.Text = text;
+                    tb.Text = (string)tb.Tag;
                 }
             };
         }
-
 
         public static void GetNiceAxis(double dataMin, double dataMax,
                                out double niceMin, out double niceMax, out double step)
@@ -505,9 +571,9 @@ namespace Thellier
                 n++;
             }
 
-            double R_DEMAG, R_Arai, R_ARM;
+           
 
-            (R_DEMAG, R_Arai, R_ARM) = Rcorr(start, end);
+            (R_DEMAG, R_AraiNagata, R_ARM) = Rcorr(start, end);
 
             // ---------- DEMAG ----------
             double Sxx_DEMAG = xsqSum_DEMAG - (xSum_DEMAG * xSum_DEMAG) / n;
@@ -534,6 +600,7 @@ namespace Thellier
 
             //beta_DEMAG_label.Text = beta_DEMAG.ToString();
 
+            n_all = (int)Math.Round(n);
             n_DEMAG_label.Text = ((int)Math.Round(n)).ToString();
             LabelColor(n_DEMAG_label, 6, n);
 
@@ -582,8 +649,8 @@ namespace Thellier
             f_AraiNagata_label.Text = f_AraiNagata.ToString("F4");
             LabelColor(f_AraiNagata_label, 0.45, f_AraiNagata);
 
-            R_AraiNagata_label.Text = R_Arai.ToString("F4");
-            LabelColor(R_AraiNagata_label, 0.995, R_Arai);
+            R_AraiNagata_label.Text = R_AraiNagata.ToString("F4");
+            LabelColor(R_AraiNagata_label, 0.995, R_AraiNagata);
 
             // ---------- ARM ----------
             double Sxx_ARM = xsqSum_ARM - (xSum_ARM * xSum_ARM) / n;

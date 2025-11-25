@@ -109,6 +109,47 @@ namespace Thellier
             ZiChart.ChartAreas[1].AxisY.Crossing = 0;
         }
 
+        private void DeleteSelectedRows()
+        {
+            if (MainTable.SelectedCells.Count == 0 && MainTable.CurrentCell == null)
+                return;
+
+            var rowIndexes = new HashSet<int>();
+
+            foreach (DataGridViewCell cell in MainTable.SelectedCells)
+            {
+                if (cell.RowIndex >= 0 && !MainTable.Rows[cell.RowIndex].IsNewRow)
+                    rowIndexes.Add(cell.RowIndex);
+            }
+
+            if (rowIndexes.Count == 0 && MainTable.CurrentCell != null)
+            {
+                int r = MainTable.CurrentCell.RowIndex;
+                if (r >= 0 && !MainTable.Rows[r].IsNewRow)
+                    rowIndexes.Add(r);
+            }
+
+            if (rowIndexes.Count == 0)
+                return;
+
+            if (MessageBox.Show("Delete selected rows?", "Confirm",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                != DialogResult.Yes)
+                return;
+
+            foreach (int r in rowIndexes.OrderByDescending(i => i))
+            {
+                MainTable.Rows.RemoveAt(r);
+            }
+            plotRMG();
+            plotNRM();
+
+            if (_form2 != null && !_form2.IsDisposed)
+            {
+                _form2.RefreshFromMain();
+            }
+        }
+
         public static void GetNiceAxis(double dataMin, double dataMax,
                                out double niceMin, out double niceMax, out double step)
         {
@@ -257,6 +298,13 @@ namespace Thellier
 
         private void plotNRM()
         {
+            demagChart.Series["Demag"].Points.Clear();
+            ZiChart.Series["YX"].Points.Clear();
+            ZiChart.Series["YmZ"].Points.Clear();
+            ZiChart.Series["YmX"].Points.Clear();
+            ZiChart.Series["ZX"].Points.Clear();
+
+
             foreach (DataGridViewRow row in MainTable.Rows)
             {
                 double c0 = Convert.ToDouble(row.Cells[0].Value);
@@ -297,6 +345,8 @@ namespace Thellier
 
         private void plotRMG()
         {
+            ARMChart.Series[0].Points.Clear();
+            ARMChart.Series[1].Points.Clear();
 
             foreach (DataGridViewRow row in MainTable.Rows)
             {
@@ -878,7 +928,7 @@ namespace Thellier
 
                 string filePath = sfd.FileName;
 
-                File.WriteAllText(filePath, "initial content");
+                //File.WriteAllText(filePath, "initial content");
 
                 _fileContext.FilePath = filePath;
 
@@ -887,6 +937,43 @@ namespace Thellier
                 if (_form2 != null && !_form2.IsDisposed)
                 {
                     _form2.RefreshFromContext();
+                }
+            }
+        }
+
+        private void gridContextMenu_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void Delete_toolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedRows();
+        }
+
+        private void MainTable_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+        }
+
+        private void MainTable_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hit = MainTable.HitTest(e.X, e.Y);
+
+                if (hit.Type == DataGridViewHitTestType.Cell &&
+                    hit.RowIndex >= 0 && hit.ColumnIndex >= 0)
+                {
+                    var cell = MainTable[hit.ColumnIndex, hit.RowIndex];
+
+                    if (!cell.Selected)
+                    {
+                        MainTable.ClearSelection();
+                        cell.Selected = true;
+                    }
+
+                    MainTable.CurrentCell = cell;
                 }
             }
         }
