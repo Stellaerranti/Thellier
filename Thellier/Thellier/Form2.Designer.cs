@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -38,6 +39,12 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.exportDemagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportAraiNagataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportARMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.DemagDemagChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.AraiNagatachart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -46,6 +53,7 @@
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.outputfile_label = new System.Windows.Forms.Label();
+            this.writecomment_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.Comment_textBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
@@ -95,8 +103,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.points_textBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.writecomment_button = new System.Windows.Forms.Button();
+            this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DemagDemagChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AraiNagatachart)).BeginInit();
@@ -116,6 +123,57 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(2604, 50);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportDemagToolStripMenuItem,
+            this.exportAraiNagataToolStripMenuItem,
+            this.exportARMToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(163, 44);
+            this.toolStripDropDownButton1.Text = "Export chart";
+            // 
+            // exportDemagToolStripMenuItem
+            // 
+            this.exportDemagToolStripMenuItem.Name = "exportDemagToolStripMenuItem";
+            this.exportDemagToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.exportDemagToolStripMenuItem.Text = "Export Demag";
+            this.exportDemagToolStripMenuItem.Click += new System.EventHandler(this.exportDemagToolStripMenuItem_Click);
+            // 
+            // exportAraiNagataToolStripMenuItem
+            // 
+            this.exportAraiNagataToolStripMenuItem.Name = "exportAraiNagataToolStripMenuItem";
+            this.exportAraiNagataToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.exportAraiNagataToolStripMenuItem.Text = "Export Arai-Nagata";
+            this.exportAraiNagataToolStripMenuItem.Click += new System.EventHandler(this.exportAraiNagataToolStripMenuItem_Click);
+            // 
+            // exportARMToolStripMenuItem
+            // 
+            this.exportARMToolStripMenuItem.Name = "exportARMToolStripMenuItem";
+            this.exportARMToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.exportARMToolStripMenuItem.Text = "Export ARM";
+            this.exportARMToolStripMenuItem.Click += new System.EventHandler(this.exportARMToolStripMenuItem_Click);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
@@ -128,12 +186,12 @@
             this.tableLayoutPanel1.Controls.Add(this.ARMARMchart, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 50);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(2604, 981);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(2604, 931);
+            this.tableLayoutPanel1.TabIndex = 2;
             // 
             // DemagDemagChart
             // 
@@ -150,7 +208,7 @@
             series2.Name = "Fit";
             this.DemagDemagChart.Series.Add(series1);
             this.DemagDemagChart.Series.Add(series2);
-            this.DemagDemagChart.Size = new System.Drawing.Size(684, 975);
+            this.DemagDemagChart.Size = new System.Drawing.Size(684, 925);
             this.DemagDemagChart.TabIndex = 0;
             this.DemagDemagChart.Text = "chart1";
             // 
@@ -169,7 +227,7 @@
             series4.Name = "Fit";
             this.AraiNagatachart.Series.Add(series3);
             this.AraiNagatachart.Series.Add(series4);
-            this.AraiNagatachart.Size = new System.Drawing.Size(684, 975);
+            this.AraiNagatachart.Size = new System.Drawing.Size(684, 925);
             this.AraiNagatachart.TabIndex = 1;
             this.AraiNagatachart.Text = "chart1";
             // 
@@ -188,7 +246,7 @@
             series6.Name = "Fit";
             this.ARMARMchart.Series.Add(series5);
             this.ARMARMchart.Series.Add(series6);
-            this.ARMARMchart.Size = new System.Drawing.Size(684, 975);
+            this.ARMARMchart.Size = new System.Drawing.Size(684, 925);
             this.ARMARMchart.TabIndex = 2;
             this.ARMARMchart.Text = "chart1";
             // 
@@ -226,7 +284,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.435644F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.435644F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.435644F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(528, 975);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(528, 925);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // tableLayoutPanel15
@@ -236,11 +294,11 @@
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 909);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 864);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 1;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(522, 63);
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(522, 58);
             this.tableLayoutPanel15.TabIndex = 13;
             // 
             // tableLayoutPanel14
@@ -252,11 +310,11 @@
             this.tableLayoutPanel14.Controls.Add(this.outputfile_label, 1, 0);
             this.tableLayoutPanel14.Controls.Add(this.writecomment_button, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 847);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 805);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 1;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(522, 56);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(522, 53);
             this.tableLayoutPanel14.TabIndex = 12;
             // 
             // outputfile_label
@@ -268,6 +326,16 @@
             this.outputfile_label.TabIndex = 0;
             this.outputfile_label.Text = "-";
             // 
+            // writecomment_button
+            // 
+            this.writecomment_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.writecomment_button.Location = new System.Drawing.Point(5, 5);
+            this.writecomment_button.Name = "writecomment_button";
+            this.writecomment_button.Size = new System.Drawing.Size(252, 43);
+            this.writecomment_button.TabIndex = 1;
+            this.writecomment_button.Text = "write";
+            this.writecomment_button.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel13
             // 
             this.tableLayoutPanel13.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
@@ -276,11 +344,11 @@
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel13.Controls.Add(this.Comment_textBox, 0, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 785);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 746);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 1;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(522, 56);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(522, 53);
             this.tableLayoutPanel13.TabIndex = 11;
             // 
             // Comment_textBox
@@ -304,11 +372,11 @@
             this.tableLayoutPanel12.Controls.Add(this.bAA_AraiNagata_label, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.bAA_ARM_label, 3, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 705);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 670);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(522, 74);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(522, 70);
             this.tableLayoutPanel12.TabIndex = 9;
             // 
             // label10
@@ -360,11 +428,11 @@
             this.tableLayoutPanel11.Controls.Add(this.fresid_AraiNagata_label, 2, 0);
             this.tableLayoutPanel11.Controls.Add(this.fresid_ARM_label, 3, 0);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 625);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 594);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(522, 74);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(522, 70);
             this.tableLayoutPanel11.TabIndex = 8;
             // 
             // label9
@@ -416,11 +484,11 @@
             this.tableLayoutPanel10.Controls.Add(this.R_AraiNagata_label, 2, 0);
             this.tableLayoutPanel10.Controls.Add(this.R_ARM_label, 3, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 545);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 518);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(522, 74);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(522, 70);
             this.tableLayoutPanel10.TabIndex = 7;
             // 
             // label8
@@ -472,11 +540,11 @@
             this.tableLayoutPanel9.Controls.Add(this.f_AraiNagata_label, 2, 0);
             this.tableLayoutPanel9.Controls.Add(this.f_ARM_label, 3, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 465);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 442);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(522, 74);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(522, 70);
             this.tableLayoutPanel9.TabIndex = 6;
             // 
             // label11
@@ -528,11 +596,11 @@
             this.tableLayoutPanel8.Controls.Add(this.n_AraiNagata_label, 2, 0);
             this.tableLayoutPanel8.Controls.Add(this.n_ARM_label, 3, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 385);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 366);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(522, 74);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(522, 70);
             this.tableLayoutPanel8.TabIndex = 5;
             // 
             // label7
@@ -584,11 +652,11 @@
             this.tableLayoutPanel7.Controls.Add(this.beta_AraiNagata_label, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.beta_ARM_label, 3, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 305);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 290);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(522, 74);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(522, 70);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
             // label6
@@ -640,11 +708,11 @@
             this.tableLayoutPanel6.Controls.Add(this.sigmab_AraiNagata_label, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.sigmab_ARM_label, 3, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 225);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 214);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(522, 74);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(522, 70);
             this.tableLayoutPanel6.TabIndex = 3;
             // 
             // label5
@@ -696,11 +764,11 @@
             this.tableLayoutPanel5.Controls.Add(this.b_AraiNagata_label, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.b_ARM_label, 3, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 145);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 138);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(522, 74);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(522, 70);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // label4
@@ -751,11 +819,11 @@
             this.tableLayoutPanel3.Controls.Add(this.label2, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.label3, 3, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 65);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 62);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(522, 74);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(522, 70);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label1
@@ -798,7 +866,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(522, 56);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(522, 53);
             this.tableLayoutPanel4.TabIndex = 10;
             // 
             // points_textBox
@@ -814,28 +882,10 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Location = new System.Drawing.Point(394, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 46);
+            this.button1.Size = new System.Drawing.Size(123, 43);
             this.button1.TabIndex = 1;
             this.button1.Text = "Fit";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // writecomment_button
-            // 
-            this.writecomment_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.writecomment_button.Location = new System.Drawing.Point(5, 5);
-            this.writecomment_button.Name = "writecomment_button";
-            this.writecomment_button.Size = new System.Drawing.Size(252, 46);
-            this.writecomment_button.TabIndex = 1;
-            this.writecomment_button.Text = "write";
-            this.writecomment_button.UseVisualStyleBackColor = true;
-            this.writecomment_button.Click += new System.EventHandler(this.writecomment_button_Click);
             // 
             // Form2
             // 
@@ -843,12 +893,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2604, 981);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.toolStrip1);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DemagDemagChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AraiNagatachart)).EndInit();
@@ -879,69 +932,74 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem exportDemagToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportAraiNagataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportARMToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataVisualization.Charting.Chart DemagDemagChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart AraiNagatachart;
         private System.Windows.Forms.DataVisualization.Charting.Chart ARMARMchart;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Label outputfile_label;
+        private System.Windows.Forms.Button writecomment_button;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.TextBox points_textBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox Comment_textBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label bAA_DEMAG_label;
         private System.Windows.Forms.Label bAA_AraiNagata_label;
         private System.Windows.Forms.Label bAA_ARM_label;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label fresid_DEMAG_label;
         private System.Windows.Forms.Label fresid_AraiNagata_label;
         private System.Windows.Forms.Label fresid_ARM_label;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label R_DEMAG_label;
         private System.Windows.Forms.Label R_AraiNagata_label;
         private System.Windows.Forms.Label R_ARM_label;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label f_DEMAG_label;
         private System.Windows.Forms.Label f_AraiNagata_label;
         private System.Windows.Forms.Label f_ARM_label;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label n_DEMAG_label;
         private System.Windows.Forms.Label n_AraiNagata_label;
         private System.Windows.Forms.Label n_ARM_label;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label beta_DEMAG_label;
         private System.Windows.Forms.Label beta_AraiNagata_label;
         private System.Windows.Forms.Label beta_ARM_label;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label sigmab_DEMAG_label;
         private System.Windows.Forms.Label sigmab_AraiNagata_label;
         private System.Windows.Forms.Label sigmab_ARM_label;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label b_DEMAG_label;
         private System.Windows.Forms.Label b_AraiNagata_label;
         private System.Windows.Forms.Label b_ARM_label;
-        private System.Windows.Forms.TextBox Comment_textBox;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label outputfile_label;
-        private System.Windows.Forms.Button writecomment_button;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TextBox points_textBox;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Drawing.Imaging;
 
 namespace Thellier
 {
@@ -976,6 +978,63 @@ namespace Thellier
                     MainTable.CurrentCell = cell;
                 }
             }
+        }
+
+        private void ExportChart(Chart chart, string defaultFileName = "chart")
+        {
+            if (chart == null) return;
+
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Title = "Export chart";
+                sfd.FileName = defaultFileName;
+                sfd.Filter =
+                    "PNG Image (*.png)|*.png|" +
+                    "JPEG Image (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                    "Bitmap Image (*.bmp)|*.bmp|" +
+                    "EMF Vector (*.emf)|*.emf";
+
+                if (sfd.ShowDialog() != DialogResult.OK)
+                    return;
+
+                ChartImageFormat format;
+
+                switch (System.IO.Path.GetExtension(sfd.FileName).ToLower())
+                {
+                    case ".jpg":
+                    case ".jpeg":
+                        format = ChartImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = ChartImageFormat.Bmp;
+                        break;
+                    case ".emf":
+                        format = ChartImageFormat.Emf;
+                        break;
+                    default:
+                        format = ChartImageFormat.Png;
+                        break;
+                }
+
+                chart.Refresh();
+
+                chart.SaveImage(sfd.FileName, format);
+            }
+        }
+
+        private void ziChart1ProjectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportChart(ZiChart, "Zi");
+        }
+
+        private void demagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportChart(demagChart, "DEMAG");
+        }
+
+        private void aRMARMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportChart(ARMChart, "ARM");
         }
     }
     public class FileContext

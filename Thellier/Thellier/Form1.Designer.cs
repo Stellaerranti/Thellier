@@ -30,21 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series28 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_openPMD = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_openRMG = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.ziChart1ProjectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.demagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aRMARMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ZiChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.demagChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -57,6 +61,8 @@
             this.NRM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ARMG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ARML = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Delete_toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -81,21 +87,19 @@
             this.LineNumber_radioButton = new System.Windows.Forms.RadioButton();
             this.Value_radioButton = new System.Windows.Forms.RadioButton();
             this.Remove_residue_button = new System.Windows.Forms.Button();
-            this.gridContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Delete_toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZiChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demagChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ARMChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainTable)).BeginInit();
+            this.gridContextMenu.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            this.gridContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -103,7 +107,8 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton_openPMD,
-            this.toolStripButton_openRMG});
+            this.toolStripButton_openRMG,
+            this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
@@ -131,6 +136,40 @@
             this.toolStripButton_openRMG.Text = "Open RMG";
             this.toolStripButton_openRMG.Click += new System.EventHandler(this.toolStripButton_openRMG_Click);
             // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ziChart1ProjectionToolStripMenuItem,
+            this.demagToolStripMenuItem,
+            this.aRMARMToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(173, 36);
+            this.toolStripDropDownButton1.Text = "Export charts";
+            // 
+            // ziChart1ProjectionToolStripMenuItem
+            // 
+            this.ziChart1ProjectionToolStripMenuItem.Name = "ziChart1ProjectionToolStripMenuItem";
+            this.ziChart1ProjectionToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.ziChart1ProjectionToolStripMenuItem.Text = "Zi Chart ";
+            this.ziChart1ProjectionToolStripMenuItem.Click += new System.EventHandler(this.ziChart1ProjectionToolStripMenuItem_Click);
+            // 
+            // demagToolStripMenuItem
+            // 
+            this.demagToolStripMenuItem.Name = "demagToolStripMenuItem";
+            this.demagToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.demagToolStripMenuItem.Text = "Demag";
+            this.demagToolStripMenuItem.Click += new System.EventHandler(this.demagToolStripMenuItem_Click);
+            // 
+            // aRMARMToolStripMenuItem
+            // 
+            this.aRMARMToolStripMenuItem.Name = "aRMARMToolStripMenuItem";
+            this.aRMARMToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.aRMARMToolStripMenuItem.Text = "ARM-ARM";
+            this.aRMARMToolStripMenuItem.Click += new System.EventHandler(this.aRMARMToolStripMenuItem_Click);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
@@ -156,30 +195,30 @@
             // 
             // ZiChart
             // 
-            chartArea13.Name = "proj1";
-            chartArea14.Name = "proj2";
-            this.ZiChart.ChartAreas.Add(chartArea13);
-            this.ZiChart.ChartAreas.Add(chartArea14);
+            chartArea5.Name = "proj1";
+            chartArea6.Name = "proj2";
+            this.ZiChart.ChartAreas.Add(chartArea5);
+            this.ZiChart.ChartAreas.Add(chartArea6);
             this.ZiChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ZiChart.Location = new System.Drawing.Point(6, 6);
             this.ZiChart.Margin = new System.Windows.Forms.Padding(6);
             this.ZiChart.Name = "ZiChart";
-            series22.ChartArea = "proj1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series22.Name = "YX";
-            series23.ChartArea = "proj1";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series23.Name = "YmZ";
-            series24.ChartArea = "proj2";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series24.Name = "YmX";
-            series25.ChartArea = "proj2";
-            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series25.Name = "ZX";
-            this.ZiChart.Series.Add(series22);
-            this.ZiChart.Series.Add(series23);
-            this.ZiChart.Series.Add(series24);
-            this.ZiChart.Series.Add(series25);
+            series8.ChartArea = "proj1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series8.Name = "YX";
+            series9.ChartArea = "proj1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series9.Name = "YmZ";
+            series10.ChartArea = "proj2";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series10.Name = "YmX";
+            series11.ChartArea = "proj2";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series11.Name = "ZX";
+            this.ZiChart.Series.Add(series8);
+            this.ZiChart.Series.Add(series9);
+            this.ZiChart.Series.Add(series10);
+            this.ZiChart.Series.Add(series11);
             this.ZiChart.Size = new System.Drawing.Size(790, 531);
             this.ZiChart.TabIndex = 0;
             this.ZiChart.Text = "chart1";
@@ -187,40 +226,40 @@
             // 
             // demagChart
             // 
-            chartArea15.Name = "ChartArea1";
-            this.demagChart.ChartAreas.Add(chartArea15);
+            chartArea7.Name = "ChartArea1";
+            this.demagChart.ChartAreas.Add(chartArea7);
             this.demagChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.demagChart.Location = new System.Drawing.Point(808, 6);
             this.demagChart.Margin = new System.Windows.Forms.Padding(6);
             this.demagChart.Name = "demagChart";
-            series26.ChartArea = "ChartArea1";
-            series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series26.Name = "Demag";
-            this.demagChart.Series.Add(series26);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series12.Name = "Demag";
+            this.demagChart.Series.Add(series12);
             this.demagChart.Size = new System.Drawing.Size(790, 531);
             this.demagChart.TabIndex = 1;
             this.demagChart.Text = "chart1";
             // 
             // ARMChart
             // 
-            chartArea16.Name = "ChartArea1";
-            this.ARMChart.ChartAreas.Add(chartArea16);
+            chartArea8.Name = "ChartArea1";
+            this.ARMChart.ChartAreas.Add(chartArea8);
             this.ARMChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.ARMChart.Legends.Add(legend4);
+            legend2.Name = "Legend1";
+            this.ARMChart.Legends.Add(legend2);
             this.ARMChart.Location = new System.Drawing.Point(1610, 6);
             this.ARMChart.Margin = new System.Windows.Forms.Padding(6);
             this.ARMChart.Name = "ARMChart";
-            series27.ChartArea = "ChartArea1";
-            series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series27.Legend = "Legend1";
-            series27.Name = "ARM gained";
-            series28.ChartArea = "ChartArea1";
-            series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series28.Legend = "Legend1";
-            series28.Name = "ARM left";
-            this.ARMChart.Series.Add(series27);
-            this.ARMChart.Series.Add(series28);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series13.Legend = "Legend1";
+            series13.Name = "ARM gained";
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series14.Legend = "Legend1";
+            series14.Name = "ARM left";
+            this.ARMChart.Series.Add(series13);
+            this.ARMChart.Series.Add(series14);
             this.ARMChart.Size = new System.Drawing.Size(790, 531);
             this.ARMChart.TabIndex = 2;
             this.ARMChart.Text = "chart1";
@@ -297,6 +336,23 @@
             this.ARML.HeaderText = "AMR left";
             this.ARML.MinimumWidth = 10;
             this.ARML.Name = "ARML";
+            // 
+            // gridContextMenu
+            // 
+            this.gridContextMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.gridContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Delete_toolStripMenuItem});
+            this.gridContextMenu.Name = "gridContextMenu";
+            this.gridContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.gridContextMenu.Size = new System.Drawing.Size(159, 42);
+            this.gridContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.gridContextMenu_Opening);
+            // 
+            // Delete_toolStripMenuItem
+            // 
+            this.Delete_toolStripMenuItem.Name = "Delete_toolStripMenuItem";
+            this.Delete_toolStripMenuItem.Size = new System.Drawing.Size(158, 38);
+            this.Delete_toolStripMenuItem.Text = "Detele";
+            this.Delete_toolStripMenuItem.Click += new System.EventHandler(this.Delete_toolStripMenuItem_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -609,23 +665,6 @@
             this.Remove_residue_button.UseVisualStyleBackColor = true;
             this.Remove_residue_button.Click += new System.EventHandler(this.Remove_residue_button_Click);
             // 
-            // gridContextMenu
-            // 
-            this.gridContextMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.gridContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Delete_toolStripMenuItem});
-            this.gridContextMenu.Name = "gridContextMenu";
-            this.gridContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.gridContextMenu.Size = new System.Drawing.Size(159, 42);
-            this.gridContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.gridContextMenu_Opening);
-            // 
-            // Delete_toolStripMenuItem
-            // 
-            this.Delete_toolStripMenuItem.Name = "Delete_toolStripMenuItem";
-            this.Delete_toolStripMenuItem.Size = new System.Drawing.Size(300, 38);
-            this.Delete_toolStripMenuItem.Text = "Detele";
-            this.Delete_toolStripMenuItem.Click += new System.EventHandler(this.Delete_toolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -646,6 +685,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.demagChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ARMChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainTable)).EndInit();
+            this.gridContextMenu.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -657,7 +697,6 @@
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            this.gridContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -706,6 +745,10 @@
         private System.Windows.Forms.Button Remove_residue_button;
         private System.Windows.Forms.ContextMenuStrip gridContextMenu;
         private System.Windows.Forms.ToolStripMenuItem Delete_toolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem ziChart1ProjectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem demagToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aRMARMToolStripMenuItem;
     }
 }
 

@@ -104,6 +104,63 @@ namespace Thellier
             }
         }
 
+        private void ExportChart(Chart chart, string defaultFileName = "chart")
+        {
+            if (chart == null) return;
+
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Title = "Export chart";
+                sfd.FileName = defaultFileName;
+                sfd.Filter =
+                    "PNG Image (*.png)|*.png|" +
+                    "JPEG Image (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                    "Bitmap Image (*.bmp)|*.bmp|" +
+                    "EMF Vector (*.emf)|*.emf";
+
+                if (sfd.ShowDialog() != DialogResult.OK)
+                    return;
+
+                ChartImageFormat format;
+
+                switch (System.IO.Path.GetExtension(sfd.FileName).ToLower())
+                {
+                    case ".jpg":
+                    case ".jpeg":
+                        format = ChartImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = ChartImageFormat.Bmp;
+                        break;
+                    case ".emf":
+                        format = ChartImageFormat.Emf;
+                        break;
+                    default:
+                        format = ChartImageFormat.Png;
+                        break;
+                }
+
+                chart.Refresh();
+
+                chart.SaveImage(sfd.FileName, format);
+            }
+        }
+
+        private void exportDemagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportChart(DemagDemagChart, "DEMAG");
+        }
+
+        private void exportAraiNagataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportChart(AraiNagatachart, "Arai Nagata");
+        }
+
+        private void exportARMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportChart(ARMARMchart, "ARM");
+        }
+
         public void RefreshFromContext()
         {
             if (!string.IsNullOrWhiteSpace(_fileContext.FilePath))
