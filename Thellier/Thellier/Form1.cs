@@ -480,7 +480,7 @@ namespace Thellier
                     ARMLength++;
                 }
 
-                else if (line.StartsWith("AFZ", StringComparison.OrdinalIgnoreCase))
+                else if (line.StartsWith("AF", StringComparison.OrdinalIgnoreCase))
                 {
                     if (AFzbeg == -1) AFzbeg = i;
                     AFzLength++;

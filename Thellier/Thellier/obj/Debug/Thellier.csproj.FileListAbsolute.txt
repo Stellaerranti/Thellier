@@ -9,3 +9,15 @@ C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.pdb
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Form2.resources
 C:\Users\user\OneDrive\Документы\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Form1.resources
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\bin\Debug\Thellier.exe.config
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\bin\Debug\Thellier.exe
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\bin\Debug\Thellier.pdb
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.csproj.AssemblyReference.cache
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.exe.config
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Form1.resources
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Form2.resources
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Properties.Resources.resources
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.csproj.GenerateResource.cache
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.csproj.CoreCompileInputs.cache
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.exe
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.pdb

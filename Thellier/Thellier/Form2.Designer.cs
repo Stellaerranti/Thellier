@@ -136,7 +136,8 @@
             this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(2604, 50);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1282, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -150,27 +151,27 @@
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(163, 44);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(84, 22);
             this.toolStripDropDownButton1.Text = "Export chart";
             // 
             // exportDemagToolStripMenuItem
             // 
             this.exportDemagToolStripMenuItem.Name = "exportDemagToolStripMenuItem";
-            this.exportDemagToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.exportDemagToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.exportDemagToolStripMenuItem.Text = "Export Demag";
             this.exportDemagToolStripMenuItem.Click += new System.EventHandler(this.exportDemagToolStripMenuItem_Click);
             // 
             // exportAraiNagataToolStripMenuItem
             // 
             this.exportAraiNagataToolStripMenuItem.Name = "exportAraiNagataToolStripMenuItem";
-            this.exportAraiNagataToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.exportAraiNagataToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.exportAraiNagataToolStripMenuItem.Text = "Export Arai-Nagata";
             this.exportAraiNagataToolStripMenuItem.Click += new System.EventHandler(this.exportAraiNagataToolStripMenuItem_Click);
             // 
             // exportARMToolStripMenuItem
             // 
             this.exportARMToolStripMenuItem.Name = "exportARMToolStripMenuItem";
-            this.exportARMToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.exportARMToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.exportARMToolStripMenuItem.Text = "Export ARM";
             this.exportARMToolStripMenuItem.Click += new System.EventHandler(this.exportARMToolStripMenuItem_Click);
             // 
@@ -186,11 +187,12 @@
             this.tableLayoutPanel1.Controls.Add(this.ARMARMchart, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 50);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(2604, 931);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1282, 485);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // DemagDemagChart
@@ -198,7 +200,8 @@
             chartArea1.Name = "ChartArea1";
             this.DemagDemagChart.ChartAreas.Add(chartArea1);
             this.DemagDemagChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DemagDemagChart.Location = new System.Drawing.Point(3, 3);
+            this.DemagDemagChart.Location = new System.Drawing.Point(2, 2);
+            this.DemagDemagChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DemagDemagChart.Name = "DemagDemagChart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
@@ -208,7 +211,7 @@
             series2.Name = "Fit";
             this.DemagDemagChart.Series.Add(series1);
             this.DemagDemagChart.Series.Add(series2);
-            this.DemagDemagChart.Size = new System.Drawing.Size(684, 925);
+            this.DemagDemagChart.Size = new System.Drawing.Size(336, 481);
             this.DemagDemagChart.TabIndex = 0;
             this.DemagDemagChart.Text = "chart1";
             // 
@@ -217,7 +220,8 @@
             chartArea2.Name = "ChartArea1";
             this.AraiNagatachart.ChartAreas.Add(chartArea2);
             this.AraiNagatachart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AraiNagatachart.Location = new System.Drawing.Point(693, 3);
+            this.AraiNagatachart.Location = new System.Drawing.Point(342, 2);
+            this.AraiNagatachart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AraiNagatachart.Name = "AraiNagatachart";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
@@ -227,7 +231,7 @@
             series4.Name = "Fit";
             this.AraiNagatachart.Series.Add(series3);
             this.AraiNagatachart.Series.Add(series4);
-            this.AraiNagatachart.Size = new System.Drawing.Size(684, 925);
+            this.AraiNagatachart.Size = new System.Drawing.Size(336, 481);
             this.AraiNagatachart.TabIndex = 1;
             this.AraiNagatachart.Text = "chart1";
             // 
@@ -236,7 +240,8 @@
             chartArea3.Name = "ChartArea1";
             this.ARMARMchart.ChartAreas.Add(chartArea3);
             this.ARMARMchart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ARMARMchart.Location = new System.Drawing.Point(1383, 3);
+            this.ARMARMchart.Location = new System.Drawing.Point(682, 2);
+            this.ARMARMchart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ARMARMchart.Name = "ARMARMchart";
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
@@ -246,7 +251,7 @@
             series6.Name = "Fit";
             this.ARMARMchart.Series.Add(series5);
             this.ARMARMchart.Series.Add(series6);
-            this.ARMARMchart.Size = new System.Drawing.Size(684, 925);
+            this.ARMARMchart.Size = new System.Drawing.Size(336, 481);
             this.ARMARMchart.TabIndex = 2;
             this.ARMARMchart.Text = "chart1";
             // 
@@ -268,7 +273,8 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2073, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1022, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 13;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.435644F));
@@ -284,7 +290,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.435644F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.435644F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.435644F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(528, 925);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(258, 481);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // tableLayoutPanel15
@@ -294,11 +300,12 @@
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 864);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(2, 443);
+            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 1;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(522, 58);
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(254, 36);
             this.tableLayoutPanel15.TabIndex = 13;
             // 
             // tableLayoutPanel14
@@ -310,28 +317,31 @@
             this.tableLayoutPanel14.Controls.Add(this.outputfile_label, 1, 0);
             this.tableLayoutPanel14.Controls.Add(this.writecomment_button, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 805);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(2, 413);
+            this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 1;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(522, 53);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(254, 26);
             this.tableLayoutPanel14.TabIndex = 12;
             // 
             // outputfile_label
             // 
             this.outputfile_label.AutoSize = true;
-            this.outputfile_label.Location = new System.Drawing.Point(265, 2);
+            this.outputfile_label.Location = new System.Drawing.Point(130, 2);
+            this.outputfile_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.outputfile_label.Name = "outputfile_label";
-            this.outputfile_label.Size = new System.Drawing.Size(19, 25);
+            this.outputfile_label.Size = new System.Drawing.Size(10, 13);
             this.outputfile_label.TabIndex = 0;
             this.outputfile_label.Text = "-";
             // 
             // writecomment_button
             // 
             this.writecomment_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.writecomment_button.Location = new System.Drawing.Point(5, 5);
+            this.writecomment_button.Location = new System.Drawing.Point(4, 4);
+            this.writecomment_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.writecomment_button.Name = "writecomment_button";
-            this.writecomment_button.Size = new System.Drawing.Size(252, 43);
+            this.writecomment_button.Size = new System.Drawing.Size(120, 18);
             this.writecomment_button.TabIndex = 1;
             this.writecomment_button.Text = "write";
             this.writecomment_button.UseVisualStyleBackColor = true;
@@ -341,22 +351,24 @@
             this.tableLayoutPanel13.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.tableLayoutPanel13.ColumnCount = 1;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel13.Controls.Add(this.Comment_textBox, 0, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 746);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(2, 383);
+            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 1;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(522, 53);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(254, 26);
             this.tableLayoutPanel13.TabIndex = 11;
             // 
             // Comment_textBox
             // 
             this.Comment_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Comment_textBox.Location = new System.Drawing.Point(5, 5);
+            this.Comment_textBox.Location = new System.Drawing.Point(4, 4);
+            this.Comment_textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Comment_textBox.Name = "Comment_textBox";
-            this.Comment_textBox.Size = new System.Drawing.Size(512, 31);
+            this.Comment_textBox.Size = new System.Drawing.Size(246, 20);
             this.Comment_textBox.TabIndex = 0;
             // 
             // tableLayoutPanel12
@@ -372,46 +384,51 @@
             this.tableLayoutPanel12.Controls.Add(this.bAA_AraiNagata_label, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.bAA_ARM_label, 3, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 670);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(2, 344);
+            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(522, 70);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(254, 35);
             this.tableLayoutPanel12.TabIndex = 9;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 2);
+            this.label10.Location = new System.Drawing.Point(4, 2);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 25);
+            this.label10.Size = new System.Drawing.Size(27, 13);
             this.label10.TabIndex = 0;
             this.label10.Text = "bAA";
             // 
             // bAA_DEMAG_label
             // 
             this.bAA_DEMAG_label.AutoSize = true;
-            this.bAA_DEMAG_label.Location = new System.Drawing.Point(135, 2);
+            this.bAA_DEMAG_label.Location = new System.Drawing.Point(67, 2);
+            this.bAA_DEMAG_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bAA_DEMAG_label.Name = "bAA_DEMAG_label";
-            this.bAA_DEMAG_label.Size = new System.Drawing.Size(19, 25);
+            this.bAA_DEMAG_label.Size = new System.Drawing.Size(10, 13);
             this.bAA_DEMAG_label.TabIndex = 1;
             this.bAA_DEMAG_label.Text = "-";
             // 
             // bAA_AraiNagata_label
             // 
             this.bAA_AraiNagata_label.AutoSize = true;
-            this.bAA_AraiNagata_label.Location = new System.Drawing.Point(265, 2);
+            this.bAA_AraiNagata_label.Location = new System.Drawing.Point(130, 2);
+            this.bAA_AraiNagata_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bAA_AraiNagata_label.Name = "bAA_AraiNagata_label";
-            this.bAA_AraiNagata_label.Size = new System.Drawing.Size(19, 25);
+            this.bAA_AraiNagata_label.Size = new System.Drawing.Size(10, 13);
             this.bAA_AraiNagata_label.TabIndex = 2;
             this.bAA_AraiNagata_label.Text = "-";
             // 
             // bAA_ARM_label
             // 
             this.bAA_ARM_label.AutoSize = true;
-            this.bAA_ARM_label.Location = new System.Drawing.Point(395, 2);
+            this.bAA_ARM_label.Location = new System.Drawing.Point(193, 2);
+            this.bAA_ARM_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bAA_ARM_label.Name = "bAA_ARM_label";
-            this.bAA_ARM_label.Size = new System.Drawing.Size(19, 25);
+            this.bAA_ARM_label.Size = new System.Drawing.Size(10, 13);
             this.bAA_ARM_label.TabIndex = 3;
             this.bAA_ARM_label.Text = "-";
             // 
@@ -428,46 +445,51 @@
             this.tableLayoutPanel11.Controls.Add(this.fresid_AraiNagata_label, 2, 0);
             this.tableLayoutPanel11.Controls.Add(this.fresid_ARM_label, 3, 0);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 594);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(2, 305);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(522, 70);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(254, 35);
             this.tableLayoutPanel11.TabIndex = 8;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 2);
+            this.label9.Location = new System.Drawing.Point(4, 2);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 25);
+            this.label9.Size = new System.Drawing.Size(32, 13);
             this.label9.TabIndex = 0;
             this.label9.Text = "fresid";
             // 
             // fresid_DEMAG_label
             // 
             this.fresid_DEMAG_label.AutoSize = true;
-            this.fresid_DEMAG_label.Location = new System.Drawing.Point(135, 2);
+            this.fresid_DEMAG_label.Location = new System.Drawing.Point(67, 2);
+            this.fresid_DEMAG_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.fresid_DEMAG_label.Name = "fresid_DEMAG_label";
-            this.fresid_DEMAG_label.Size = new System.Drawing.Size(19, 25);
+            this.fresid_DEMAG_label.Size = new System.Drawing.Size(10, 13);
             this.fresid_DEMAG_label.TabIndex = 1;
             this.fresid_DEMAG_label.Text = "-";
             // 
             // fresid_AraiNagata_label
             // 
             this.fresid_AraiNagata_label.AutoSize = true;
-            this.fresid_AraiNagata_label.Location = new System.Drawing.Point(265, 2);
+            this.fresid_AraiNagata_label.Location = new System.Drawing.Point(130, 2);
+            this.fresid_AraiNagata_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.fresid_AraiNagata_label.Name = "fresid_AraiNagata_label";
-            this.fresid_AraiNagata_label.Size = new System.Drawing.Size(19, 25);
+            this.fresid_AraiNagata_label.Size = new System.Drawing.Size(10, 13);
             this.fresid_AraiNagata_label.TabIndex = 2;
             this.fresid_AraiNagata_label.Text = "-";
             // 
             // fresid_ARM_label
             // 
             this.fresid_ARM_label.AutoSize = true;
-            this.fresid_ARM_label.Location = new System.Drawing.Point(395, 2);
+            this.fresid_ARM_label.Location = new System.Drawing.Point(193, 2);
+            this.fresid_ARM_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.fresid_ARM_label.Name = "fresid_ARM_label";
-            this.fresid_ARM_label.Size = new System.Drawing.Size(19, 25);
+            this.fresid_ARM_label.Size = new System.Drawing.Size(10, 13);
             this.fresid_ARM_label.TabIndex = 3;
             this.fresid_ARM_label.Text = "-";
             // 
@@ -484,46 +506,51 @@
             this.tableLayoutPanel10.Controls.Add(this.R_AraiNagata_label, 2, 0);
             this.tableLayoutPanel10.Controls.Add(this.R_ARM_label, 3, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 518);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(2, 266);
+            this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(522, 70);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(254, 35);
             this.tableLayoutPanel10.TabIndex = 7;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 2);
+            this.label8.Location = new System.Drawing.Point(4, 2);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 25);
+            this.label8.Size = new System.Drawing.Size(15, 13);
             this.label8.TabIndex = 0;
             this.label8.Text = "R";
             // 
             // R_DEMAG_label
             // 
             this.R_DEMAG_label.AutoSize = true;
-            this.R_DEMAG_label.Location = new System.Drawing.Point(135, 2);
+            this.R_DEMAG_label.Location = new System.Drawing.Point(67, 2);
+            this.R_DEMAG_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.R_DEMAG_label.Name = "R_DEMAG_label";
-            this.R_DEMAG_label.Size = new System.Drawing.Size(19, 25);
+            this.R_DEMAG_label.Size = new System.Drawing.Size(10, 13);
             this.R_DEMAG_label.TabIndex = 1;
             this.R_DEMAG_label.Text = "-";
             // 
             // R_AraiNagata_label
             // 
             this.R_AraiNagata_label.AutoSize = true;
-            this.R_AraiNagata_label.Location = new System.Drawing.Point(265, 2);
+            this.R_AraiNagata_label.Location = new System.Drawing.Point(130, 2);
+            this.R_AraiNagata_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.R_AraiNagata_label.Name = "R_AraiNagata_label";
-            this.R_AraiNagata_label.Size = new System.Drawing.Size(19, 25);
+            this.R_AraiNagata_label.Size = new System.Drawing.Size(10, 13);
             this.R_AraiNagata_label.TabIndex = 2;
             this.R_AraiNagata_label.Text = "-";
             // 
             // R_ARM_label
             // 
             this.R_ARM_label.AutoSize = true;
-            this.R_ARM_label.Location = new System.Drawing.Point(395, 2);
+            this.R_ARM_label.Location = new System.Drawing.Point(193, 2);
+            this.R_ARM_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.R_ARM_label.Name = "R_ARM_label";
-            this.R_ARM_label.Size = new System.Drawing.Size(19, 25);
+            this.R_ARM_label.Size = new System.Drawing.Size(10, 13);
             this.R_ARM_label.TabIndex = 3;
             this.R_ARM_label.Text = "-";
             // 
@@ -540,46 +567,51 @@
             this.tableLayoutPanel9.Controls.Add(this.f_AraiNagata_label, 2, 0);
             this.tableLayoutPanel9.Controls.Add(this.f_ARM_label, 3, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 442);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(2, 227);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(522, 70);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(254, 35);
             this.tableLayoutPanel9.TabIndex = 6;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 2);
+            this.label11.Location = new System.Drawing.Point(4, 2);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(18, 25);
+            this.label11.Size = new System.Drawing.Size(10, 13);
             this.label11.TabIndex = 0;
             this.label11.Text = "f";
             // 
             // f_DEMAG_label
             // 
             this.f_DEMAG_label.AutoSize = true;
-            this.f_DEMAG_label.Location = new System.Drawing.Point(135, 2);
+            this.f_DEMAG_label.Location = new System.Drawing.Point(67, 2);
+            this.f_DEMAG_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.f_DEMAG_label.Name = "f_DEMAG_label";
-            this.f_DEMAG_label.Size = new System.Drawing.Size(19, 25);
+            this.f_DEMAG_label.Size = new System.Drawing.Size(10, 13);
             this.f_DEMAG_label.TabIndex = 1;
             this.f_DEMAG_label.Text = "-";
             // 
             // f_AraiNagata_label
             // 
             this.f_AraiNagata_label.AutoSize = true;
-            this.f_AraiNagata_label.Location = new System.Drawing.Point(265, 2);
+            this.f_AraiNagata_label.Location = new System.Drawing.Point(130, 2);
+            this.f_AraiNagata_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.f_AraiNagata_label.Name = "f_AraiNagata_label";
-            this.f_AraiNagata_label.Size = new System.Drawing.Size(19, 25);
+            this.f_AraiNagata_label.Size = new System.Drawing.Size(10, 13);
             this.f_AraiNagata_label.TabIndex = 2;
             this.f_AraiNagata_label.Text = "-";
             // 
             // f_ARM_label
             // 
             this.f_ARM_label.AutoSize = true;
-            this.f_ARM_label.Location = new System.Drawing.Point(395, 2);
+            this.f_ARM_label.Location = new System.Drawing.Point(193, 2);
+            this.f_ARM_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.f_ARM_label.Name = "f_ARM_label";
-            this.f_ARM_label.Size = new System.Drawing.Size(19, 25);
+            this.f_ARM_label.Size = new System.Drawing.Size(10, 13);
             this.f_ARM_label.TabIndex = 3;
             this.f_ARM_label.Text = "-";
             // 
@@ -596,46 +628,51 @@
             this.tableLayoutPanel8.Controls.Add(this.n_AraiNagata_label, 2, 0);
             this.tableLayoutPanel8.Controls.Add(this.n_ARM_label, 3, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 366);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(2, 188);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(522, 70);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(254, 35);
             this.tableLayoutPanel8.TabIndex = 5;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 2);
+            this.label7.Location = new System.Drawing.Point(4, 2);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(24, 25);
+            this.label7.Size = new System.Drawing.Size(13, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "n";
             // 
             // n_DEMAG_label
             // 
             this.n_DEMAG_label.AutoSize = true;
-            this.n_DEMAG_label.Location = new System.Drawing.Point(135, 2);
+            this.n_DEMAG_label.Location = new System.Drawing.Point(67, 2);
+            this.n_DEMAG_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.n_DEMAG_label.Name = "n_DEMAG_label";
-            this.n_DEMAG_label.Size = new System.Drawing.Size(19, 25);
+            this.n_DEMAG_label.Size = new System.Drawing.Size(10, 13);
             this.n_DEMAG_label.TabIndex = 1;
             this.n_DEMAG_label.Text = "-";
             // 
             // n_AraiNagata_label
             // 
             this.n_AraiNagata_label.AutoSize = true;
-            this.n_AraiNagata_label.Location = new System.Drawing.Point(265, 2);
+            this.n_AraiNagata_label.Location = new System.Drawing.Point(130, 2);
+            this.n_AraiNagata_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.n_AraiNagata_label.Name = "n_AraiNagata_label";
-            this.n_AraiNagata_label.Size = new System.Drawing.Size(19, 25);
+            this.n_AraiNagata_label.Size = new System.Drawing.Size(10, 13);
             this.n_AraiNagata_label.TabIndex = 2;
             this.n_AraiNagata_label.Text = "-";
             // 
             // n_ARM_label
             // 
             this.n_ARM_label.AutoSize = true;
-            this.n_ARM_label.Location = new System.Drawing.Point(395, 2);
+            this.n_ARM_label.Location = new System.Drawing.Point(193, 2);
+            this.n_ARM_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.n_ARM_label.Name = "n_ARM_label";
-            this.n_ARM_label.Size = new System.Drawing.Size(19, 25);
+            this.n_ARM_label.Size = new System.Drawing.Size(10, 13);
             this.n_ARM_label.TabIndex = 3;
             this.n_ARM_label.Text = "-";
             // 
@@ -652,46 +689,51 @@
             this.tableLayoutPanel7.Controls.Add(this.beta_AraiNagata_label, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.beta_ARM_label, 3, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 290);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 149);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(522, 70);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(254, 35);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 2);
+            this.label6.Location = new System.Drawing.Point(4, 2);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 25);
+            this.label6.Size = new System.Drawing.Size(13, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "β";
             // 
             // beta_DEMAG_label
             // 
             this.beta_DEMAG_label.AutoSize = true;
-            this.beta_DEMAG_label.Location = new System.Drawing.Point(135, 2);
+            this.beta_DEMAG_label.Location = new System.Drawing.Point(67, 2);
+            this.beta_DEMAG_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.beta_DEMAG_label.Name = "beta_DEMAG_label";
-            this.beta_DEMAG_label.Size = new System.Drawing.Size(19, 25);
+            this.beta_DEMAG_label.Size = new System.Drawing.Size(10, 13);
             this.beta_DEMAG_label.TabIndex = 1;
             this.beta_DEMAG_label.Text = "-";
             // 
             // beta_AraiNagata_label
             // 
             this.beta_AraiNagata_label.AutoSize = true;
-            this.beta_AraiNagata_label.Location = new System.Drawing.Point(265, 2);
+            this.beta_AraiNagata_label.Location = new System.Drawing.Point(130, 2);
+            this.beta_AraiNagata_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.beta_AraiNagata_label.Name = "beta_AraiNagata_label";
-            this.beta_AraiNagata_label.Size = new System.Drawing.Size(19, 25);
+            this.beta_AraiNagata_label.Size = new System.Drawing.Size(10, 13);
             this.beta_AraiNagata_label.TabIndex = 2;
             this.beta_AraiNagata_label.Text = "-";
             // 
             // beta_ARM_label
             // 
             this.beta_ARM_label.AutoSize = true;
-            this.beta_ARM_label.Location = new System.Drawing.Point(395, 2);
+            this.beta_ARM_label.Location = new System.Drawing.Point(193, 2);
+            this.beta_ARM_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.beta_ARM_label.Name = "beta_ARM_label";
-            this.beta_ARM_label.Size = new System.Drawing.Size(19, 25);
+            this.beta_ARM_label.Size = new System.Drawing.Size(10, 13);
             this.beta_ARM_label.TabIndex = 3;
             this.beta_ARM_label.Text = "-";
             // 
@@ -708,46 +750,51 @@
             this.tableLayoutPanel6.Controls.Add(this.sigmab_AraiNagata_label, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.sigmab_ARM_label, 3, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 214);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 110);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(522, 70);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(254, 35);
             this.tableLayoutPanel6.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 2);
+            this.label5.Location = new System.Drawing.Point(4, 2);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 25);
+            this.label5.Size = new System.Drawing.Size(20, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "σb";
             // 
             // sigmab_DEMAG_label
             // 
             this.sigmab_DEMAG_label.AutoSize = true;
-            this.sigmab_DEMAG_label.Location = new System.Drawing.Point(135, 2);
+            this.sigmab_DEMAG_label.Location = new System.Drawing.Point(67, 2);
+            this.sigmab_DEMAG_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sigmab_DEMAG_label.Name = "sigmab_DEMAG_label";
-            this.sigmab_DEMAG_label.Size = new System.Drawing.Size(19, 25);
+            this.sigmab_DEMAG_label.Size = new System.Drawing.Size(10, 13);
             this.sigmab_DEMAG_label.TabIndex = 1;
             this.sigmab_DEMAG_label.Text = "-";
             // 
             // sigmab_AraiNagata_label
             // 
             this.sigmab_AraiNagata_label.AutoSize = true;
-            this.sigmab_AraiNagata_label.Location = new System.Drawing.Point(265, 2);
+            this.sigmab_AraiNagata_label.Location = new System.Drawing.Point(130, 2);
+            this.sigmab_AraiNagata_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sigmab_AraiNagata_label.Name = "sigmab_AraiNagata_label";
-            this.sigmab_AraiNagata_label.Size = new System.Drawing.Size(19, 25);
+            this.sigmab_AraiNagata_label.Size = new System.Drawing.Size(10, 13);
             this.sigmab_AraiNagata_label.TabIndex = 2;
             this.sigmab_AraiNagata_label.Text = "-";
             // 
             // sigmab_ARM_label
             // 
             this.sigmab_ARM_label.AutoSize = true;
-            this.sigmab_ARM_label.Location = new System.Drawing.Point(395, 2);
+            this.sigmab_ARM_label.Location = new System.Drawing.Point(193, 2);
+            this.sigmab_ARM_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sigmab_ARM_label.Name = "sigmab_ARM_label";
-            this.sigmab_ARM_label.Size = new System.Drawing.Size(19, 25);
+            this.sigmab_ARM_label.Size = new System.Drawing.Size(10, 13);
             this.sigmab_ARM_label.TabIndex = 3;
             this.sigmab_ARM_label.Text = "-";
             // 
@@ -764,46 +811,51 @@
             this.tableLayoutPanel5.Controls.Add(this.b_AraiNagata_label, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.b_ARM_label, 3, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 138);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 71);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(522, 70);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(254, 35);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 2);
+            this.label4.Location = new System.Drawing.Point(4, 2);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 25);
+            this.label4.Size = new System.Drawing.Size(13, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "b";
             // 
             // b_DEMAG_label
             // 
             this.b_DEMAG_label.AutoSize = true;
-            this.b_DEMAG_label.Location = new System.Drawing.Point(135, 2);
+            this.b_DEMAG_label.Location = new System.Drawing.Point(67, 2);
+            this.b_DEMAG_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.b_DEMAG_label.Name = "b_DEMAG_label";
-            this.b_DEMAG_label.Size = new System.Drawing.Size(19, 25);
+            this.b_DEMAG_label.Size = new System.Drawing.Size(10, 13);
             this.b_DEMAG_label.TabIndex = 1;
             this.b_DEMAG_label.Text = "-";
             // 
             // b_AraiNagata_label
             // 
             this.b_AraiNagata_label.AutoSize = true;
-            this.b_AraiNagata_label.Location = new System.Drawing.Point(265, 2);
+            this.b_AraiNagata_label.Location = new System.Drawing.Point(130, 2);
+            this.b_AraiNagata_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.b_AraiNagata_label.Name = "b_AraiNagata_label";
-            this.b_AraiNagata_label.Size = new System.Drawing.Size(19, 25);
+            this.b_AraiNagata_label.Size = new System.Drawing.Size(10, 13);
             this.b_AraiNagata_label.TabIndex = 2;
             this.b_AraiNagata_label.Text = "-";
             // 
             // b_ARM_label
             // 
             this.b_ARM_label.AutoSize = true;
-            this.b_ARM_label.Location = new System.Drawing.Point(395, 2);
+            this.b_ARM_label.Location = new System.Drawing.Point(193, 2);
+            this.b_ARM_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.b_ARM_label.Name = "b_ARM_label";
-            this.b_ARM_label.Size = new System.Drawing.Size(19, 25);
+            this.b_ARM_label.Size = new System.Drawing.Size(10, 13);
             this.b_ARM_label.TabIndex = 3;
             this.b_ARM_label.Text = "-";
             // 
@@ -819,37 +871,41 @@
             this.tableLayoutPanel3.Controls.Add(this.label2, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.label3, 3, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 62);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 32);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(522, 70);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(254, 35);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(135, 2);
+            this.label1.Location = new System.Drawing.Point(67, 2);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 50);
+            this.label1.Size = new System.Drawing.Size(55, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "DEMAG - DEMAG";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(265, 2);
+            this.label2.Location = new System.Drawing.Point(130, 2);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 50);
+            this.label2.Size = new System.Drawing.Size(42, 26);
             this.label2.TabIndex = 1;
             this.label2.Text = "Arai - Nagata";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(395, 2);
+            this.label3.Location = new System.Drawing.Point(193, 2);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 50);
+            this.label3.Size = new System.Drawing.Size(40, 26);
             this.label3.TabIndex = 2;
             this.label3.Text = "ARM - ARM";
             // 
@@ -862,38 +918,42 @@
             this.tableLayoutPanel4.Controls.Add(this.points_textBox, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(522, 53);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(254, 26);
             this.tableLayoutPanel4.TabIndex = 10;
             // 
             // points_textBox
             // 
             this.points_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.points_textBox.Location = new System.Drawing.Point(5, 5);
+            this.points_textBox.Location = new System.Drawing.Point(4, 4);
+            this.points_textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.points_textBox.Name = "points_textBox";
-            this.points_textBox.Size = new System.Drawing.Size(381, 31);
+            this.points_textBox.Size = new System.Drawing.Size(182, 20);
             this.points_textBox.TabIndex = 0;
             // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(394, 5);
+            this.button1.Location = new System.Drawing.Point(192, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 43);
+            this.button1.Size = new System.Drawing.Size(58, 18);
             this.button1.TabIndex = 1;
             this.button1.Text = "Fit";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2604, 981);
+            this.ClientSize = new System.Drawing.Size(1282, 510);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
