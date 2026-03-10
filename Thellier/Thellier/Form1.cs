@@ -1036,6 +1036,11 @@ namespace Thellier
         {
             ExportChart(ARMChart, "ARM");
         }
+
+        private void import_wizzard_Button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     public class FileContext
     { 
