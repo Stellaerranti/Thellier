@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_openPMD = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_openRMG = new System.Windows.Forms.ToolStripButton();
@@ -49,18 +49,12 @@
             this.ziChart1ProjectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aRMARMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.import_wizzard_Button = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ZiChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.demagChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.ARMChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.MainTable = new System.Windows.Forms.DataGridView();
-            this.H = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NRM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARMG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARML = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Delete_toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -87,7 +81,13 @@
             this.LineNumber_radioButton = new System.Windows.Forms.RadioButton();
             this.Value_radioButton = new System.Windows.Forms.RadioButton();
             this.Remove_residue_button = new System.Windows.Forms.Button();
-            this.import_wizzard_Button = new System.Windows.Forms.ToolStripButton();
+            this.H = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NRM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARMGained = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARMLeft = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZiChart)).BeginInit();
@@ -172,6 +172,16 @@
             this.aRMARMToolStripMenuItem.Text = "ARM-ARM";
             this.aRMARMToolStripMenuItem.Click += new System.EventHandler(this.aRMARMToolStripMenuItem_Click);
             // 
+            // import_wizzard_Button
+            // 
+            this.import_wizzard_Button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.import_wizzard_Button.Image = ((System.Drawing.Image)(resources.GetObject("import_wizzard_Button.Image")));
+            this.import_wizzard_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.import_wizzard_Button.Name = "import_wizzard_Button";
+            this.import_wizzard_Button.Size = new System.Drawing.Size(89, 22);
+            this.import_wizzard_Button.Text = "Import wizzard";
+            this.import_wizzard_Button.Click += new System.EventHandler(this.import_wizzard_Button_Click);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
@@ -196,29 +206,29 @@
             // 
             // ZiChart
             // 
-            chartArea1.Name = "proj1";
-            chartArea2.Name = "proj2";
-            this.ZiChart.ChartAreas.Add(chartArea1);
-            this.ZiChart.ChartAreas.Add(chartArea2);
+            chartArea5.Name = "proj1";
+            chartArea6.Name = "proj2";
+            this.ZiChart.ChartAreas.Add(chartArea5);
+            this.ZiChart.ChartAreas.Add(chartArea6);
             this.ZiChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ZiChart.Location = new System.Drawing.Point(3, 3);
             this.ZiChart.Name = "ZiChart";
-            series1.ChartArea = "proj1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series1.Name = "YX";
-            series2.ChartArea = "proj1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series2.Name = "YmZ";
-            series3.ChartArea = "proj2";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series3.Name = "YmX";
-            series4.ChartArea = "proj2";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series4.Name = "ZX";
-            this.ZiChart.Series.Add(series1);
-            this.ZiChart.Series.Add(series2);
-            this.ZiChart.Series.Add(series3);
-            this.ZiChart.Series.Add(series4);
+            series8.ChartArea = "proj1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series8.Name = "YX";
+            series9.ChartArea = "proj1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series9.Name = "YmZ";
+            series10.ChartArea = "proj2";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series10.Name = "YmX";
+            series11.ChartArea = "proj2";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series11.Name = "ZX";
+            this.ZiChart.Series.Add(series8);
+            this.ZiChart.Series.Add(series9);
+            this.ZiChart.Series.Add(series10);
+            this.ZiChart.Series.Add(series11);
             this.ZiChart.Size = new System.Drawing.Size(378, 275);
             this.ZiChart.TabIndex = 0;
             this.ZiChart.Text = "chart1";
@@ -226,38 +236,38 @@
             // 
             // demagChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.demagChart.ChartAreas.Add(chartArea3);
+            chartArea7.Name = "ChartArea1";
+            this.demagChart.ChartAreas.Add(chartArea7);
             this.demagChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.demagChart.Location = new System.Drawing.Point(387, 3);
             this.demagChart.Name = "demagChart";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series5.Name = "Demag";
-            this.demagChart.Series.Add(series5);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series12.Name = "Demag";
+            this.demagChart.Series.Add(series12);
             this.demagChart.Size = new System.Drawing.Size(378, 275);
             this.demagChart.TabIndex = 1;
             this.demagChart.Text = "chart1";
             // 
             // ARMChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.ARMChart.ChartAreas.Add(chartArea4);
+            chartArea8.Name = "ChartArea1";
+            this.ARMChart.ChartAreas.Add(chartArea8);
             this.ARMChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.ARMChart.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.ARMChart.Legends.Add(legend2);
             this.ARMChart.Location = new System.Drawing.Point(771, 3);
             this.ARMChart.Name = "ARMChart";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series6.Legend = "Legend1";
-            series6.Name = "ARM gained";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series7.Legend = "Legend1";
-            series7.Name = "ARM left";
-            this.ARMChart.Series.Add(series6);
-            this.ARMChart.Series.Add(series7);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series13.Legend = "Legend1";
+            series13.Name = "ARM gained";
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series14.Legend = "Legend1";
+            series14.Name = "ARM left";
+            this.ARMChart.Series.Add(series13);
+            this.ARMChart.Series.Add(series14);
             this.ARMChart.Size = new System.Drawing.Size(378, 275);
             this.ARMChart.TabIndex = 2;
             this.ARMChart.Text = "chart1";
@@ -272,8 +282,8 @@
             this.Y,
             this.Z,
             this.NRM,
-            this.ARMG,
-            this.ARML});
+            this.ARMGained,
+            this.ARMLeft});
             this.tableLayoutPanel1.SetColumnSpan(this.MainTable, 2);
             this.MainTable.ContextMenuStrip = this.gridContextMenu;
             this.MainTable.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -284,55 +294,6 @@
             this.MainTable.TabIndex = 3;
             this.MainTable.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.MainTable_CellMouseDown);
             this.MainTable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTable_MouseDown);
-            // 
-            // H
-            // 
-            this.H.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.H.HeaderText = "H";
-            this.H.MinimumWidth = 10;
-            this.H.Name = "H";
-            // 
-            // X
-            // 
-            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.X.HeaderText = "X";
-            this.X.MinimumWidth = 10;
-            this.X.Name = "X";
-            // 
-            // Y
-            // 
-            this.Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Y.HeaderText = "Y";
-            this.Y.MinimumWidth = 10;
-            this.Y.Name = "Y";
-            // 
-            // Z
-            // 
-            this.Z.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Z.HeaderText = "Z";
-            this.Z.MinimumWidth = 10;
-            this.Z.Name = "Z";
-            // 
-            // NRM
-            // 
-            this.NRM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NRM.HeaderText = "NRM";
-            this.NRM.MinimumWidth = 10;
-            this.NRM.Name = "NRM";
-            // 
-            // ARMG
-            // 
-            this.ARMG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ARMG.HeaderText = "ARM gained";
-            this.ARMG.MinimumWidth = 10;
-            this.ARMG.Name = "ARMG";
-            // 
-            // ARML
-            // 
-            this.ARML.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ARML.HeaderText = "AMR left";
-            this.ARML.MinimumWidth = 10;
-            this.ARML.Name = "ARML";
             // 
             // gridContextMenu
             // 
@@ -367,7 +328,7 @@
             this.tableLayoutPanel2.Controls.Add(this.button_plot, 1, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(1154, 2);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -447,7 +408,7 @@
             // 
             this.button_output.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_output.Location = new System.Drawing.Point(5, 86);
-            this.button_output.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_output.Margin = new System.Windows.Forms.Padding(2);
             this.button_output.Name = "button_output";
             this.button_output.Size = new System.Drawing.Size(54, 23);
             this.button_output.TabIndex = 6;
@@ -459,7 +420,7 @@
             // 
             this.button_plot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_plot.Location = new System.Drawing.Point(66, 86);
-            this.button_plot.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_plot.Margin = new System.Windows.Forms.Padding(2);
             this.button_plot.Name = "button_plot";
             this.button_plot.Size = new System.Drawing.Size(55, 23);
             this.button_plot.TabIndex = 7;
@@ -471,9 +432,9 @@
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel3);
             this.groupBox1.Location = new System.Drawing.Point(770, 283);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(380, 173);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
@@ -491,7 +452,7 @@
             this.tableLayoutPanel3.Controls.Add(this.Remove_residue_button, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 15);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 4;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -505,7 +466,7 @@
             // 
             this.res_input_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.res_input_textBox.Location = new System.Drawing.Point(2, 9);
-            this.res_input_textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.res_input_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.res_input_textBox.Name = "res_input_textBox";
             this.res_input_textBox.Size = new System.Drawing.Size(278, 20);
             this.res_input_textBox.TabIndex = 3;
@@ -523,7 +484,7 @@
             this.tableLayoutPanel4.Controls.Add(this.ARMleft_radioButton, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 80);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -535,7 +496,7 @@
             this.NRM_radioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.NRM_radioButton.AutoSize = true;
             this.NRM_radioButton.Location = new System.Drawing.Point(37, 4);
-            this.NRM_radioButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NRM_radioButton.Margin = new System.Windows.Forms.Padding(2);
             this.NRM_radioButton.Name = "NRM_radioButton";
             this.NRM_radioButton.Size = new System.Drawing.Size(50, 27);
             this.NRM_radioButton.TabIndex = 0;
@@ -548,7 +509,7 @@
             this.ARMgained_radioButton.AutoSize = true;
             this.ARMgained_radioButton.Checked = true;
             this.ARMgained_radioButton.Location = new System.Drawing.Point(143, 4);
-            this.ARMgained_radioButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ARMgained_radioButton.Margin = new System.Windows.Forms.Padding(2);
             this.ARMgained_radioButton.Name = "ARMgained_radioButton";
             this.ARMgained_radioButton.Size = new System.Drawing.Size(84, 27);
             this.ARMgained_radioButton.TabIndex = 1;
@@ -561,7 +522,7 @@
             this.ARMleft_radioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.ARMleft_radioButton.AutoSize = true;
             this.ARMleft_radioButton.Location = new System.Drawing.Point(276, 4);
-            this.ARMleft_radioButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ARMleft_radioButton.Margin = new System.Windows.Forms.Padding(2);
             this.ARMleft_radioButton.Name = "ARMleft_radioButton";
             this.ARMleft_radioButton.Size = new System.Drawing.Size(66, 27);
             this.ARMleft_radioButton.TabIndex = 2;
@@ -582,7 +543,7 @@
             this.tableLayoutPanel5.Controls.Add(this.ARMleft_checkBox, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 119);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -596,7 +557,7 @@
             this.NRM_checkBox.Checked = true;
             this.NRM_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.NRM_checkBox.Location = new System.Drawing.Point(37, 4);
-            this.NRM_checkBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NRM_checkBox.Margin = new System.Windows.Forms.Padding(2);
             this.NRM_checkBox.Name = "NRM_checkBox";
             this.NRM_checkBox.Size = new System.Drawing.Size(51, 27);
             this.NRM_checkBox.TabIndex = 0;
@@ -610,7 +571,7 @@
             this.ARMgained_checkBox.Checked = true;
             this.ARMgained_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ARMgained_checkBox.Location = new System.Drawing.Point(143, 4);
-            this.ARMgained_checkBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ARMgained_checkBox.Margin = new System.Windows.Forms.Padding(2);
             this.ARMgained_checkBox.Name = "ARMgained_checkBox";
             this.ARMgained_checkBox.Size = new System.Drawing.Size(85, 27);
             this.ARMgained_checkBox.TabIndex = 1;
@@ -624,7 +585,7 @@
             this.ARMleft_checkBox.Checked = true;
             this.ARMleft_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ARMleft_checkBox.Location = new System.Drawing.Point(275, 4);
-            this.ARMleft_checkBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ARMleft_checkBox.Margin = new System.Windows.Forms.Padding(2);
             this.ARMleft_checkBox.Name = "ARMleft_checkBox";
             this.ARMleft_checkBox.Size = new System.Drawing.Size(67, 27);
             this.ARMleft_checkBox.TabIndex = 2;
@@ -641,7 +602,7 @@
             this.tableLayoutPanel6.Controls.Add(this.Value_radioButton, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 41);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -654,7 +615,7 @@
             this.LineNumber_radioButton.AutoSize = true;
             this.LineNumber_radioButton.Checked = true;
             this.LineNumber_radioButton.Location = new System.Drawing.Point(28, 4);
-            this.LineNumber_radioButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LineNumber_radioButton.Margin = new System.Windows.Forms.Padding(2);
             this.LineNumber_radioButton.Name = "LineNumber_radioButton";
             this.LineNumber_radioButton.Size = new System.Drawing.Size(83, 27);
             this.LineNumber_radioButton.TabIndex = 0;
@@ -667,7 +628,7 @@
             this.Value_radioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.Value_radioButton.AutoSize = true;
             this.Value_radioButton.Location = new System.Drawing.Point(182, 4);
-            this.Value_radioButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Value_radioButton.Margin = new System.Windows.Forms.Padding(2);
             this.Value_radioButton.Name = "Value_radioButton";
             this.Value_radioButton.Size = new System.Drawing.Size(52, 27);
             this.Value_radioButton.TabIndex = 1;
@@ -679,7 +640,7 @@
             // 
             this.Remove_residue_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Remove_residue_button.Location = new System.Drawing.Point(284, 41);
-            this.Remove_residue_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Remove_residue_button.Margin = new System.Windows.Forms.Padding(2);
             this.Remove_residue_button.Name = "Remove_residue_button";
             this.Remove_residue_button.Size = new System.Drawing.Size(90, 35);
             this.Remove_residue_button.TabIndex = 4;
@@ -687,15 +648,54 @@
             this.Remove_residue_button.UseVisualStyleBackColor = true;
             this.Remove_residue_button.Click += new System.EventHandler(this.Remove_residue_button_Click);
             // 
-            // import_wizzard_Button
+            // H
             // 
-            this.import_wizzard_Button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.import_wizzard_Button.Image = ((System.Drawing.Image)(resources.GetObject("import_wizzard_Button.Image")));
-            this.import_wizzard_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.import_wizzard_Button.Name = "import_wizzard_Button";
-            this.import_wizzard_Button.Size = new System.Drawing.Size(89, 22);
-            this.import_wizzard_Button.Text = "Import wizzard";
-            this.import_wizzard_Button.Click += new System.EventHandler(this.import_wizzard_Button_Click);
+            this.H.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.H.HeaderText = "H";
+            this.H.MinimumWidth = 10;
+            this.H.Name = "H";
+            // 
+            // X
+            // 
+            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.X.HeaderText = "X";
+            this.X.MinimumWidth = 10;
+            this.X.Name = "X";
+            // 
+            // Y
+            // 
+            this.Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Y.HeaderText = "Y";
+            this.Y.MinimumWidth = 10;
+            this.Y.Name = "Y";
+            // 
+            // Z
+            // 
+            this.Z.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Z.HeaderText = "Z";
+            this.Z.MinimumWidth = 10;
+            this.Z.Name = "Z";
+            // 
+            // NRM
+            // 
+            this.NRM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NRM.HeaderText = "NRM";
+            this.NRM.MinimumWidth = 10;
+            this.NRM.Name = "NRM";
+            // 
+            // ARMGained
+            // 
+            this.ARMGained.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ARMGained.HeaderText = "ARM gained";
+            this.ARMGained.MinimumWidth = 10;
+            this.ARMGained.Name = "ARMGained";
+            // 
+            // ARMLeft
+            // 
+            this.ARMLeft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ARMLeft.HeaderText = "AMR left";
+            this.ARMLeft.MinimumWidth = 10;
+            this.ARMLeft.Name = "ARMLeft";
             // 
             // Form1
             // 
@@ -704,7 +704,7 @@
             this.ClientSize = new System.Drawing.Size(1282, 587);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thellier";
@@ -742,13 +742,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart demagChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart ARMChart;
         private System.Windows.Forms.DataGridView MainTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn H;
-        private System.Windows.Forms.DataGridViewTextBoxColumn X;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Y;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Z;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NRM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ARMG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ARML;
         private System.Windows.Forms.ToolStripButton toolStripButton_openPMD;
         private System.Windows.Forms.ToolStripButton toolStripButton_openRMG;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -782,6 +775,13 @@
         private System.Windows.Forms.ToolStripMenuItem demagToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aRMARMToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton import_wizzard_Button;
+        private System.Windows.Forms.DataGridViewTextBoxColumn H;
+        private System.Windows.Forms.DataGridViewTextBoxColumn X;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Y;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Z;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NRM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ARMGained;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ARMLeft;
     }
 }
 

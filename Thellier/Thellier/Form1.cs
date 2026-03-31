@@ -3,27 +3,43 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Drawing.Imaging;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Thellier
 {
     public partial class Form1 : Form
     {
+
+        private readonly BindingList<MeasurementRow> _stepRows = new BindingList<MeasurementRow>();
+
         private Form2 _form2;
         private readonly FileContext _fileContext = new FileContext();
         public Form1()
         {
             InitializeComponent();
             MainTable.RowPostPaint += MainTable_RowPostPaint;
+        }
+
+        private void BindMainTable()
+        {
+            MainTable.AutoGenerateColumns = false;
+            MainTable.DataSource = _stepRows;
+        }
+
+        private void RefreshMainTable()
+        {
+            var currencyManager = (CurrencyManager)BindingContext[MainTable.DataSource];
+            currencyManager.Refresh();
         }
 
         private void MainTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -61,6 +77,8 @@ namespace Thellier
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            BindMainTable();
+
             demagChart.Series["Demag"].Points.Clear();
             ZiChart.Series["YX"].Points.Clear();
             ZiChart.Series["YmZ"].Points.Clear();
@@ -109,6 +127,14 @@ namespace Thellier
 
             ZiChart.ChartAreas[1].AxisX.Crossing = 0;
             ZiChart.ChartAreas[1].AxisY.Crossing = 0;
+
+            MainTable.Columns[0].DataPropertyName = "H";
+            MainTable.Columns[1].DataPropertyName = "X";
+            MainTable.Columns[2].DataPropertyName = "Y";
+            MainTable.Columns[3].DataPropertyName = "Z";
+            MainTable.Columns[4].DataPropertyName = "NRM";
+            MainTable.Columns[5].DataPropertyName = "ARMGained";
+            MainTable.Columns[6].DataPropertyName = "ARMLeft";
         }
 
         private void DeleteSelectedRows()
@@ -306,161 +332,130 @@ namespace Thellier
             ZiChart.Series["YmX"].Points.Clear();
             ZiChart.Series["ZX"].Points.Clear();
 
-
-            foreach (DataGridViewRow row in MainTable.Rows)
+            for (int i = 0; i < _stepRows.Count; i++)
             {
-                double c0 = Convert.ToDouble(row.Cells[0].Value);
-                double c1 = Convert.ToDouble(row.Cells[1].Value);
-                double c2 = Convert.ToDouble(row.Cells[2].Value);
-                double c3 = Convert.ToDouble(row.Cells[3].Value);
-                double c4 = Convert.ToDouble(row.Cells[4].Value);
-    
-                string label = (row.Index + 1).ToString();
+                var row = _stepRows[i];
+                string label = (i + 1).ToString();
 
-                int p1 = demagChart.Series["Demag"].Points.AddXY(c0, c4);
+                int p1 = demagChart.Series["Demag"].Points.AddXY(row.H, row.NRM);
                 demagChart.Series["Demag"].Points[p1].Label = label;
 
-                int p2 = ZiChart.Series["YX"].Points.AddXY(c2, c1);
+                int p2 = ZiChart.Series["YX"].Points.AddXY(row.Y, row.X);
                 ZiChart.Series["YX"].Points[p2].Label = label;
 
-                int p3 = ZiChart.Series["YmZ"].Points.AddXY(-c3, c1);
+                int p3 = ZiChart.Series["YmZ"].Points.AddXY(-row.Z, row.X);
                 ZiChart.Series["YmZ"].Points[p3].Label = label;
 
-                int p4 = ZiChart.Series["YmX"].Points.AddXY(c2, c1);
+                int p4 = ZiChart.Series["YmX"].Points.AddXY(row.Y, row.X);
                 ZiChart.Series["YmX"].Points[p4].Label = label;
 
-                int p5 = ZiChart.Series["ZX"].Points.AddXY(c2, -c3);
+                int p5 = ZiChart.Series["ZX"].Points.AddXY(row.Y, -row.Z);
                 ZiChart.Series["ZX"].Points[p5].Label = label;
             }
 
             AutoAxis(demagChart, 0);
 
-
-
-            if (demagChart.ChartAreas[0].AxisX.Minimum < 0) { demagChart.ChartAreas[0].AxisX.Minimum = 0; }
-            if(demagChart.ChartAreas[0].AxisY.Minimum < 0) { demagChart.ChartAreas[0].AxisY.Minimum = 0; }
+            if (demagChart.ChartAreas[0].AxisX.Minimum < 0) demagChart.ChartAreas[0].AxisX.Minimum = 0;
+            if (demagChart.ChartAreas[0].AxisY.Minimum < 0) demagChart.ChartAreas[0].AxisY.Minimum = 0;
 
             AutoAxis(ZiChart, 0);
             AutoAxis(ZiChart, 1);
         }
-        
+
 
         private void plotRMG()
         {
             ARMChart.Series[0].Points.Clear();
             ARMChart.Series[1].Points.Clear();
 
-            foreach (DataGridViewRow row in MainTable.Rows)
+            for (int i = 0; i < _stepRows.Count; i++)
             {
-                if (row.IsNewRow) continue;
+                var row = _stepRows[i];
+                string label = (i+1).ToString();
 
-                double x = Convert.ToDouble(row.Cells[0].Value);
-                double y1 = Convert.ToDouble(row.Cells[5].Value);
-                double y2 = Convert.ToDouble(row.Cells[6].Value);
+                int p0 = ARMChart.Series[0].Points.AddXY(row.H, row.ARMGained);
+                ARMChart.Series[0].Points[p0].Label = label;
 
-                int p0 = ARMChart.Series[0].Points.AddXY(x, y1);
-                ARMChart.Series[0].Points[p0].Label = (row.Index + 1).ToString();
-
-                int p1 = ARMChart.Series[1].Points.AddXY(x, y2);
-                ARMChart.Series[1].Points[p1].Label = (row.Index + 1).ToString();
+                int p1 = ARMChart.Series[1].Points.AddXY(row.H, row.ARMLeft);
+                ARMChart.Series[1].Points[p1].Label = label;
             }
+
             AutoAxis(ARMChart, 0);
 
             if (ARMChart.ChartAreas[0].AxisX.Minimum < 0) { ARMChart.ChartAreas[0].AxisX.Minimum = 0; }
         }
 
+        private static string NormalizeLine(string line)
+        {
+            while (line.Contains("  ")) line = line.Replace("  ", " ");
+            while (line.Contains("\t\t")) line = line.Replace("\t\t", "\t");
+            while (line.Contains("\t ")) line = line.Replace("\t ", "\t");
+            while (line.Contains(" \t")) line = line.Replace(" \t", "\t");
+            line = line.Replace(",", ".");
+            return line.Trim();
+        }
+
         private void loadPMD(string path)
         {
             int ni = 0;
+            int initiall_count = _stepRows.Count;
+
+            char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+            NumberFormatInfo provider = new NumberFormatInfo();
+            provider.NumberDecimalSeparator = ".";
 
             try
             {
-                string[] lines = System.IO.File.ReadAllLines(path);
+                string[] lines = File.ReadAllLines(path);
 
-                (int MLines, int Lbegin) = countDM(lines);
-
-                NumberFormatInfo provider = new NumberFormatInfo();
-                provider.NumberDecimalSeparator = ".";
-
-                if (MainTable.RowCount != MLines && MainTable.RowCount > 0)
+                foreach (string rawLine in lines.Skip(2))
                 {
-                    MessageBox.Show("Different steps!");
-                    return;
-                }
+                    if (string.IsNullOrWhiteSpace(rawLine) || rawLine.Length <= 2)
+                        continue;
 
-                if (MainTable.RowCount > 0)
-                {
-                    double H = 0, X = 0, Y = 0, Z = 0, NRM = 0;
+                    string line = NormalizeLine(rawLine);
+                    string[] parts = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    for (int i = 0; i < MLines; i++)
+                    if (parts[1] == "Xc")
+                        continue;
+
+                    double H = 0, X = 0, Y = 0, Z = 0;                    
+
+                    H = double.Parse(parts[0].Substring(parts[0].IndexOfAny(digits)), System.Globalization.NumberStyles.Float, provider);
+                    X = double.Parse(parts[1], System.Globalization.NumberStyles.Float, provider);
+                    Y = double.Parse(parts[2], System.Globalization.NumberStyles.Float, provider);
+                    Z = double.Parse(parts[3], System.Globalization.NumberStyles.Float, provider);
+
+                    if (initiall_count == 0)
                     {
-                        ni = i;
+                        var step = new MeasurementRow
+                        {
+                            H = H,
+                            X = X,
+                            Y = Y,
+                            Z = Z
+                        };
 
-                        while (lines[Lbegin + i].Contains("  ")) { lines[Lbegin + i] = lines[Lbegin + i].Replace("  ", " "); }
-                        while (lines[Lbegin + i].Contains("\t\t")) { lines[Lbegin + i] = lines[Lbegin + i].Replace("\t\t", "\t"); }
-                        while (lines[Lbegin + i].Contains("\t ")) { lines[Lbegin + i] = lines[Lbegin + i].Replace("\t ", "\t"); }
-                        while (lines[Lbegin + i].Contains(" \t")) { lines[Lbegin + i] = lines[Lbegin + i].Replace(" \t", "\t"); }
-                        while (lines[Lbegin + i].Contains(",")) { lines[Lbegin + i] = lines[Lbegin + i].Replace(",", "."); }
+                        step.RecalculateNrm();
 
-                        string[] line = lines[Lbegin + i].Split(new[] { ' ', '\t' });
+                        _stepRows.Add(step);
+                    }
+                    else
+                    {
+                        var step = _stepRows[ni];
 
-                        H = double.Parse(line[0].Substring(1), System.Globalization.NumberStyles.Float, provider);
-                        X = double.Parse(line[1], System.Globalization.NumberStyles.Float, provider);
-                        Y = double.Parse(line[2], System.Globalization.NumberStyles.Float, provider);
-                        Z = double.Parse(line[3], System.Globalization.NumberStyles.Float, provider);
-                        //NRM = double.Parse(line[4], System.Globalization.NumberStyles.Float, provider);
+                        step.H = H; step.X = X; step.Y = Y; step.Z = Z;
 
-                        NRM = Math.Sqrt(X*X+Y*Y+Z*Z)*1000;
-
-                        MainTable.Rows[i].Cells[0].Value = H;
-                        MainTable.Rows[i].Cells[1].Value = X;
-                        MainTable.Rows[i].Cells[2].Value = Y;
-                        MainTable.Rows[i].Cells[3].Value = Z;
-                        MainTable.Rows[i].Cells[4].Value = NRM;
-
-                        //plotPMD(H, X, Y, Z, NRM);
-
+                        step.RecalculateNrm();
                     }
 
-                    plotRMG();
-                    plotNRM();
+                    ni++;
                 }
-                else
-                {
-                    double H = 0, X = 0, Y = 0, Z = 0, NRM = 0;
-
-                    for (int i = 0; i < MLines; i++)
-                    {
-                        ni = i;
-
-                        while (lines[Lbegin + i].Contains("  ")) { lines[Lbegin + i] = lines[Lbegin + i].Replace("  ", " "); }
-                        while (lines[Lbegin + i].Contains("\t\t")) { lines[Lbegin + i] = lines[Lbegin + i].Replace("\t\t", "\t"); }
-                        while (lines[Lbegin + i].Contains("\t ")) { lines[Lbegin + i] = lines[Lbegin + i].Replace("\t ", "\t"); }
-                        while (lines[Lbegin + i].Contains(" \t")) { lines[Lbegin + i] = lines[Lbegin + i].Replace(" \t", "\t"); }
-                        while (lines[Lbegin + i].Contains(",")) { lines[Lbegin + i] = lines[Lbegin + i].Replace(",", "."); }
-
-                        string[] line = lines[Lbegin + i].Split(new[] { ' ', '\t' });
-
-                        H = double.Parse(line[0].Substring(1), System.Globalization.NumberStyles.Float, provider);
-                        X = double.Parse(line[1], System.Globalization.NumberStyles.Float, provider);
-                        Y = double.Parse(line[2], System.Globalization.NumberStyles.Float, provider);
-                        Z = double.Parse(line[3], System.Globalization.NumberStyles.Float, provider);
-                        //NRM = double.Parse(line[4], System.Globalization.NumberStyles.Float, provider);
-
-                        NRM = Math.Sqrt(X * X + Y * Y + Z * Z)*1000;
-
-                        MainTable.Rows.Add(H,X,Y,Z,NRM,0,0);
-                        //plotPMD(H, X, Y, Z, NRM);
-
-                    }
-                    plotNRM();
-                }
-
+                plotNRM();
+                plotRMG();
             }
-            catch 
-            {
-                MessageBox.Show("Error while reading file at line " + (ni + 1).ToString());
-            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString(), "Import error"); }
         }
 
         private (int, int, int, int) countRMG(string[] lines)
@@ -667,6 +662,8 @@ namespace Thellier
                 if (fileDialog.ShowDialog() == DialogResult.OK)
                 {
                     loadPMD(fileDialog.FileName);
+                    MainTable.Refresh();
+                    //RefreshMainTable();
                     pmd_label.Text = Path.GetFileNameWithoutExtension(fileDialog.FileName);
                 }
             }
@@ -1040,6 +1037,21 @@ namespace Thellier
         private void import_wizzard_Button_Click(object sender, EventArgs e)
         {
 
+        }
+    }
+    public class MeasurementRow
+    {
+        public double H { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
+        public double NRM { get; set; }
+        public double ARMGained { get; set; }
+        public double ARMLeft { get; set; }
+
+        public void RecalculateNrm()
+        {
+            NRM = Math.Sqrt(X * X + Y * Y + Z * Z) * 1000.0;
         }
     }
     public class FileContext

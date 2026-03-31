@@ -18,6 +18,8 @@ namespace Thellier
     {
         private readonly DataGridView _mainTable;
 
+        
+
         double b_DEMAG = 0, b_AraiNagata = 0, b_ARM = 0;
         double sigma_b_DEMAG = 0, sigma_b_AraiNagata = 0, sigma_b_ARM = 0;
         double sigma_resid_DEMAG = 0, sigma_resid_AraiNagata = 0, sigma_resid_ARM = 0;
@@ -43,7 +45,7 @@ namespace Thellier
             _fileContext = fileContext;
             RefreshFromContext();
         }
-
+        
         private bool IsPlaceholder(System.Windows.Forms.TextBox tb)
         {
             return tb.Text == (string)tb.Tag;
@@ -771,4 +773,5 @@ namespace Thellier
             plotFitting();
         }
     }
+    
 }
