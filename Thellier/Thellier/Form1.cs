@@ -395,6 +395,14 @@ namespace Thellier
             return line.Trim();
         }
 
+        private static double ParseCleanDouble(string input, NumberFormatInfo provider)
+        {
+            string token = input.Trim();
+            token = token.TrimStart('.', ',', ';', ':');
+
+            return double.Parse(token, NumberStyles.Float, provider);
+        }
+
         private void loadPMD(string path)
         {
             int ni = 0;
@@ -420,12 +428,12 @@ namespace Thellier
                     if (parts[1] == "Xc")
                         continue;
 
-                    double H = 0, X = 0, Y = 0, Z = 0;                    
+                    double H = 0, X = 0, Y = 0, Z = 0;
 
-                    H = double.Parse(parts[0].Substring(parts[0].IndexOfAny(digits)), System.Globalization.NumberStyles.Float, provider);
-                    X = double.Parse(parts[1], System.Globalization.NumberStyles.Float, provider);
-                    Y = double.Parse(parts[2], System.Globalization.NumberStyles.Float, provider);
-                    Z = double.Parse(parts[3], System.Globalization.NumberStyles.Float, provider);
+                    H = ParseCleanDouble(parts[0].Substring(parts[0].IndexOfAny(digits)), provider);
+                    X = ParseCleanDouble(parts[1], provider);
+                    Y = ParseCleanDouble(parts[2], provider);
+                    Z = ParseCleanDouble(parts[3], provider);
 
                     if (initiall_count == 0)
                     {
@@ -458,14 +466,271 @@ namespace Thellier
             catch (Exception ex) { MessageBox.Show(ex.ToString(), "Import error"); }
         }
 
+        private void loadRMG(string path)
+        {
+            int ni = 0;
+            int initiall_count = _stepRows.Count;
+
+            char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+            List<double> _gainedPoints = new List<double> { };
+            List<double> _leftPoints = new List<double> { };
+
+            NumberFormatInfo provider = new NumberFormatInfo();
+            provider.NumberDecimalSeparator = ".";
+
+            try
+            {
+                string[] lines = File.ReadAllLines(path);
+
+                foreach (string rawLine in lines.Skip(2))
+                {
+                    if (string.IsNullOrWhiteSpace(rawLine) || rawLine.Length <= 2)
+                        continue;
+
+                    string line = NormalizeLine(rawLine);
+                    var parts = line.Split(new[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries)
+                        .Where(p => p.Any(char.IsLetterOrDigit))
+                        .ToArray();
+
+                    if (parts[0].StartsWith("Instrument:") || parts[0].StartsWith("Time:"))
+                        continue;
+
+                    if (parts[0].StartsWith("NRM") || parts[0].StartsWith("AFmax"))
+                    {
+                        _gainedPoints.Add(ParseCleanDouble(parts[5], provider)); 
+                        continue;
+                    }
+
+                    if (parts[0].StartsWith("ARM"))
+                    {
+                        _gainedPoints.Add(ParseCleanDouble(parts[5], provider));
+                        continue;
+                    }
+
+                    if (parts[0].StartsWith("AF") || parts[0].StartsWith("AFz"))
+                    {
+                        _leftPoints.Add(ParseCleanDouble(parts[5], provider));
+                        continue;
+                    }
+                    
+                }
+
+                if(_leftPoints.Count != _gainedPoints.Count - 1)
+                    throw new InvalidOperationException("RMG file is inconsistent: ARM gained and ARM left counts differ.");
+                                
+                if (initiall_count == 0)
+                {
+                    var step_first = new MeasurementRow
+                    {
+                        ARMGained = _gainedPoints[0],
+                        ARMLeft = _gainedPoints.Last()
+                    };
+
+                    _stepRows.Add(step_first);
+
+                    for (int i = 0; i < _leftPoints.Count; i++)
+                    {
+                        var step = new MeasurementRow
+                        {
+                            ARMGained = _gainedPoints[i+1],
+                            ARMLeft = _leftPoints[i]
+                        };
+
+                        _stepRows.Add(step);
+                    }
+                }
+                else
+                {                  
+                    _stepRows[0].ARMGained = _gainedPoints[0];
+                    _stepRows[0].ARMLeft = _gainedPoints.Last();
+
+                    for(int i = 1; i < _stepRows.Count; i++)
+                    {
+                        _stepRows[i].ARMGained = _gainedPoints[i];
+                        _stepRows[i].ARMLeft = _leftPoints[i-1];
+                    }
+                }                
+
+                plotNRM();
+                plotRMG();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Import error"); }
+        }
+
+        /*  private void loadRMG(string path)
+          {
+              int ni = 0;
+
+              try
+              {
+                  string[] lines = System.IO.File.ReadAllLines(path);
+
+                  (int ARMbeg, int ARMLength, int AFzbeg, int AFzLength) = countRMG(lines);
+
+                  if (ARMLength != AFzLength)
+                  {
+                      MessageBox.Show("Different AFz and ARM!");
+                      return;
+                  }
+
+                  NumberFormatInfo provider = new NumberFormatInfo();
+                  provider.NumberDecimalSeparator = ".";
+
+                  if (MainTable.RowCount != ARMLength + 1 && MainTable.RowCount > 0)
+                  {
+                      MessageBox.Show("Different steps!");
+                      return;
+                  }
+
+                  if (MainTable.RowCount > 0)
+                  {
+                      while (lines[ARMbeg - 1].Contains("  ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("  ", " ");
+                      while (lines[ARMbeg - 1].Contains("\t\t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t\t", "\t");
+                      while (lines[ARMbeg - 1].Contains("\t ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t ", "\t");
+                      while (lines[ARMbeg - 1].Contains(" \t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" \t", "\t");
+                      while (lines[ARMbeg - 1].Contains(" , ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" , ", "\t");
+                      lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(',', ' ');
+
+                      while (lines[ARMbeg + ARMLength - 1].Contains("  ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("  ", " ");
+                      while (lines[ARMbeg + ARMLength - 1].Contains("\t\t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t\t", "\t");
+                      while (lines[ARMbeg + ARMLength - 1].Contains("\t ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t ", "\t");
+                      while (lines[ARMbeg + ARMLength - 1].Contains(" \t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" \t", "\t");
+                      while (lines[ARMbeg + ARMLength - 1].Contains(" , ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" , ", "\t");
+                      lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(',', ' ');
+
+                      string[] lineARM_0 = lines[ARMbeg - 1]
+                              .Trim()
+                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+                      string[] lineAFZ_0 = lines[ARMbeg + ARMLength - 1]
+                              .Trim()
+                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+                      MainTable.Rows[0].Cells[5].Value = double.Parse(lineARM_0[5], NumberStyles.Float, provider);
+                      MainTable.Rows[0].Cells[6].Value = double.Parse(lineAFZ_0[5], NumberStyles.Float, provider);
+
+                      double ARMgained = 0, ARMLeft = 0;
+
+                      for (int i = 0; i < ARMLength; i++)
+                      {
+                          ni = i;
+
+                          while (lines[ARMbeg + i].Contains("  ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("  ", " ");
+                          while (lines[ARMbeg + i].Contains("\t\t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t\t", "\t");
+                          while (lines[ARMbeg + i].Contains("\t ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t ", "\t");
+                          while (lines[ARMbeg + i].Contains(" \t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" \t", "\t");
+                          while (lines[ARMbeg + i].Contains(" , ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" , ", "\t");
+                          lines[ARMbeg + i] = lines[ARMbeg + i].Replace(',', ' ');
+
+                          while (lines[AFzbeg + i].Contains("  ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("  ", " ");
+                          while (lines[AFzbeg + i].Contains("\t\t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t\t", "\t");
+                          while (lines[AFzbeg + i].Contains("\t ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t ", "\t");
+                          while (lines[AFzbeg + i].Contains(" \t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" \t", "\t");
+                          while (lines[AFzbeg + i].Contains(" , ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" , ", "\t");
+                          lines[AFzbeg + i] = lines[AFzbeg + i].Replace(',', ' ');
+
+                          string[] lineARM = lines[ARMbeg + i]
+                              .Trim()
+                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+                          string[] lineAFZ = lines[AFzbeg + i]
+                              .Trim()
+                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+                          if (lineARM.Length <= 5 || lineAFZ.Length <= 5)
+                              continue;
+
+                          ARMgained = double.Parse(lineARM[5], NumberStyles.Float, provider);
+                          ARMLeft = double.Parse(lineAFZ[5], NumberStyles.Float, provider);
+
+                          MainTable.Rows[i+1].Cells[5].Value = ARMgained;
+                          MainTable.Rows[i+1].Cells[6].Value = ARMLeft;
+                      }
+
+                      plotRMG();
+                  }
+                  else
+                  {
+
+                      while (lines[ARMbeg - 1].Contains("  ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("  ", " ");
+                      while (lines[ARMbeg - 1].Contains("\t\t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t\t", "\t");
+                      while (lines[ARMbeg - 1].Contains("\t ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t ", "\t");
+                      while (lines[ARMbeg - 1].Contains(" \t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" \t", "\t");
+                      while (lines[ARMbeg - 1].Contains(" , ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" , ", "\t");
+                      lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(',', ' ');
+
+                      while (lines[ARMbeg + ARMLength - 1].Contains("  ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("  ", " ");
+                      while (lines[ARMbeg + ARMLength - 1].Contains("\t\t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t\t", "\t");
+                      while (lines[ARMbeg + ARMLength - 1].Contains("\t ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t ", "\t");
+                      while (lines[ARMbeg + ARMLength - 1].Contains(" \t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" \t", "\t");
+                      while (lines[ARMbeg + ARMLength - 1].Contains(" , ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" , ", "\t");
+                      lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(',', ' ');
+
+                      string[] lineARM_0 = lines[ARMbeg - 1]
+                              .Trim()
+                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+                      string[] lineAFZ_0 = lines[ARMbeg + ARMLength - 1]
+                              .Trim()
+                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+                      MainTable.Rows.Add(0, 0, 0, 0, 0, double.Parse(lineARM_0[5], NumberStyles.Float, provider),
+                          double.Parse(lineAFZ_0[5], NumberStyles.Float, provider));
+
+                      double ARMgained = 0, ARMLeft = 0;
+
+                      for (int i = 0; i < ARMLength; i++)
+                      {
+                          ni = i;
+
+                          while (lines[ARMbeg + i].Contains("  ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("  ", " ");
+                          while (lines[ARMbeg + i].Contains("\t\t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t\t", "\t");
+                          while (lines[ARMbeg + i].Contains("\t ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t ", "\t");
+                          while (lines[ARMbeg + i].Contains(" \t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" \t", "\t");
+                          while (lines[ARMbeg + i].Contains(" , ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" , ", "\t");
+                          lines[ARMbeg + i] = lines[ARMbeg + i].Replace(',', ' '); 
+
+                          while (lines[AFzbeg + i].Contains("  ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("  ", " ");
+                          while (lines[AFzbeg + i].Contains("\t\t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t\t", "\t");
+                          while (lines[AFzbeg + i].Contains("\t ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t ", "\t");
+                          while (lines[AFzbeg + i].Contains(" \t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" \t", "\t");
+                          while (lines[AFzbeg + i].Contains(" , ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" , ", "\t");
+                          lines[AFzbeg + i] = lines[AFzbeg + i].Replace(',', ' '); 
+
+                          string[] lineARM = lines[ARMbeg + i]
+                              .Trim()
+                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+                          string[] lineAFZ = lines[AFzbeg + i]
+                              .Trim()
+                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+                          if (lineARM.Length <= 5 || lineAFZ.Length <= 5)
+                              continue;
+
+                          ARMgained = double.Parse(lineARM[5], NumberStyles.Float, provider);
+                          ARMLeft = double.Parse(lineAFZ[5], NumberStyles.Float, provider);
+
+                          MainTable.Rows.Add(0, 0, 0, 0, 0, ARMgained, ARMLeft);
+                      }
+                  }
+
+              }
+              catch 
+              {
+                  MessageBox.Show("Error while reading file at line " + (ni + 1).ToString());
+              }
+          }*/
+
         private (int, int, int, int) countRMG(string[] lines)
         {
             int ARMbeg = -1;
             int ARMLength = 0;
             int AFzbeg = -1;
             int AFzLength = 0;
-            
-            for (int i = 0; i<lines.Length; i++)
+
+            for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i].Trim();
 
@@ -484,172 +749,6 @@ namespace Thellier
 
             return (ARMbeg, ARMLength, AFzbeg, AFzLength);
         }
-
-        private void loadRMG(string path)
-        {
-            int ni = 0;
-
-            try
-            {
-                string[] lines = System.IO.File.ReadAllLines(path);
-
-                (int ARMbeg, int ARMLength, int AFzbeg, int AFzLength) = countRMG(lines);
-
-                if (ARMLength != AFzLength)
-                {
-                    MessageBox.Show("Different AFz and ARM!");
-                    return;
-                }
-
-                NumberFormatInfo provider = new NumberFormatInfo();
-                provider.NumberDecimalSeparator = ".";
-
-                if (MainTable.RowCount != ARMLength + 1 && MainTable.RowCount > 0)
-                {
-                    MessageBox.Show("Different steps!");
-                    return;
-                }
-
-                if (MainTable.RowCount > 0)
-                {
-                    while (lines[ARMbeg - 1].Contains("  ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("  ", " ");
-                    while (lines[ARMbeg - 1].Contains("\t\t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t\t", "\t");
-                    while (lines[ARMbeg - 1].Contains("\t ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t ", "\t");
-                    while (lines[ARMbeg - 1].Contains(" \t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" \t", "\t");
-                    while (lines[ARMbeg - 1].Contains(" , ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" , ", "\t");
-                    lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(',', ' ');
-
-                    while (lines[ARMbeg + ARMLength - 1].Contains("  ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("  ", " ");
-                    while (lines[ARMbeg + ARMLength - 1].Contains("\t\t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t\t", "\t");
-                    while (lines[ARMbeg + ARMLength - 1].Contains("\t ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t ", "\t");
-                    while (lines[ARMbeg + ARMLength - 1].Contains(" \t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" \t", "\t");
-                    while (lines[ARMbeg + ARMLength - 1].Contains(" , ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" , ", "\t");
-                    lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(',', ' ');
-
-                    string[] lineARM_0 = lines[ARMbeg - 1]
-                            .Trim()
-                            .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    string[] lineAFZ_0 = lines[ARMbeg + ARMLength - 1]
-                            .Trim()
-                            .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    MainTable.Rows[0].Cells[5].Value = double.Parse(lineARM_0[5], NumberStyles.Float, provider);
-                    MainTable.Rows[0].Cells[6].Value = double.Parse(lineAFZ_0[5], NumberStyles.Float, provider);
-
-                    double ARMgained = 0, ARMLeft = 0;
-
-                    for (int i = 0; i < ARMLength; i++)
-                    {
-                        ni = i;
-
-                        while (lines[ARMbeg + i].Contains("  ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("  ", " ");
-                        while (lines[ARMbeg + i].Contains("\t\t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t\t", "\t");
-                        while (lines[ARMbeg + i].Contains("\t ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t ", "\t");
-                        while (lines[ARMbeg + i].Contains(" \t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" \t", "\t");
-                        while (lines[ARMbeg + i].Contains(" , ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" , ", "\t");
-                        lines[ARMbeg + i] = lines[ARMbeg + i].Replace(',', ' ');
-
-                        while (lines[AFzbeg + i].Contains("  ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("  ", " ");
-                        while (lines[AFzbeg + i].Contains("\t\t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t\t", "\t");
-                        while (lines[AFzbeg + i].Contains("\t ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t ", "\t");
-                        while (lines[AFzbeg + i].Contains(" \t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" \t", "\t");
-                        while (lines[AFzbeg + i].Contains(" , ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" , ", "\t");
-                        lines[AFzbeg + i] = lines[AFzbeg + i].Replace(',', ' ');
-
-                        string[] lineARM = lines[ARMbeg + i]
-                            .Trim()
-                            .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                        string[] lineAFZ = lines[AFzbeg + i]
-                            .Trim()
-                            .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                        if (lineARM.Length <= 5 || lineAFZ.Length <= 5)
-                            continue;
-
-                        ARMgained = double.Parse(lineARM[5], NumberStyles.Float, provider);
-                        ARMLeft = double.Parse(lineAFZ[5], NumberStyles.Float, provider);
-
-                        MainTable.Rows[i+1].Cells[5].Value = ARMgained;
-                        MainTable.Rows[i+1].Cells[6].Value = ARMLeft;
-                    }
-
-                    plotRMG();
-                }
-                else
-                {
-
-                    while (lines[ARMbeg - 1].Contains("  ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("  ", " ");
-                    while (lines[ARMbeg - 1].Contains("\t\t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t\t", "\t");
-                    while (lines[ARMbeg - 1].Contains("\t ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t ", "\t");
-                    while (lines[ARMbeg - 1].Contains(" \t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" \t", "\t");
-                    while (lines[ARMbeg - 1].Contains(" , ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" , ", "\t");
-                    lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(',', ' ');
-
-                    while (lines[ARMbeg + ARMLength - 1].Contains("  ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("  ", " ");
-                    while (lines[ARMbeg + ARMLength - 1].Contains("\t\t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t\t", "\t");
-                    while (lines[ARMbeg + ARMLength - 1].Contains("\t ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t ", "\t");
-                    while (lines[ARMbeg + ARMLength - 1].Contains(" \t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" \t", "\t");
-                    while (lines[ARMbeg + ARMLength - 1].Contains(" , ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" , ", "\t");
-                    lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(',', ' ');
-
-                    string[] lineARM_0 = lines[ARMbeg - 1]
-                            .Trim()
-                            .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    string[] lineAFZ_0 = lines[ARMbeg + ARMLength - 1]
-                            .Trim()
-                            .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    MainTable.Rows.Add(0, 0, 0, 0, 0, double.Parse(lineARM_0[5], NumberStyles.Float, provider),
-                        double.Parse(lineAFZ_0[5], NumberStyles.Float, provider));
-
-                    double ARMgained = 0, ARMLeft = 0;
-
-                    for (int i = 0; i < ARMLength; i++)
-                    {
-                        ni = i;
-
-                        while (lines[ARMbeg + i].Contains("  ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("  ", " ");
-                        while (lines[ARMbeg + i].Contains("\t\t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t\t", "\t");
-                        while (lines[ARMbeg + i].Contains("\t ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t ", "\t");
-                        while (lines[ARMbeg + i].Contains(" \t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" \t", "\t");
-                        while (lines[ARMbeg + i].Contains(" , ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" , ", "\t");
-                        lines[ARMbeg + i] = lines[ARMbeg + i].Replace(',', ' '); 
-
-                        while (lines[AFzbeg + i].Contains("  ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("  ", " ");
-                        while (lines[AFzbeg + i].Contains("\t\t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t\t", "\t");
-                        while (lines[AFzbeg + i].Contains("\t ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t ", "\t");
-                        while (lines[AFzbeg + i].Contains(" \t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" \t", "\t");
-                        while (lines[AFzbeg + i].Contains(" , ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" , ", "\t");
-                        lines[AFzbeg + i] = lines[AFzbeg + i].Replace(',', ' '); 
-
-                        string[] lineARM = lines[ARMbeg + i]
-                            .Trim()
-                            .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                        string[] lineAFZ = lines[AFzbeg + i]
-                            .Trim()
-                            .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                        if (lineARM.Length <= 5 || lineAFZ.Length <= 5)
-                            continue;
-
-                        ARMgained = double.Parse(lineARM[5], NumberStyles.Float, provider);
-                        ARMLeft = double.Parse(lineAFZ[5], NumberStyles.Float, provider);
-
-                        MainTable.Rows.Add(0, 0, 0, 0, 0, ARMgained, ARMLeft);
-                    }
-                }
-
-            }
-            catch 
-            {
-                MessageBox.Show("Error while reading file at line " + (ni + 1).ToString());
-            }
-        }
-
         private void toolStripButton_openPMD_Click(object sender, EventArgs e)
         {
             using (var fileDialog = new OpenFileDialog())
@@ -681,6 +780,7 @@ namespace Thellier
                 if (fileDialog.ShowDialog() == DialogResult.OK)
                 {
                     loadRMG(fileDialog.FileName);
+                    MainTable.Refresh();
                     rmg_label.Text = Path.GetFileNameWithoutExtension(fileDialog.FileName);
                 }
             }
