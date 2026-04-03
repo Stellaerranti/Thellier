@@ -16,9 +16,9 @@ namespace Thellier
 {
     public partial class Form2 : Form
     {
-        private readonly DataGridView _mainTable;
+        private readonly BindingList<MeasurementRow> _stepRows;
 
-        
+
 
         double b_DEMAG = 0, b_AraiNagata = 0, b_ARM = 0;
         double sigma_b_DEMAG = 0, sigma_b_AraiNagata = 0, sigma_b_ARM = 0;
@@ -34,10 +34,10 @@ namespace Thellier
         private readonly FileContext _fileContext;
 
         double intercept_DEMAG = 0, intercept_AraiNagata = 0, intercept_ARM = 0;
-        public Form2(DataGridView mainTable, FileContext fileContext)
+        public Form2(BindingList<MeasurementRow> stepRows, FileContext fileContext)
         {
             InitializeComponent();
-            _mainTable = mainTable;
+            _stepRows = stepRows;
 
             RefreshFromMain();
             AddPlaceholder(points_textBox, "1 - 4");
@@ -161,6 +161,11 @@ namespace Thellier
         private void exportARMToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ExportChart(ARMARMchart, "ARM");
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
 
         public void RefreshFromContext()
@@ -366,25 +371,18 @@ namespace Thellier
             ARMARMchart.Series[0].Points.Clear();
             AraiNagatachart.Series[0].Points.Clear();
 
-            foreach (DataGridViewRow row in _mainTable.Rows)
+            for (int i = 0; i < _stepRows.Count; i++)
             {
-                if (row.IsNewRow) continue;
+                string label = (i + 1).ToString();
 
-                string label = (row.Index + 1).ToString();
-
-                double NRM = Convert.ToDouble(row.Cells[4].Value);
-                double ARMgained = Convert.ToDouble(row.Cells[5].Value);
-                double ARMleft = Convert.ToDouble(row.Cells[6].Value);
-
-                int p1 = DemagDemagChart.Series[0].Points.AddXY(NRM, ARMleft);
+                int p1 = DemagDemagChart.Series[0].Points.AddXY(_stepRows[i].NRM, _stepRows[i].ARMLeft);
                 DemagDemagChart.Series[0].Points[p1].Label = label;
 
-                int p2 = AraiNagatachart.Series[0].Points.AddXY(ARMgained, NRM);
+                int p2 = AraiNagatachart.Series[0].Points.AddXY(_stepRows[i].ARMGained, _stepRows[i].NRM);
                 AraiNagatachart.Series[0].Points[p2].Label = label;
 
-                int p3 = ARMARMchart.Series[0].Points.AddXY(ARMgained, ARMleft);
+                int p3 = ARMARMchart.Series[0].Points.AddXY(_stepRows[i].ARMGained, _stepRows[i].ARMLeft);
                 ARMARMchart.Series[0].Points[p3].Label = label;
-
             }
 
             AutoAxis(DemagDemagChart, 0);
@@ -398,7 +396,7 @@ namespace Thellier
 
         public void RefreshFromMain()
         {
-            if (_mainTable == null) return;
+            if (_stepRows == null) return;
 
             DrawMainChart();
         }
@@ -506,21 +504,18 @@ namespace Thellier
             double yDemag = 0, yArai = 0, yARM = 0;
 
             double n = 0;
+            
 
             for (int i = start; i < end; i++)
             {
-                double NRM = Convert.ToDouble(_mainTable.Rows[i].Cells[4].Value);
-                double ARMgained = Convert.ToDouble(_mainTable.Rows[i].Cells[5].Value);
-                double ARMleft = Convert.ToDouble(_mainTable.Rows[i].Cells[6].Value);
+                xDemag += _stepRows[i].NRM;
+                yDemag += _stepRows[i].ARMLeft;
 
-                xDemag += NRM;
-                yDemag += ARMleft;
+                xArai += _stepRows[i].ARMGained;
+                yArai += _stepRows[i].NRM;
 
-                xArai += ARMgained;
-                yArai += NRM;
-
-                xARM += ARMgained;
-                yARM += ARMleft;
+                xARM += _stepRows[i].ARMGained;
+                yARM += _stepRows[i].ARMLeft;
 
                 n++;
             }
@@ -540,9 +535,9 @@ namespace Thellier
 
             for (int i = start; i < end; i++)
             {
-                double NRM = Convert.ToDouble(_mainTable.Rows[i].Cells[4].Value);
-                double ARMgained = Convert.ToDouble(_mainTable.Rows[i].Cells[5].Value);
-                double ARMleft = Convert.ToDouble(_mainTable.Rows[i].Cells[6].Value);
+                double NRM = _stepRows[i].NRM;
+                double ARMgained = _stepRows[i].ARMGained;
+                double ARMleft = _stepRows[i].ARMLeft;
 
                 DEMAG_Numerator += (NRM - xDemag_mean) * (ARMleft - yDemag_mean);
                 xsqDemag += (NRM - xDemag_mean) * (NRM - xDemag_mean);
@@ -584,9 +579,9 @@ namespace Thellier
 
             for (int i = start; i < end; i++)
             {
-                double NRM = Convert.ToDouble(_mainTable.Rows[i].Cells[4].Value);
-                double ARMgained = Convert.ToDouble(_mainTable.Rows[i].Cells[5].Value);
-                double ARMleft = Convert.ToDouble(_mainTable.Rows[i].Cells[6].Value);
+                double NRM = _stepRows[i].NRM;
+                double ARMgained = _stepRows[i].ARMGained;
+                double ARMleft = _stepRows[i].ARMLeft;
 
                 // DEMAG: x = NRM, y = ARMleft
                 xSum_DEMAG += NRM;
@@ -676,9 +671,9 @@ namespace Thellier
             double Syy_AN = ysqSum_AraiNagata - (ySum_AraiNagata * ySum_AraiNagata) / n;
             double Sxy_AN = xySum_AraiNagata - (xSum_AraiNagata * ySum_AraiNagata) / n;
 
-            double NRM_total = Convert.ToDouble(_mainTable.Rows[0].Cells[4].Value);          
-            double NRM_startSeg = Convert.ToDouble(_mainTable.Rows[start].Cells[4].Value);   
-            double NRM_endSeg = Convert.ToDouble(_mainTable.Rows[end - 1].Cells[4].Value);  
+            double NRM_total = _stepRows[0].NRM;          
+            double NRM_startSeg = _stepRows[start].NRM;   
+            double NRM_endSeg = _stepRows[end - 1].NRM;  
 
             f_AraiNagata = (NRM_startSeg - NRM_endSeg) / NRM_total;
 

@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_openPMD = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_openRMG = new System.Windows.Forms.ToolStripButton();
@@ -55,6 +55,13 @@
             this.demagChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.ARMChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.MainTable = new System.Windows.Forms.DataGridView();
+            this.H = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NRM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARMGained = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARMLeft = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Delete_toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -81,13 +88,6 @@
             this.LineNumber_radioButton = new System.Windows.Forms.RadioButton();
             this.Value_radioButton = new System.Windows.Forms.RadioButton();
             this.Remove_residue_button = new System.Windows.Forms.Button();
-            this.H = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NRM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARMGained = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARMLeft = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZiChart)).BeginInit();
@@ -206,29 +206,29 @@
             // 
             // ZiChart
             // 
-            chartArea5.Name = "proj1";
-            chartArea6.Name = "proj2";
-            this.ZiChart.ChartAreas.Add(chartArea5);
-            this.ZiChart.ChartAreas.Add(chartArea6);
+            chartArea1.Name = "proj1";
+            chartArea2.Name = "proj2";
+            this.ZiChart.ChartAreas.Add(chartArea1);
+            this.ZiChart.ChartAreas.Add(chartArea2);
             this.ZiChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ZiChart.Location = new System.Drawing.Point(3, 3);
             this.ZiChart.Name = "ZiChart";
-            series8.ChartArea = "proj1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series8.Name = "YX";
-            series9.ChartArea = "proj1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series9.Name = "YmZ";
-            series10.ChartArea = "proj2";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series10.Name = "YmX";
-            series11.ChartArea = "proj2";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series11.Name = "ZX";
-            this.ZiChart.Series.Add(series8);
-            this.ZiChart.Series.Add(series9);
-            this.ZiChart.Series.Add(series10);
-            this.ZiChart.Series.Add(series11);
+            series1.ChartArea = "proj1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.Name = "YX";
+            series2.ChartArea = "proj1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series2.Name = "YmZ";
+            series3.ChartArea = "proj2";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series3.Name = "YmX";
+            series4.ChartArea = "proj2";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series4.Name = "ZX";
+            this.ZiChart.Series.Add(series1);
+            this.ZiChart.Series.Add(series2);
+            this.ZiChart.Series.Add(series3);
+            this.ZiChart.Series.Add(series4);
             this.ZiChart.Size = new System.Drawing.Size(378, 275);
             this.ZiChart.TabIndex = 0;
             this.ZiChart.Text = "chart1";
@@ -236,38 +236,38 @@
             // 
             // demagChart
             // 
-            chartArea7.Name = "ChartArea1";
-            this.demagChart.ChartAreas.Add(chartArea7);
+            chartArea3.Name = "ChartArea1";
+            this.demagChart.ChartAreas.Add(chartArea3);
             this.demagChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.demagChart.Location = new System.Drawing.Point(387, 3);
             this.demagChart.Name = "demagChart";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series12.Name = "Demag";
-            this.demagChart.Series.Add(series12);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series5.Name = "Demag";
+            this.demagChart.Series.Add(series5);
             this.demagChart.Size = new System.Drawing.Size(378, 275);
             this.demagChart.TabIndex = 1;
             this.demagChart.Text = "chart1";
             // 
             // ARMChart
             // 
-            chartArea8.Name = "ChartArea1";
-            this.ARMChart.ChartAreas.Add(chartArea8);
+            chartArea4.Name = "ChartArea1";
+            this.ARMChart.ChartAreas.Add(chartArea4);
             this.ARMChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.ARMChart.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.ARMChart.Legends.Add(legend1);
             this.ARMChart.Location = new System.Drawing.Point(771, 3);
             this.ARMChart.Name = "ARMChart";
-            series13.ChartArea = "ChartArea1";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series13.Legend = "Legend1";
-            series13.Name = "ARM gained";
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series14.Legend = "Legend1";
-            series14.Name = "ARM left";
-            this.ARMChart.Series.Add(series13);
-            this.ARMChart.Series.Add(series14);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series6.Legend = "Legend1";
+            series6.Name = "ARM gained";
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series7.Legend = "Legend1";
+            series7.Name = "ARM left";
+            this.ARMChart.Series.Add(series6);
+            this.ARMChart.Series.Add(series7);
             this.ARMChart.Size = new System.Drawing.Size(378, 275);
             this.ARMChart.TabIndex = 2;
             this.ARMChart.Text = "chart1";
@@ -294,6 +294,55 @@
             this.MainTable.TabIndex = 3;
             this.MainTable.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.MainTable_CellMouseDown);
             this.MainTable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTable_MouseDown);
+            // 
+            // H
+            // 
+            this.H.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.H.HeaderText = "H";
+            this.H.MinimumWidth = 10;
+            this.H.Name = "H";
+            // 
+            // X
+            // 
+            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.X.HeaderText = "X";
+            this.X.MinimumWidth = 10;
+            this.X.Name = "X";
+            // 
+            // Y
+            // 
+            this.Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Y.HeaderText = "Y";
+            this.Y.MinimumWidth = 10;
+            this.Y.Name = "Y";
+            // 
+            // Z
+            // 
+            this.Z.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Z.HeaderText = "Z";
+            this.Z.MinimumWidth = 10;
+            this.Z.Name = "Z";
+            // 
+            // NRM
+            // 
+            this.NRM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NRM.HeaderText = "NRM";
+            this.NRM.MinimumWidth = 10;
+            this.NRM.Name = "NRM";
+            // 
+            // ARMGained
+            // 
+            this.ARMGained.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ARMGained.HeaderText = "ARM gained";
+            this.ARMGained.MinimumWidth = 10;
+            this.ARMGained.Name = "ARMGained";
+            // 
+            // ARMLeft
+            // 
+            this.ARMLeft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ARMLeft.HeaderText = "AMR left";
+            this.ARMLeft.MinimumWidth = 10;
+            this.ARMLeft.Name = "ARMLeft";
             // 
             // gridContextMenu
             // 
@@ -648,55 +697,6 @@
             this.Remove_residue_button.UseVisualStyleBackColor = true;
             this.Remove_residue_button.Click += new System.EventHandler(this.Remove_residue_button_Click);
             // 
-            // H
-            // 
-            this.H.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.H.HeaderText = "H";
-            this.H.MinimumWidth = 10;
-            this.H.Name = "H";
-            // 
-            // X
-            // 
-            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.X.HeaderText = "X";
-            this.X.MinimumWidth = 10;
-            this.X.Name = "X";
-            // 
-            // Y
-            // 
-            this.Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Y.HeaderText = "Y";
-            this.Y.MinimumWidth = 10;
-            this.Y.Name = "Y";
-            // 
-            // Z
-            // 
-            this.Z.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Z.HeaderText = "Z";
-            this.Z.MinimumWidth = 10;
-            this.Z.Name = "Z";
-            // 
-            // NRM
-            // 
-            this.NRM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NRM.HeaderText = "NRM";
-            this.NRM.MinimumWidth = 10;
-            this.NRM.Name = "NRM";
-            // 
-            // ARMGained
-            // 
-            this.ARMGained.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ARMGained.HeaderText = "ARM gained";
-            this.ARMGained.MinimumWidth = 10;
-            this.ARMGained.Name = "ARMGained";
-            // 
-            // ARMLeft
-            // 
-            this.ARMLeft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ARMLeft.HeaderText = "AMR left";
-            this.ARMLeft.MinimumWidth = 10;
-            this.ARMLeft.Name = "ARMLeft";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,7 +707,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Thellier";
+            this.Text = "Thellier 0.8.7";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);

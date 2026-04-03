@@ -758,7 +758,7 @@ namespace Thellier
         {
             if (_form2 == null || _form2.IsDisposed)
             {
-                _form2 = new Form2(MainTable, _fileContext);
+                _form2 = new Form2(_stepRows, _fileContext);
                 _form2.FormClosing += (s, args) =>
                 {
                     args.Cancel = true;
