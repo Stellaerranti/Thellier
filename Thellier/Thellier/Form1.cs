@@ -468,7 +468,7 @@ namespace Thellier
 
         private void loadRMG(string path)
         {
-            int ni = 0;
+            //int ni = 0;
             int initiall_count = _stepRows.Count;
 
             char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
@@ -558,170 +558,6 @@ namespace Thellier
             catch (Exception ex) { MessageBox.Show(ex.Message, "Import error"); }
         }
 
-        /*  private void loadRMG(string path)
-          {
-              int ni = 0;
-
-              try
-              {
-                  string[] lines = System.IO.File.ReadAllLines(path);
-
-                  (int ARMbeg, int ARMLength, int AFzbeg, int AFzLength) = countRMG(lines);
-
-                  if (ARMLength != AFzLength)
-                  {
-                      MessageBox.Show("Different AFz and ARM!");
-                      return;
-                  }
-
-                  NumberFormatInfo provider = new NumberFormatInfo();
-                  provider.NumberDecimalSeparator = ".";
-
-                  if (MainTable.RowCount != ARMLength + 1 && MainTable.RowCount > 0)
-                  {
-                      MessageBox.Show("Different steps!");
-                      return;
-                  }
-
-                  if (MainTable.RowCount > 0)
-                  {
-                      while (lines[ARMbeg - 1].Contains("  ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("  ", " ");
-                      while (lines[ARMbeg - 1].Contains("\t\t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t\t", "\t");
-                      while (lines[ARMbeg - 1].Contains("\t ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t ", "\t");
-                      while (lines[ARMbeg - 1].Contains(" \t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" \t", "\t");
-                      while (lines[ARMbeg - 1].Contains(" , ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" , ", "\t");
-                      lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(',', ' ');
-
-                      while (lines[ARMbeg + ARMLength - 1].Contains("  ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("  ", " ");
-                      while (lines[ARMbeg + ARMLength - 1].Contains("\t\t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t\t", "\t");
-                      while (lines[ARMbeg + ARMLength - 1].Contains("\t ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t ", "\t");
-                      while (lines[ARMbeg + ARMLength - 1].Contains(" \t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" \t", "\t");
-                      while (lines[ARMbeg + ARMLength - 1].Contains(" , ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" , ", "\t");
-                      lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(',', ' ');
-
-                      string[] lineARM_0 = lines[ARMbeg - 1]
-                              .Trim()
-                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                      string[] lineAFZ_0 = lines[ARMbeg + ARMLength - 1]
-                              .Trim()
-                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                      MainTable.Rows[0].Cells[5].Value = double.Parse(lineARM_0[5], NumberStyles.Float, provider);
-                      MainTable.Rows[0].Cells[6].Value = double.Parse(lineAFZ_0[5], NumberStyles.Float, provider);
-
-                      double ARMgained = 0, ARMLeft = 0;
-
-                      for (int i = 0; i < ARMLength; i++)
-                      {
-                          ni = i;
-
-                          while (lines[ARMbeg + i].Contains("  ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("  ", " ");
-                          while (lines[ARMbeg + i].Contains("\t\t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t\t", "\t");
-                          while (lines[ARMbeg + i].Contains("\t ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t ", "\t");
-                          while (lines[ARMbeg + i].Contains(" \t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" \t", "\t");
-                          while (lines[ARMbeg + i].Contains(" , ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" , ", "\t");
-                          lines[ARMbeg + i] = lines[ARMbeg + i].Replace(',', ' ');
-
-                          while (lines[AFzbeg + i].Contains("  ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("  ", " ");
-                          while (lines[AFzbeg + i].Contains("\t\t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t\t", "\t");
-                          while (lines[AFzbeg + i].Contains("\t ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t ", "\t");
-                          while (lines[AFzbeg + i].Contains(" \t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" \t", "\t");
-                          while (lines[AFzbeg + i].Contains(" , ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" , ", "\t");
-                          lines[AFzbeg + i] = lines[AFzbeg + i].Replace(',', ' ');
-
-                          string[] lineARM = lines[ARMbeg + i]
-                              .Trim()
-                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                          string[] lineAFZ = lines[AFzbeg + i]
-                              .Trim()
-                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                          if (lineARM.Length <= 5 || lineAFZ.Length <= 5)
-                              continue;
-
-                          ARMgained = double.Parse(lineARM[5], NumberStyles.Float, provider);
-                          ARMLeft = double.Parse(lineAFZ[5], NumberStyles.Float, provider);
-
-                          MainTable.Rows[i+1].Cells[5].Value = ARMgained;
-                          MainTable.Rows[i+1].Cells[6].Value = ARMLeft;
-                      }
-
-                      plotRMG();
-                  }
-                  else
-                  {
-
-                      while (lines[ARMbeg - 1].Contains("  ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("  ", " ");
-                      while (lines[ARMbeg - 1].Contains("\t\t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t\t", "\t");
-                      while (lines[ARMbeg - 1].Contains("\t ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace("\t ", "\t");
-                      while (lines[ARMbeg - 1].Contains(" \t")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" \t", "\t");
-                      while (lines[ARMbeg - 1].Contains(" , ")) lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(" , ", "\t");
-                      lines[ARMbeg - 1] = lines[ARMbeg - 1].Replace(',', ' ');
-
-                      while (lines[ARMbeg + ARMLength - 1].Contains("  ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("  ", " ");
-                      while (lines[ARMbeg + ARMLength - 1].Contains("\t\t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t\t", "\t");
-                      while (lines[ARMbeg + ARMLength - 1].Contains("\t ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace("\t ", "\t");
-                      while (lines[ARMbeg + ARMLength - 1].Contains(" \t")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" \t", "\t");
-                      while (lines[ARMbeg + ARMLength - 1].Contains(" , ")) lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(" , ", "\t");
-                      lines[ARMbeg + ARMLength - 1] = lines[ARMbeg + ARMLength - 1].Replace(',', ' ');
-
-                      string[] lineARM_0 = lines[ARMbeg - 1]
-                              .Trim()
-                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                      string[] lineAFZ_0 = lines[ARMbeg + ARMLength - 1]
-                              .Trim()
-                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                      MainTable.Rows.Add(0, 0, 0, 0, 0, double.Parse(lineARM_0[5], NumberStyles.Float, provider),
-                          double.Parse(lineAFZ_0[5], NumberStyles.Float, provider));
-
-                      double ARMgained = 0, ARMLeft = 0;
-
-                      for (int i = 0; i < ARMLength; i++)
-                      {
-                          ni = i;
-
-                          while (lines[ARMbeg + i].Contains("  ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("  ", " ");
-                          while (lines[ARMbeg + i].Contains("\t\t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t\t", "\t");
-                          while (lines[ARMbeg + i].Contains("\t ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace("\t ", "\t");
-                          while (lines[ARMbeg + i].Contains(" \t")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" \t", "\t");
-                          while (lines[ARMbeg + i].Contains(" , ")) lines[ARMbeg + i] = lines[ARMbeg + i].Replace(" , ", "\t");
-                          lines[ARMbeg + i] = lines[ARMbeg + i].Replace(',', ' '); 
-
-                          while (lines[AFzbeg + i].Contains("  ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("  ", " ");
-                          while (lines[AFzbeg + i].Contains("\t\t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t\t", "\t");
-                          while (lines[AFzbeg + i].Contains("\t ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace("\t ", "\t");
-                          while (lines[AFzbeg + i].Contains(" \t")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" \t", "\t");
-                          while (lines[AFzbeg + i].Contains(" , ")) lines[AFzbeg + i] = lines[AFzbeg + i].Replace(" , ", "\t");
-                          lines[AFzbeg + i] = lines[AFzbeg + i].Replace(',', ' '); 
-
-                          string[] lineARM = lines[ARMbeg + i]
-                              .Trim()
-                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                          string[] lineAFZ = lines[AFzbeg + i]
-                              .Trim()
-                              .Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                          if (lineARM.Length <= 5 || lineAFZ.Length <= 5)
-                              continue;
-
-                          ARMgained = double.Parse(lineARM[5], NumberStyles.Float, provider);
-                          ARMLeft = double.Parse(lineAFZ[5], NumberStyles.Float, provider);
-
-                          MainTable.Rows.Add(0, 0, 0, 0, 0, ARMgained, ARMLeft);
-                      }
-                  }
-
-              }
-              catch 
-              {
-                  MessageBox.Show("Error while reading file at line " + (ni + 1).ToString());
-              }
-          }*/
 
         private (int, int, int, int) countRMG(string[] lines)
         {
@@ -815,7 +651,7 @@ namespace Thellier
                 {
                     int line_number = int.Parse(res_input_textBox.Text, NumberStyles.Integer)-1;
 
-                    if (line_number < 0 || line_number >= MainTable.Rows.Count)
+                    if (line_number < 0 || line_number >= _stepRows.Count)
                     {
                         MessageBox.Show("The number is outside the valid range.");
                         return;
@@ -827,91 +663,50 @@ namespace Thellier
                     {
                         if (NRM_radioButton.Checked)
                         {
-                            ValueToExtract = Convert.ToDouble(MainTable.Rows[line_number].Cells[4].Value);
+                            ValueToExtract = _stepRows[line_number].NRM;
                         }
                         else if(ARMgained_radioButton.Checked)
                         {
-                            ValueToExtract = Convert.ToDouble(MainTable.Rows[line_number].Cells[5].Value);
+                            ValueToExtract = _stepRows[line_number].ARMGained;
                         }
                         else if(ARMleft_radioButton.Checked)
                         {
-                            ValueToExtract = Convert.ToDouble(MainTable.Rows[line_number].Cells[6].Value);
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        MessageBox.Show("Cell does not contain a valid number.");
-                        return;
-                    }
-                    catch (ArgumentNullException)
-                    {
-                        MessageBox.Show("Cell is empty.");
-                        return;
-                    }
-                    catch (InvalidCastException)
-                    {
-                        MessageBox.Show("Cell contains a non-numeric value.");
-                        return;
-                    }
-
-                    try 
-                    {
-                        foreach (DataGridViewRow row in MainTable.Rows)
-                        {
-                            try
-                            {
-                                if (NRM_checkBox.Checked)
-                                {
-                                    double current = Convert.ToDouble(row.Cells[4].Value);
-                                    row.Cells[4].Value = current - ValueToExtract;
-                                }
-                                if (ARMgained_checkBox.Checked)
-                                {
-                                    double current = Convert.ToDouble(row.Cells[5].Value);
-                                    row.Cells[5].Value = current - ValueToExtract;
-                                }
-                                if (ARMleft_checkBox.Checked)
-                                {
-                                    double current = Convert.ToDouble(row.Cells[6].Value);
-                                    row.Cells[6].Value = current - ValueToExtract;
-                                }
-                            }
-
-                            catch (FormatException)
-                            {
-                                MessageBox.Show("Invalid format in line  " + row.Index);
-                            }
-                            catch (ArgumentNullException)
-                            {
-                                MessageBox.Show("The cell in line " + row.Index + " is empty");
-                            }
-                            catch (InvalidCastException)
-                            {
-                                MessageBox.Show("Unable to convert number in line  " + row.Index);
-                            }
-                            catch (OverflowException)
-                            {
-                                MessageBox.Show("The number is too large or too small in line " + row.Index);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Error: " + ex.Message);
-                            }
+                            ValueToExtract = _stepRows[line_number].ARMLeft;
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show(ex.Message, "Invalid value");
+                    }
+
+                    try 
+                    {
+                        foreach (var step in _stepRows)
+                        {
+                            if (NRM_checkBox.Checked)
+                            {
+                                step.NRM = step.NRM - ValueToExtract;
+                            }
+                            if (ARMgained_checkBox.Checked)
+                            {
+                                step.ARMGained = step.ARMGained - ValueToExtract;
+                            }
+                            if (ARMleft_checkBox.Checked)
+                            {
+                                step.ARMLeft = step.ARMLeft - ValueToExtract;
+                            }
+                        }
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Substracting error");
                     }
 
                 }
-                catch (FormatException)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("The input is not a valid integer.");
-                }
-                catch (OverflowException)
-                {
-                    MessageBox.Show("The number is too large or too small for an Int32.");
+                    MessageBox.Show(ex.Message, "Error");
                 }
             }
             else if (Value_radioButton.Checked)
@@ -919,67 +714,35 @@ namespace Thellier
                 try
                 {
 
-
                     double ValueToExtract = Double.Parse(res_input_textBox.Text, NumberStyles.Float, CultureInfo.InvariantCulture);
 
                     try
                     {
-                        foreach (DataGridViewRow row in MainTable.Rows)
+                        foreach (var step in _stepRows)
                         {
-                            try
+                            if (NRM_checkBox.Checked)
                             {
-                                if (NRM_checkBox.Checked)
-                                {
-                                    double current = Convert.ToDouble(row.Cells[4].Value);
-                                    row.Cells[4].Value = current - ValueToExtract;
-                                }
-                                if (ARMgained_checkBox.Checked)
-                                {
-                                    double current = Convert.ToDouble(row.Cells[5].Value);
-                                    row.Cells[5].Value = current - ValueToExtract;
-                                }
-                                if (ARMleft_checkBox.Checked)
-                                {
-                                    double current = Convert.ToDouble(row.Cells[6].Value);
-                                    row.Cells[6].Value = current - ValueToExtract;
-                                }
+                                step.NRM = step.NRM - ValueToExtract;
                             }
-
-                            catch (FormatException)
+                            if (ARMgained_checkBox.Checked)
                             {
-                                MessageBox.Show("Invalid format in line  " + row.Index);
+                                step.ARMGained = step.ARMGained - ValueToExtract;
                             }
-                            catch (ArgumentNullException)
+                            if (ARMleft_checkBox.Checked)
                             {
-                                MessageBox.Show("The cell in line " + row.Index + " is empty");
-                            }
-                            catch (InvalidCastException)
-                            {
-                                MessageBox.Show("Unable to convert number in line  " + row.Index);
-                            }
-                            catch (OverflowException)
-                            {
-                                MessageBox.Show("The number is too large or too small in line " + row.Index);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Error: " + ex.Message);
+                                step.ARMLeft = step.ARMLeft - ValueToExtract;
                             }
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show(ex.Message, "Substracting error");
                     }
 
                 }
-                catch (FormatException)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("The input is not a valid number.");
-                }
-                catch (OverflowException)
-                {
-                    MessageBox.Show("The number is too large or too small for an Float32.");
+                    MessageBox.Show(ex.Message, "Error");
                 }
             }
             else { MessageBox.Show("Please, select initial value type"); }
