@@ -21,3 +21,4 @@ C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.cs
 C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.csproj.CoreCompileInputs.cache
 C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.exe
 C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.pdb
+C:\Users\Rudko\Documents\GitHub\Thellier\Thellier\Thellier\obj\Debug\Thellier.Form3.resources

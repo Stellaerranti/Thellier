@@ -23,6 +23,8 @@ namespace Thellier
         private readonly BindingList<MeasurementRow> _stepRows = new BindingList<MeasurementRow>();
 
         private Form2 _form2;
+        private Form3 _form3;
+
         private readonly FileContext _fileContext = new FileContext();
         public Form1()
         {
@@ -590,7 +592,7 @@ namespace Thellier
             using (var fileDialog = new OpenFileDialog())
             {
                 fileDialog.Title = "Select .pmd file";
-                fileDialog.Filter = "RMG Files (*.pmd)|*.pmd";
+                fileDialog.Filter = "PMD Files (*.pmd)|*.pmd";
 
                 fileDialog.RestoreDirectory = true;
 
@@ -754,6 +756,26 @@ namespace Thellier
             plotTable();
         }
 
+        private void import_wizzard_Button_Click(object sender, EventArgs e)
+        {
+            if (_form3 == null || _form3.IsDisposed)
+            {
+                _form3 = new Form3(_stepRows);
+                _form3.FormClosing += (s, args) =>
+                {
+                    args.Cancel = true;
+                    _form3.Hide();
+                };
+            }
+
+            if (_form3.WindowState == FormWindowState.Minimized)
+                _form3.WindowState = FormWindowState.Normal;
+
+            _form3.Show();
+            _form3.BringToFront();
+            _form3.Activate();
+        }
+
         private void button_plot_Click(object sender, EventArgs e)
         {
             if (_form2 == null || _form2.IsDisposed)
@@ -895,11 +917,6 @@ namespace Thellier
         private void aRMARMToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ExportChart(ARMChart, "ARM");
-        }
-
-        private void import_wizzard_Button_Click(object sender, EventArgs e)
-        {
-
         }
     }
     public class MeasurementRow
