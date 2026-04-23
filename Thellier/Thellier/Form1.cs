@@ -760,7 +760,7 @@ namespace Thellier
         {
             if (_form3 == null || _form3.IsDisposed)
             {
-                _form3 = new Form3(_stepRows);
+                _form3 = new Form3(_stepRows, this);
                 _form3.FormClosing += (s, args) =>
                 {
                     args.Cancel = true;
@@ -774,6 +774,12 @@ namespace Thellier
             _form3.Show();
             _form3.BringToFront();
             _form3.Activate();
+        }
+
+        public void RefreshFromImportWizard()
+        {
+            MainTable.Refresh();
+            plotTable();
         }
 
         private void button_plot_Click(object sender, EventArgs e)
