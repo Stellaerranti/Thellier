@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\thellier\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|c:\\users\\rudko\\documents\\github\\thellier\\thellier\\thellier\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|solutionrelative:thellier\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -23,7 +23,7 @@
       "RelativeMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|solutionrelative:thellier\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|c:\\users\\rudko\\documents\\github\\thellier\\thellier\\thellier\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\thellier\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|solutionrelative:thellier\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -56,7 +56,7 @@
               "RelativeDocumentMoniker": "Thellier\\Form3.cs",
               "ToolTip": "C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\Thellier\\Form3.cs",
               "RelativeToolTip": "Thellier\\Form3.cs",
-              "ViewState": "AgIAALsAAAAAAAAAAAAkwPAAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAE8BAAAAAAAAAAAswKAAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-03T13:38:50.115Z",
               "EditorCaption": ""
@@ -70,8 +70,7 @@
               "ToolTip": "C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\Thellier\\Form1.cs [Design]",
               "RelativeToolTip": "Thellier\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T03:18:32.647Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-11-25T03:18:32.647Z"
             },
             {
               "$type": "Document",
@@ -82,8 +81,7 @@
               "ToolTip": "C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\Thellier\\Form2.cs [Design]",
               "RelativeToolTip": "Thellier\\Form2.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T07:25:17.497Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-11-19T07:25:17.497Z"
             },
             {
               "$type": "Document",
@@ -95,8 +93,7 @@
               "RelativeToolTip": "Thellier\\Form2.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAAJ0BAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T07:26:43.982Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T07:26:43.982Z"
             },
             {
               "$type": "Document",
@@ -106,10 +103,9 @@
               "RelativeDocumentMoniker": "Thellier\\Form1.cs",
               "ToolTip": "C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\Thellier\\Form1.cs",
               "RelativeToolTip": "Thellier\\Form1.cs",
-              "ViewState": "AgIAAOMCAAAAAAAAAAAAAAoDAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAACAAAAAAAAAAAkwDACAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T01:55:43.41Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-11T01:55:43.41Z"
             }
           ]
         }
