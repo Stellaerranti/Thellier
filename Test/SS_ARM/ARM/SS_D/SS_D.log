@@ -1,0 +1,2 @@
+2026-07-17 19:41:00: SS_D5: ARM  1 (Up): Max observed monitor voltage did not reach target monitor voltage on AF ADWIN-light-16 board.     Retrying AF Ramp, attempt #1    Target Monitor Voltage: 0.018  Max Monitor Voltage Reached: 0.001    Code execution will continue.
+2026-07-18 20:58:52: SS_D36: ARM  1 (Up): Max observed monitor voltage did not reach target monitor voltage on AF ADWIN-light-16 board.     Retrying AF Ramp, attempt #1    Target Monitor Voltage: 0.045  Max Monitor Voltage Reached: 0.001    Code execution will continue.

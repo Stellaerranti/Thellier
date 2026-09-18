@@ -1,0 +1,15 @@
+2026-06-02 18:57:38: SS_A2: AF  0 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2.rmg
+2026-06-02 18:57:39: SS_A2: AF  0 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2
+2026-06-02 19:00:59: SS_A2: AF  15 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2.rmg
+2026-06-02 19:01:00: SS_A2: AF  15 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2
+2026-06-02 19:04:19: SS_A2: AF  30 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2.rmg
+2026-06-02 19:04:20: SS_A2: AF  30 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2
+2026-06-02 19:07:40: SS_A2: AF  45 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2.rmg
+2026-06-02 19:07:43: SS_A2: AF  45 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2
+2026-06-02 19:11:04: SS_A2: AF  60 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2.rmg
+2026-06-02 19:11:05: SS_A2: AF  60 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2
+2026-06-02 19:14:24: SS_A2: AF  80 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2.rmg
+2026-06-02 19:14:25: SS_A2: AF  80 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2
+2026-06-02 19:17:50: SS_A2: AF  100 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2.rmg
+2026-06-02 19:17:51: SS_A2: AF  100 (Up): Error writing backup file c:\Paleomagnetics\User\Gavryushkin\SS\SS_A\SS_A2
+2026-07-05 17:20:01: SS_A18: ARM  1 (Up): Max observed monitor voltage did not reach target monitor voltage on AF ADWIN-light-16 board.     Retrying AF Ramp, attempt #1    Target Monitor Voltage: 0.076  Max Monitor Voltage Reached: 0.011    Code execution will continue.

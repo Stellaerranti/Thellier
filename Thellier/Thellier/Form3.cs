@@ -357,6 +357,11 @@ namespace Thellier
             }
         }
 
+        private void add_ARM_left()
+        {
+
+        }
+
         private void add_button_Click(object sender, EventArgs e)
         {            
             string input = Rang_textBox.Text;

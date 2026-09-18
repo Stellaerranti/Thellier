@@ -122,17 +122,20 @@
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(724, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(235, 91);
+            this.tableLayoutPanel2.RowCount = 6;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.6675F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.6675F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.6675F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66583F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66583F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66583F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(235, 190);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // Rang_textBox
             // 
             this.Rang_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Rang_textBox.Location = new System.Drawing.Point(6, 35);
+            this.Rang_textBox.Location = new System.Drawing.Point(6, 37);
             this.Rang_textBox.Name = "Rang_textBox";
             this.Rang_textBox.Size = new System.Drawing.Size(157, 20);
             this.Rang_textBox.TabIndex = 0;
@@ -140,9 +143,9 @@
             // add_button
             // 
             this.add_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.add_button.Location = new System.Drawing.Point(172, 35);
+            this.add_button.Location = new System.Drawing.Point(172, 37);
             this.add_button.Name = "add_button";
-            this.add_button.Size = new System.Drawing.Size(57, 20);
+            this.add_button.Size = new System.Drawing.Size(57, 22);
             this.add_button.TabIndex = 1;
             this.add_button.Text = "Add";
             this.add_button.UseVisualStyleBackColor = true;

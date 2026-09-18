@@ -1,0 +1,2 @@
+2026-07-03 21:04:45: SS_C24: AF  100 (Up): Max observed monitor voltage did not reach target monitor voltage on AF ADWIN-light-16 board.     Retrying AF Ramp, attempt #1    Target Monitor Voltage: 0.175  Max Monitor Voltage Reached: 0.010    Code execution will continue.
+2026-07-04 09:28:11: SS_C36: AF  80 (Up): Max observed monitor voltage did not reach target monitor voltage on AF ADWIN-light-16 board.     Retrying AF Ramp, attempt #1    Target Monitor Voltage: 0.148  Max Monitor Voltage Reached: 0.001    Code execution will continue.
