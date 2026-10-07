@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|solutionrelative:thellier\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\thellier\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|solutionrelative:thellier\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\thellier\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|solutionrelative:thellier\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\thellier\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|solutionrelative:thellier\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\thellier\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|solutionrelative:thellier\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D49F4F60-ACB7-458D-B108-4AD95A1C9B9D}|Thellier\\Thellier.csproj|C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\thellier\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -50,7 +50,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Form3.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\Thellier\\Form3.cs",
               "RelativeDocumentMoniker": "Thellier\\Form3.cs",
@@ -61,7 +61,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Form3.cs",
               "DocumentMoniker": "C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\Thellier\\Form3.cs",
               "RelativeDocumentMoniker": "Thellier\\Form3.cs",
@@ -96,15 +96,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\Thellier\\Form1.cs",
               "RelativeDocumentMoniker": "Thellier\\Form1.cs",
-              "ToolTip": "C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\Thellier\\Form1.cs",
-              "RelativeToolTip": "Thellier\\Form1.cs",
-              "ViewState": "AgIAAO0CAAAAAAAAAAAowAwDAAAdAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Rudko\\Documents\\GitHub\\Thellier\\Thellier\\Thellier\\Form1.cs*",
+              "RelativeToolTip": "Thellier\\Form1.cs*",
+              "ViewState": "AgIAAPQCAAAAAAAAAAAIwBIDAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-17T13:16:43.366Z"
+              "WhenOpened": "2026-09-17T13:16:43.366Z",
+              "EditorCaption": ""
             }
           ]
         }
