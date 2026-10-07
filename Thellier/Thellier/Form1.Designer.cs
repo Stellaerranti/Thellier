@@ -214,10 +214,10 @@
             this.ZiChart.Location = new System.Drawing.Point(3, 3);
             this.ZiChart.Name = "ZiChart";
             series1.ChartArea = "proj1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Name = "YX";
             series2.ChartArea = "proj1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
             series2.Name = "YmZ";
             series3.ChartArea = "proj2";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;

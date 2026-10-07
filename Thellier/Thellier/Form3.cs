@@ -357,25 +357,144 @@ namespace Thellier
             }
         }
 
-        private void add_ARM_left()
+        private void load_Gained(List<int> range, int position)
         {
+            load_ARM(range, position, true);
+        }
 
+        private void load_Left(List<int> range, int position)
+        {
+            load_ARM(range, position, false);
+        }
+
+        private void load_ARM(List<int> range, int position, bool gained)
+        {
+            NumberFormatInfo provider = new NumberFormatInfo();
+            provider.NumberDecimalSeparator = ".";
+
+            try
+            {
+                // Position uses the one-based row numbers displayed in the main table.
+                if (position < 1 || position - 1 > _stepRows.Count)
+                    throw new ArgumentOutOfRangeException(nameof(position),
+                        "Starting position must be an existing row or the next row after the table.");
+
+                if (range == null || range.Count == 0 || range.Any(lineNumber => lineNumber < 1))
+                    throw new ArgumentException("Select valid file line numbers.", nameof(range));
+
+                if (is_pmd)
+                    throw new InvalidOperationException("Select an RMG file to import ARM values.");
+
+                string[] lines = File.ReadAllLines(file_path);
+                HashSet<int> selectedLines = new HashSet<int>(range);
+                List<double> points = new List<double>();
+
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    if (!selectedLines.Contains(i + 1))
+                        continue;
+
+                    string rawLine = lines[i];
+                    if (string.IsNullOrWhiteSpace(rawLine) || rawLine.Length <= 2)
+                        continue;
+
+                    // Preserve comma-separated fields, including empty fields.
+                    // NormalizeLine replaces commas, so use it only for whitespace-delimited RMG.
+                    string[] parts = rawLine.Contains(",")
+                        ? rawLine.Split(',').Select(p => p.Trim()).ToArray()
+                        : NormalizeLine(rawLine).Split(new[] { ' ', '\t' },
+                            StringSplitOptions.RemoveEmptyEntries);
+
+                    if (parts.Length <= 5)
+                        continue;
+
+                    bool measurementRecord =
+                        parts[0].StartsWith("NRM", StringComparison.OrdinalIgnoreCase) ||
+                        parts[0].StartsWith("ARM", StringComparison.OrdinalIgnoreCase) ||
+                        parts[0].StartsWith("AF", StringComparison.OrdinalIgnoreCase);
+
+                    // The selected lines supply the values; the radio button chooses the column.
+                    if (measurementRecord)
+                        points.Add(ParseCleanDouble(parts[5], provider));
+                }
+
+                if (points.Count == 0)
+                    throw new InvalidOperationException(
+                        "No valid ARM " + (gained ? "gained" : "left") + " data found in selected lines.");
+
+                // Parse all values before changing the table, so a parse error leaves it intact.
+                int targetIndex = position - 1;
+                foreach (double value in points)
+                {
+                    if (targetIndex == _stepRows.Count)
+                    {
+                        var step = new MeasurementRow();
+                        if (gained)
+                            step.ARMGained = value;
+                        else
+                            step.ARMLeft = value;
+                        _stepRows.Add(step);
+                    }
+                    else if (gained)
+                    {
+                        _stepRows[targetIndex].ARMGained = value;
+                    }
+                    else
+                    {
+                        _stepRows[targetIndex].ARMLeft = value;
+                    }
+
+                    targetIndex++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Import error");
+            }
         }
 
         private void add_button_Click(object sender, EventArgs e)
         {            
-            string input = Rang_textBox.Text;
+            string input_range = Rang_textBox.Text;
+            string position = wizzard_start_point_box.Text;
 
-            if (string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrWhiteSpace(input_range)|| string.IsNullOrWhiteSpace(position))
             {
                 return;
             }
+
+            int startPosition;
+            if (!int.TryParse(position, out startPosition) || startPosition < 1)
+            {
+                MessageBox.Show("Starting position must be a positive row number.", "Import error");
+                return;
+            }
+
+            List<int> range = GetRange(input_range);
+
+            if (wizzard_NRM_radioButton.Checked)
+            {
+
+            }
+            else if(wizzard_Gained_radioButton.Checked)
+            {
+                load_Gained(range, startPosition);
+            }
+            else if(wizzard_Left_radioButton.Checked)
+            {
+                load_Left(range, startPosition);
+            }
+            else { return; }
+
+            /*
+            
             List<int> range = new List<int>();
             range = GetRange(input);
 
             if(is_pmd)
             { export_PMD(range); }
             else { export_RMG(range); }
+            */
 
             _mainForm.RefreshFromImportWizard();
         }
