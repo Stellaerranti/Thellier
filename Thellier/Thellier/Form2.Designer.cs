@@ -345,6 +345,7 @@
             this.writecomment_button.TabIndex = 1;
             this.writecomment_button.Text = "write";
             this.writecomment_button.UseVisualStyleBackColor = true;
+            this.writecomment_button.Click += new System.EventHandler(this.writecomment_button_Click_1);
             // 
             // tableLayoutPanel13
             // 

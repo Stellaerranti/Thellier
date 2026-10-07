@@ -168,6 +168,11 @@ namespace Thellier
 
         }
 
+        private void writecomment_button_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
         public void RefreshFromContext()
         {
             if (!string.IsNullOrWhiteSpace(_fileContext.FilePath))
