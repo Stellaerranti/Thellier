@@ -818,7 +818,15 @@ namespace Thellier
 
                 string filePath = sfd.FileName;
 
-                //File.WriteAllText(filePath, "initial content");
+                try
+                {
+                    Form2.InitializeOutputFile(filePath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Output file error");
+                    return;
+                }
 
                 _fileContext.FilePath = filePath;
 
@@ -922,8 +930,12 @@ namespace Thellier
             ARMChart.Series[0].Points.Clear();
             ARMChart.Series[1].Points.Clear();
 
-            MainTable.Rows.Clear();
             _stepRows.Clear();
+
+            if (_form2 != null && !_form2.IsDisposed)
+            {
+                _form2.RefreshFromMain();
+            }
         }
 
         private void ziChart1ProjectionToolStripMenuItem_Click(object sender, EventArgs e)

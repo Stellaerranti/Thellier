@@ -51,6 +51,28 @@ namespace Thellier
             return tb.Text == (string)tb.Tag;
         }
 
+        public static void InitializeOutputFile(string filePath)
+        {
+            using (var stream = new FileStream(filePath, FileMode.OpenOrCreate,
+                FileAccess.Write, FileShare.Read))
+            {
+                if (stream.Length != 0)
+                    return;
+
+                using (var writer = new StreamWriter(stream, new UTF8Encoding(false)))
+                {
+                    writer.WriteLine(string.Join("\t", new[]
+                    {
+                        "b_DEMAG", "b_AraiNagata", "b_ARM",
+                        "sigma_b_DEMAG", "sigma_b_AraiNagata", "sigma_b_ARM",
+                        "beta_AraiNagata", "n_all", "f_AraiNagata",
+                        "R_DEMAG", "R_AraiNagata", "R_ARM",
+                        "fresid_DEMAG", "abs_b_ARM", "Comment"
+                    }));
+                }
+            }
+        }
+
         private void AppendMixedLine(string filePath, params object[] values)
         {
             var tokens = values.Select(v =>
@@ -75,6 +97,7 @@ namespace Thellier
             });
 
             string line = string.Join("\t", tokens);
+            InitializeOutputFile(filePath);
             File.AppendAllText(filePath, line + Environment.NewLine);
         }
 
@@ -168,10 +191,6 @@ namespace Thellier
 
         }
 
-        private void writecomment_button_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         public void RefreshFromContext()
         {
