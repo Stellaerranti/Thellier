@@ -753,6 +753,7 @@ namespace Thellier
         private void Remove_residue_button_Click(object sender, EventArgs e)
         {
             RemoveResidue();
+            RefreshMainTable();
             plotTable();
         }
 

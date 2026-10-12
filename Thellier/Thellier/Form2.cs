@@ -28,6 +28,8 @@ namespace Thellier
         double R_DEMAG = 0, R_AraiNagata = 0, R_ARM = 0;
         double fresid_DEMAG = 0, fresid_AraiNagata =0, fresid_ARM = 0;
 
+        
+
         int n_all = 0;
         //double bAA_DEMAG = 0, bAA_AraiNagata = 0, bAA_ARM = 0;
 
@@ -387,6 +389,7 @@ namespace Thellier
 
             AraiNagatachart.ChartAreas[0].AxisX.Crossing = 0;
             AraiNagatachart.ChartAreas[0].AxisY.Crossing = 0;
+
         }
 
         private void DrawMainChart()

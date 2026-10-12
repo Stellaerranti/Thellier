@@ -415,7 +415,7 @@ namespace Thellier
 
                     // The selected lines supply the values; the radio button chooses the column.
                     if (measurementRecord)
-                        points.Add(ParseCleanDouble(parts[5], provider));
+                        points.Add(ParseCleanDouble(parts[16], provider));
                 }
 
                 if (points.Count == 0)
