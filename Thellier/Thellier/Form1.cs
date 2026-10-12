@@ -910,6 +910,22 @@ namespace Thellier
             }
         }
 
+        private void clear()
+        {
+
+            demagChart.Series["Demag"].Points.Clear();
+            ZiChart.Series["YX"].Points.Clear();
+            ZiChart.Series["YmZ"].Points.Clear();
+            ZiChart.Series["YmX"].Points.Clear();
+            ZiChart.Series["ZX"].Points.Clear();
+
+            ARMChart.Series[0].Points.Clear();
+            ARMChart.Series[1].Points.Clear();
+
+            MainTable.Rows.Clear();
+            _stepRows.Clear();
+        }
+
         private void ziChart1ProjectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ExportChart(ZiChart, "Zi");
@@ -923,6 +939,11 @@ namespace Thellier
         private void aRMARMToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ExportChart(ARMChart, "ARM");
+        }
+
+        private void Clear_toolStripButton_Click(object sender, EventArgs e)
+        {
+            clear();
         }
     }
     public class MeasurementRow
