@@ -491,28 +491,30 @@ namespace Thellier
                         continue;
 
                     string line = NormalizeLine(rawLine);
-                    var parts = line.Split(new[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries)
-                        .Where(p => p.Any(char.IsLetterOrDigit))
-                        .ToArray();
+
+                    string[] parts = rawLine.Contains(",")
+                        ? rawLine.Split(',').Select(p => p.Trim()).ToArray()
+                        : NormalizeLine(rawLine).Split(new[] { ' ', '\t' },
+                            StringSplitOptions.RemoveEmptyEntries);
 
                     if (parts[0].StartsWith("Instrument:") || parts[0].StartsWith("Time:"))
                         continue;
 
                     if (parts[0].StartsWith("NRM") || parts[0].StartsWith("AFmax"))
                     {
-                        _gainedPoints.Add(ParseCleanDouble(parts[5], provider)); 
+                        _gainedPoints.Add(ParseCleanDouble(parts[16], provider)); 
                         continue;
                     }
 
                     if (parts[0].StartsWith("ARM"))
                     {
-                        _gainedPoints.Add(ParseCleanDouble(parts[5], provider));
+                        _gainedPoints.Add(ParseCleanDouble(parts[16], provider));
                         continue;
                     }
 
                     if (parts[0].StartsWith("AF") || parts[0].StartsWith("AFz"))
                     {
-                        _leftPoints.Add(ParseCleanDouble(parts[5], provider));
+                        _leftPoints.Add(ParseCleanDouble(parts[16], provider));
                         continue;
                     }
                     

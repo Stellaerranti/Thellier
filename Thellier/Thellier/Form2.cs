@@ -390,6 +390,13 @@ namespace Thellier
             AraiNagatachart.ChartAreas[0].AxisX.Crossing = 0;
             AraiNagatachart.ChartAreas[0].AxisY.Crossing = 0;
 
+            Title title = new Title("Demag-Demag");
+            title.Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Bold);
+            title.Docking = Docking.Top;
+            //title.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+
+            DemagDemagChart.Titles.Add(title);
+
         }
 
         private void DrawMainChart()
@@ -712,9 +719,10 @@ namespace Thellier
             sigma_resid_AraiNagata = Math.Sqrt(sigma2_AN);
             sigma_b_AraiNagata = Math.Sqrt(sigma2_AN / Sxx_AN);
 
-            double dx_Arai = xMax_Arai - xMin_Arai;
+            double dx_Arai = Math.Abs(xMax_Arai - xMin_Arai);
 
-            beta_AraiNagata = (b_AraiNagata > 0) ? (sigma_b_AraiNagata / b_AraiNagata) : double.NaN;
+            //beta_AraiNagata = (b_AraiNagata > 0) ? (sigma_b_AraiNagata / b_AraiNagata) : double.NaN;
+            beta_AraiNagata = (b_AraiNagata != 0) ? Math.Abs(sigma_b_AraiNagata / b_AraiNagata) : double.NaN;
 
             intercept_AraiNagata = (ySum_AraiNagata - b_AraiNagata * xSum_AraiNagata) / n;            
 
