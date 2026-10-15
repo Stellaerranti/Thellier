@@ -390,12 +390,26 @@ namespace Thellier
             AraiNagatachart.ChartAreas[0].AxisX.Crossing = 0;
             AraiNagatachart.ChartAreas[0].AxisY.Crossing = 0;
 
-            Title title = new Title("Demag-Demag");
-            title.Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Bold);
-            title.Docking = Docking.Top;
+            Title title_demagdemag = new Title("Demag-Demag");
+            title_demagdemag.Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Bold);
+            title_demagdemag.Docking = Docking.Top;
             //title.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
 
-            DemagDemagChart.Titles.Add(title);
+            DemagDemagChart.Titles.Add(title_demagdemag);
+
+            Title title_arai = new Title("Arai-Nagata");
+            title_arai.Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Bold);
+            title_arai.Docking = Docking.Top;
+            //title.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+
+            AraiNagatachart.Titles.Add(title_arai);
+
+            Title title_armarm = new Title("ARM-ARM");
+            title_armarm.Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Bold);
+            title_armarm.Docking = Docking.Top;
+            //title.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+
+            ARMARMchart.Titles.Add(title_armarm);
 
         }
 
@@ -519,6 +533,8 @@ namespace Thellier
             ARMARMchart.Series[1].Points.AddXY(minX_ARMA, intercept_ARM + b_ARM * minX_ARMA);
             ARMARMchart.Series[1].Points.AddXY(maxX_ARMA, intercept_ARM + b_ARM * maxX_ARMA);
         }
+
+        
 
         private void LabelColor(Label label, double value, double threshold )
         {
@@ -779,6 +795,50 @@ namespace Thellier
 
             R_ARM_label.Text = R_ARM.ToString("F4");
             LabelColor(R_ARM_label, 0.995, R_ARM);
+        }
+
+        public void clear()
+        {
+            DemagDemagChart.Series[1].Points.Clear();
+            ARMARMchart.Series[1].Points.Clear();
+            AraiNagatachart.Series[1].Points.Clear();
+            DemagDemagChart.Series[0].Points.Clear();
+            ARMARMchart.Series[0].Points.Clear();
+            AraiNagatachart.Series[0].Points.Clear();
+
+            AddPlaceholder(points_textBox, "1 - 4");
+            AddPlaceholder(Comment_textBox, "Comment");
+
+            b_DEMAG_label.Text = "-";
+            sigmab_DEMAG_label.Text = "-";
+
+
+            n_DEMAG_label.Text = "-";
+
+            R_DEMAG_label.Text = "-";
+
+            b_AraiNagata_label.Text = "-";
+            sigmab_AraiNagata_label.Text = "-";
+
+            beta_AraiNagata_label.Text = "-";
+
+            n_AraiNagata_label.Text = "-";
+
+            f_AraiNagata_label.Text = "-";
+
+            R_AraiNagata_label.Text = "-";
+
+            b_ARM_label.Text = "-";
+            sigmab_ARM_label.Text = "-";
+
+            n_ARM_label.Text = "-";
+
+            R_ARM_label.Text = "-";
+
+            fresid_DEMAG_label.Text = "-";
+
+            bAA_ARM_label.Text = "-";
+
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -938,6 +938,7 @@ namespace Thellier
             if (_form2 != null && !_form2.IsDisposed)
             {
                 _form2.RefreshFromMain();
+                _form2.clear();
             }
         }
 

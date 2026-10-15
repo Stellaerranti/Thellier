@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -197,60 +197,60 @@
             // 
             // DemagDemagChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.DemagDemagChart.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            this.DemagDemagChart.ChartAreas.Add(chartArea1);
             this.DemagDemagChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DemagDemagChart.Location = new System.Drawing.Point(2, 2);
             this.DemagDemagChart.Margin = new System.Windows.Forms.Padding(2);
             this.DemagDemagChart.Name = "DemagDemagChart";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series7.Name = "Data";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Name = "Fit";
-            this.DemagDemagChart.Series.Add(series7);
-            this.DemagDemagChart.Series.Add(series8);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.Name = "Data";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "Fit";
+            this.DemagDemagChart.Series.Add(series1);
+            this.DemagDemagChart.Series.Add(series2);
             this.DemagDemagChart.Size = new System.Drawing.Size(336, 481);
             this.DemagDemagChart.TabIndex = 0;
             this.DemagDemagChart.Text = "chart1";
             // 
             // AraiNagatachart
             // 
-            chartArea5.Name = "ChartArea1";
-            this.AraiNagatachart.ChartAreas.Add(chartArea5);
+            chartArea2.Name = "ChartArea1";
+            this.AraiNagatachart.ChartAreas.Add(chartArea2);
             this.AraiNagatachart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AraiNagatachart.Location = new System.Drawing.Point(342, 2);
             this.AraiNagatachart.Margin = new System.Windows.Forms.Padding(2);
             this.AraiNagatachart.Name = "AraiNagatachart";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series9.Name = "Data";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series10.Name = "Fit";
-            this.AraiNagatachart.Series.Add(series9);
-            this.AraiNagatachart.Series.Add(series10);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series3.Name = "Data";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Name = "Fit";
+            this.AraiNagatachart.Series.Add(series3);
+            this.AraiNagatachart.Series.Add(series4);
             this.AraiNagatachart.Size = new System.Drawing.Size(336, 481);
             this.AraiNagatachart.TabIndex = 1;
             this.AraiNagatachart.Text = "chart1";
             // 
             // ARMARMchart
             // 
-            chartArea6.Name = "ChartArea1";
-            this.ARMARMchart.ChartAreas.Add(chartArea6);
+            chartArea3.Name = "ChartArea1";
+            this.ARMARMchart.ChartAreas.Add(chartArea3);
             this.ARMARMchart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ARMARMchart.Location = new System.Drawing.Point(682, 2);
             this.ARMARMchart.Margin = new System.Windows.Forms.Padding(2);
             this.ARMARMchart.Name = "ARMARMchart";
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series11.Name = "Data";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.Name = "Fit";
-            this.ARMARMchart.Series.Add(series11);
-            this.ARMARMchart.Series.Add(series12);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series5.Name = "Data";
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Name = "Fit";
+            this.ARMARMchart.Series.Add(series5);
+            this.ARMARMchart.Series.Add(series6);
             this.ARMARMchart.Size = new System.Drawing.Size(336, 481);
             this.ARMARMchart.TabIndex = 2;
             this.ARMARMchart.Text = "chart1";
